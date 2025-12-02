@@ -87,6 +87,12 @@
     <Compile Include="GUI\ucDanhSachDatPhong.Designer.cs">
       <DependentUpon>ucDanhSachDatPhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ucKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucKhachHang.Designer.cs">
+      <DependentUpon>ucKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ucSoDoPhong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDanhSachDatPhong.resx">
       <DependentUpon>ucDanhSachDatPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucKhachHang.resx">
+      <DependentUpon>ucKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucSoDoPhong.resx">
       <DependentUpon>ucSoDoPhong.cs</DependentUpon>

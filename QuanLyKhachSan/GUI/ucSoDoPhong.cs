@@ -37,7 +37,7 @@ namespace QuanLyKhachSan.GUI
                     TileItem item = new TileItem();
                     item.ItemSize = TileItemSize.Medium;
                     item.Text = row["TenPhong"].ToString();
-                    item.Tag = row["MaPhong"]; // Lưu ID
+                    item.Tag = row["MaPhong"];
 
                     TileItemElement subText = new TileItemElement();
                     subText.Text = row["TenLP"].ToString();
@@ -83,10 +83,9 @@ namespace QuanLyKhachSan.GUI
 
             if (backColor == Color.ForestGreen)
             {
-                // Mở form đặt phòng
                 frmDatPhong frm = new frmDatPhong(int.Parse(maPhong));
                 frm.ShowDialog();
-                LoadRoomList(); // Load lại sau khi đóng form
+                LoadRoomList(); 
             }
             else if (backColor == Color.Purple)
             {
@@ -100,11 +99,6 @@ namespace QuanLyKhachSan.GUI
                 MessageBox.Show($"Đang mở menu dịch vụ cho phòng: {e.Item.Text}");
                 // Sau này sẽ code mở frmDichVu ở đây
             }
-        }
-
-        private void tileControlRoom_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

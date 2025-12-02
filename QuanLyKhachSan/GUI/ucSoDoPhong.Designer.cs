@@ -39,7 +39,7 @@
             this.tileControlRoom.Size = new System.Drawing.Size(1382, 838);
             this.tileControlRoom.TabIndex = 0;
             this.tileControlRoom.Text = "tileControl1";
-            this.tileControlRoom.Click += new System.EventHandler(this.tileControlRoom_Click);
+        
             // 
             // ucSoDoPhong
             // 

@@ -81,5 +81,10 @@ namespace QuanLyKhachSan.GUI
         {
             LoadUserControl(new ucDanhSachDatPhong());
         }
+
+        private void aceCustomer_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new ucKhachHang());
+        }
     }
 }

@@ -47,3 +47,4 @@ C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\D
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucSoDoPhong.resources
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDatPhong.resources
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDichVu.resources
+C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucKhachHang.resources

@@ -109,6 +109,7 @@
             this.aceCustomer.Name = "aceCustomer";
             this.aceCustomer.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceCustomer.Text = "Quản lý Khách hàng";
+            this.aceCustomer.Click += new System.EventHandler(this.aceCustomer_Click);
             // 
             // accordionControlElement2
             // 
@@ -174,6 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1538, 900);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
