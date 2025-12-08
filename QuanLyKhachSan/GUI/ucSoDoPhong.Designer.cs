@@ -35,19 +35,22 @@
             // 
             this.tileControlRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tileControlRoom.Location = new System.Drawing.Point(0, 0);
+            this.tileControlRoom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tileControlRoom.Name = "tileControlRoom";
-            this.tileControlRoom.Size = new System.Drawing.Size(1382, 838);
+            this.tileControlRoom.Padding = new System.Windows.Forms.Padding(20, 22, 20, 22);
+            this.tileControlRoom.Size = new System.Drawing.Size(1536, 1014);
             this.tileControlRoom.TabIndex = 0;
             this.tileControlRoom.Text = "tileControl1";
-        
+            this.tileControlRoom.Click += new System.EventHandler(this.tileControlRoom_Click);
             // 
             // ucSoDoPhong
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tileControlRoom);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ucSoDoPhong";
-            this.Size = new System.Drawing.Size(1382, 838);
+            this.Size = new System.Drawing.Size(1536, 1014);
             this.ResumeLayout(false);
 
         }

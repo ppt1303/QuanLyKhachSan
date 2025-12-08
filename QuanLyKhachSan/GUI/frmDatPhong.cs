@@ -302,6 +302,8 @@ namespace QuanLyKhachSan.GUI
 
         private void btnDatTruoc_Click(object sender, EventArgs e)
         {
+            
+            
             if (_trangThaiPhongHienTai == 2)
             {
                 // Phòng Đã đặt (Vàng) -> Nút này là "Check-In"
