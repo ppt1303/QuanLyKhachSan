@@ -56,42 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Databases\DatabaseHelper.cs" />
+    <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmDatPhong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\frmDatPhong.Designer.cs">
-      <DependentUpon>frmDatPhong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\frmDichVu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\frmDichVu.Designer.cs">
-      <DependentUpon>frmDichVu.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ucDanhSachDatPhong.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\ucDanhSachDatPhong.Designer.cs">
-      <DependentUpon>ucDanhSachDatPhong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ucKhachHang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\ucKhachHang.Designer.cs">
-      <DependentUpon>ucKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ucSoDoPhong.cs">
       <SubType>UserControl</SubType>
@@ -101,20 +77,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\frmDatPhong.resx">
-      <DependentUpon>frmDatPhong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmDichVu.resx">
-      <DependentUpon>frmDichVu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ucDanhSachDatPhong.resx">
-      <DependentUpon>ucDanhSachDatPhong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ucKhachHang.resx">
-      <DependentUpon>ucKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucSoDoPhong.resx">
       <DependentUpon>ucSoDoPhong.cs</DependentUpon>
@@ -143,6 +107,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BLL\" />
     <Folder Include="Picture\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
