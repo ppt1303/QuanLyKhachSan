@@ -64,10 +64,12 @@
   <ItemGroup>
     <Compile Include="BLL\addPicture.cs" />
     <Compile Include="BLL\BookingBLL.cs" />
+    <Compile Include="BLL\PhongBLL.cs" />
     <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DAL\DatPhongDAl.cs" />
     <Compile Include="DAL\KhachHangDAL.cs" />
     <Compile Include="DAL\PhongDAL.cs" />
+    <Compile Include="DTO\RoomStatistics.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
