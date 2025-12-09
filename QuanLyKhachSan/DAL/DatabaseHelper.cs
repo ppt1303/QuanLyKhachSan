@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient; // Thư viện kết nối SQL
+using System.Data.SqlClient; // Thư viện SQL
 using System.Windows.Forms;
 
-namespace QuanLyKhachSan
+namespace QuanLyKhachSan.DAL
 {
     public class DatabaseHelper
     {
-        private static string connectionString = @"Data Source=PHAMPUTINL;Initial Catalog=QuanLyKhachSan;Integrated Security=True";
-        public static string ConnectionString
-        {
-            get { return connectionString; }
-        }
-        public static DataTable GetDataTable(string query)
+        // Chuỗi kết nối (Lấy từ ảnh bạn gửi)
+        private static string connectionString = @"Data Source=LAPTOP-Q4MLP930\SQLEXPRESS;Initial Catalog=QuanLyKhachSan;Integrated Security=True";
+
+        // 1. Hàm lấy dữ liệu (SELECT)
+        public static DataTable GetData(string query, SqlParameter[] parameters = null, CommandType cmdType = CommandType.Text)
         {
             DataTable dt = new DataTable();
             try
@@ -22,6 +21,8 @@ namespace QuanLyKhachSan
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        cmd.CommandType = cmdType;
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
@@ -29,11 +30,13 @@ namespace QuanLyKhachSan
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message);
+                MessageBox.Show("Lỗi Database: " + ex.Message);
             }
             return dt;
         }
-        public static void ExecuteNonQuery(string query)
+
+        // 2. Hàm thực thi lệnh (INSERT, UPDATE, DELETE)
+        public static bool ExecuteNonQuery(string query, SqlParameter[] parameters = null, CommandType cmdType = CommandType.StoredProcedure)
         {
             try
             {
@@ -42,13 +45,17 @@ namespace QuanLyKhachSan
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.CommandType = cmdType;
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
+                        int rows = cmd.ExecuteNonQuery();
+                        return rows > 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi thực thi lệnh: " + ex.Message);
+                MessageBox.Show("Lỗi thực thi: " + ex.Message);
+                return false;
             }
         }
     }
