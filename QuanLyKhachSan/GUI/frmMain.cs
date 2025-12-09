@@ -14,7 +14,6 @@ namespace QuanLyKhachSan.GUI
         public frmMain()
         {
             InitializeComponent();
-            // Đăng ký sự kiện
             this.Load += FrmMain_Load;
             accordionControl1.ElementClick += AccordionControl1_ElementClick;
             _bllAddPicture = new addPicture();

@@ -43,6 +43,7 @@ C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\bin\D
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.xml
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.xml
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.xml
+<<<<<<< HEAD
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.AssemblyReference.cache
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDatPhong.resources
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmMain.resources
@@ -79,3 +80,6 @@ D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.xml
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.xml
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
+=======
+C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
+>>>>>>> 1178875e5aa36f1b4d9d9ce2c6574b24ea4640f7
