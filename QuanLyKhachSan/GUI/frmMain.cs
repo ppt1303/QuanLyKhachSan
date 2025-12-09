@@ -1,31 +1,28 @@
-﻿using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraBars.FluentDesignSystem;
+﻿using DevExpress.XtraBars.FluentDesignSystem;
+using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
+using QuanLyKhachSan.BLL;
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace QuanLyKhachSan.GUI
 {
     public partial class frmMain : FluentDesignForm
     {
-        private PictureBox bg;
+        private addPicture _bllAddPicture;
         public frmMain()
         {
             InitializeComponent();
             // Đăng ký sự kiện
             this.Load += FrmMain_Load;
             accordionControl1.ElementClick += AccordionControl1_ElementClick;
+            _bllAddPicture = new addPicture();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            bg = new PictureBox();
-            bg.Image = Image.FromFile(@"C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\Picture\khachsan.jpg"); 
-            bg.Dock = DockStyle.Fill;
-            bg.SizeMode = PictureBoxSizeMode.StretchImage;
-            fluentDesignFormContainer1.Controls.Add(bg);
-            bg.BringToFront();
+            _bllAddPicture.ThemHinhNen(fluentDesignFormContainer1);
         }
         private void AccordionControl1_ElementClick(object sender, ElementClickEventArgs e)
         {
