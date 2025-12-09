@@ -32,16 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.aceTrangChu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDatPhong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceKhachHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDichVu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceBaoCao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.aceDangXuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -61,12 +61,12 @@
             // 
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement1,
-            this.accordionControlElement2,
-            this.accordionControlElement3,
-            this.accordionControlElement4,
-            this.accordionControlElement5,
-            this.accordionControlElement6});
+            this.aceTrangChu,
+            this.aceDatPhong,
+            this.aceKhachHang,
+            this.aceDichVu,
+            this.aceBaoCao,
+            this.aceDangXuat});
             this.accordionControl1.Location = new System.Drawing.Point(0, 55);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.accordionControl1.Name = "accordionControl1";
@@ -74,7 +74,48 @@
             this.accordionControl1.Size = new System.Drawing.Size(289, 1034);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
-   
+            // 
+            // aceTrangChu
+            // 
+            this.aceTrangChu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement1.ImageOptions.SvgImage")));
+            this.aceTrangChu.Name = "aceTrangChu";
+            this.aceTrangChu.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceTrangChu.Text = "Trang chủ";
+            // 
+            // aceDatPhong
+            // 
+            this.aceDatPhong.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement2.ImageOptions.SvgImage")));
+            this.aceDatPhong.Name = "aceDatPhong";
+            this.aceDatPhong.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDatPhong.Text = "Quản lý Đặt phòng";
+            // 
+            // aceKhachHang
+            // 
+            this.aceKhachHang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement3.ImageOptions.SvgImage")));
+            this.aceKhachHang.Name = "aceKhachHang";
+            this.aceKhachHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceKhachHang.Text = "Quản lý Khách hàng";
+            // 
+            // aceDichVu
+            // 
+            this.aceDichVu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement4.ImageOptions.SvgImage")));
+            this.aceDichVu.Name = "aceDichVu";
+            this.aceDichVu.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDichVu.Text = "Quản lý Dịch vụ & Vật tư";
+            // 
+            // aceBaoCao
+            // 
+            this.aceBaoCao.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
+            this.aceBaoCao.Name = "aceBaoCao";
+            this.aceBaoCao.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceBaoCao.Text = "Báo cáo & Thống kê";
+            // 
+            // aceDangXuat
+            // 
+            this.aceDangXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement6.ImageOptions.SvgImage")));
+            this.aceDangXuat.Name = "aceDangXuat";
+            this.aceDangXuat.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.aceDangXuat.Text = "Đăng xuất";
             // 
             // fluentDesignFormControl1
             // 
@@ -90,42 +131,6 @@
             // fluentFormDefaultManager1
             // 
             this.fluentFormDefaultManager1.Form = this;
-            // 
-            // accordionControlElement2
-            // 
-            this.accordionControlElement2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement2.ImageOptions.SvgImage")));
-            this.accordionControlElement2.Name = "accordionControlElement2";
-            this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement2.Text = "Quản lý Đặt phòng";
-        
-            // 
-            // accordionControlElement3
-            // 
-            this.accordionControlElement3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement3.ImageOptions.SvgImage")));
-            this.accordionControlElement3.Name = "accordionControlElement3";
-            this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement3.Text = "Quản lý Khách hàng";
-            // 
-            // accordionControlElement4
-            // 
-            this.accordionControlElement4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement4.ImageOptions.SvgImage")));
-            this.accordionControlElement4.Name = "accordionControlElement4";
-            this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement4.Text = "Quản lý Dịch vụ & Vật tư";
-            // 
-            // accordionControlElement5
-            // 
-            this.accordionControlElement5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement5.ImageOptions.SvgImage")));
-            this.accordionControlElement5.Name = "accordionControlElement5";
-            this.accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement5.Text = "Báo cáo & Thống kê";
-            // 
-            // accordionControlElement6
-            // 
-            this.accordionControlElement6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement6.ImageOptions.SvgImage")));
-            this.accordionControlElement6.Name = "accordionControlElement6";
-            this.accordionControlElement6.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement6.Text = "Đăng xuất";
             // 
             // buttonEdit1
             // 
@@ -144,14 +149,6 @@
             this.simpleButton1.Size = new System.Drawing.Size(131, 40);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "simpleButton1";
-            // 
-            // accordionControlElement1
-            // 
-            this.accordionControlElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement1.ImageOptions.SvgImage")));
-            this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement1.Text = "Trang chủ";
-        
             // 
             // frmMain
             // 
@@ -184,13 +181,13 @@
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager fluentFormDefaultManager1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDatPhong;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceKhachHang;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDichVu;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceBaoCao;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceDangXuat;
         private DevExpress.XtraEditors.ButtonEdit buttonEdit1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement aceTrangChu;
     }
 }
