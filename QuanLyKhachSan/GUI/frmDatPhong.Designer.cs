@@ -38,6 +38,11 @@
             this.dtpNgayDen = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnDoiPhong = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNhanPhong = new Guna.UI2.WinForms.Guna2Button();
+            this.dgvPhongDaDat = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.lblDanhSachDat = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnDatPhong = new Guna.UI2.WinForms.Guna2Button();
@@ -52,11 +57,6 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblPhongDangChon = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblDanhSachDat = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dgvPhongDaDat = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.btnNhanPhong = new Guna.UI2.WinForms.Guna2Button();
-            this.btnDoiPhong = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhongDaDat)).BeginInit();
@@ -170,6 +170,115 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(372, 632);
             this.guna2Panel2.TabIndex = 1;
+            // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.AutoSize = false;
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(3, 533);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(212, 41);
+            this.guna2HtmlLabel3.TabIndex = 17;
+            this.guna2HtmlLabel3.Text = "Đặt phòng mới:";
+            // 
+            // btnDoiPhong
+            // 
+            this.btnDoiPhong.BorderRadius = 20;
+            this.btnDoiPhong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDoiPhong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDoiPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDoiPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDoiPhong.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnDoiPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDoiPhong.ForeColor = System.Drawing.Color.White;
+            this.btnDoiPhong.Location = new System.Drawing.Point(221, 467);
+            this.btnDoiPhong.Name = "btnDoiPhong";
+            this.btnDoiPhong.Size = new System.Drawing.Size(128, 45);
+            this.btnDoiPhong.TabIndex = 16;
+            this.btnDoiPhong.Text = "Đổi Phòng";
+            this.btnDoiPhong.Visible = false;
+            this.btnDoiPhong.Click += new System.EventHandler(this.btnDoiPhong_Click);
+            // 
+            // btnNhanPhong
+            // 
+            this.btnNhanPhong.BorderRadius = 20;
+            this.btnNhanPhong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNhanPhong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNhanPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNhanPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNhanPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnNhanPhong.ForeColor = System.Drawing.Color.White;
+            this.btnNhanPhong.Location = new System.Drawing.Point(20, 467);
+            this.btnNhanPhong.Name = "btnNhanPhong";
+            this.btnNhanPhong.Size = new System.Drawing.Size(128, 45);
+            this.btnNhanPhong.TabIndex = 15;
+            this.btnNhanPhong.Text = "Nhận Phòng";
+            this.btnNhanPhong.Visible = false;
+            this.btnNhanPhong.Click += new System.EventHandler(this.btnNhanPhong_Click);
+            // 
+            // dgvPhongDaDat
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvPhongDaDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPhongDaDat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPhongDaDat.ColumnHeadersHeight = 4;
+            this.dgvPhongDaDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPhongDaDat.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPhongDaDat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPhongDaDat.Location = new System.Drawing.Point(7, 348);
+            this.dgvPhongDaDat.Name = "dgvPhongDaDat";
+            this.dgvPhongDaDat.RowHeadersVisible = false;
+            this.dgvPhongDaDat.RowHeadersWidth = 51;
+            this.dgvPhongDaDat.RowTemplate.Height = 24;
+            this.dgvPhongDaDat.Size = new System.Drawing.Size(362, 113);
+            this.dgvPhongDaDat.TabIndex = 14;
+            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvPhongDaDat.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPhongDaDat.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.Height = 4;
+            this.dgvPhongDaDat.ThemeStyle.ReadOnly = false;
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPhongDaDat.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // lblDanhSachDat
+            // 
+            this.lblDanhSachDat.BackColor = System.Drawing.Color.Transparent;
+            this.lblDanhSachDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDanhSachDat.Location = new System.Drawing.Point(6, 319);
+            this.lblDanhSachDat.Name = "lblDanhSachDat";
+            this.lblDanhSachDat.Size = new System.Drawing.Size(213, 22);
+            this.lblDanhSachDat.TabIndex = 13;
+            this.lblDanhSachDat.Text = "Danh sách phòng đã đặt:";
+            this.lblDanhSachDat.Visible = false;
             // 
             // btnLamMoi
             // 
@@ -414,114 +523,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(535, 632);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // lblDanhSachDat
-            // 
-            this.lblDanhSachDat.BackColor = System.Drawing.Color.Transparent;
-            this.lblDanhSachDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDanhSachDat.Location = new System.Drawing.Point(6, 319);
-            this.lblDanhSachDat.Name = "lblDanhSachDat";
-            this.lblDanhSachDat.Size = new System.Drawing.Size(213, 22);
-            this.lblDanhSachDat.TabIndex = 13;
-            this.lblDanhSachDat.Text = "Danh sách phòng đã đặt:";
-            this.lblDanhSachDat.Visible = false;
-            // 
-            // dgvPhongDaDat
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvPhongDaDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPhongDaDat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPhongDaDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPhongDaDat.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvPhongDaDat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPhongDaDat.Location = new System.Drawing.Point(7, 348);
-            this.dgvPhongDaDat.Name = "dgvPhongDaDat";
-            this.dgvPhongDaDat.RowHeadersVisible = false;
-            this.dgvPhongDaDat.RowHeadersWidth = 51;
-            this.dgvPhongDaDat.RowTemplate.Height = 24;
-            this.dgvPhongDaDat.Size = new System.Drawing.Size(362, 113);
-            this.dgvPhongDaDat.TabIndex = 14;
-            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvPhongDaDat.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvPhongDaDat.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPhongDaDat.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhongDaDat.ThemeStyle.HeaderStyle.Height = 4;
-            this.dgvPhongDaDat.ThemeStyle.ReadOnly = false;
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.Height = 24;
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPhongDaDat.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // btnNhanPhong
-            // 
-            this.btnNhanPhong.BorderRadius = 20;
-            this.btnNhanPhong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNhanPhong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNhanPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNhanPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNhanPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnNhanPhong.ForeColor = System.Drawing.Color.White;
-            this.btnNhanPhong.Location = new System.Drawing.Point(20, 467);
-            this.btnNhanPhong.Name = "btnNhanPhong";
-            this.btnNhanPhong.Size = new System.Drawing.Size(128, 45);
-            this.btnNhanPhong.TabIndex = 15;
-            this.btnNhanPhong.Text = "Nhận Phòng";
-            this.btnNhanPhong.Visible = false;
-            this.btnNhanPhong.Click += new System.EventHandler(this.btnNhanPhong_Click);
-            // 
-            // btnDoiPhong
-            // 
-            this.btnDoiPhong.BorderRadius = 20;
-            this.btnDoiPhong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDoiPhong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDoiPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDoiPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDoiPhong.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnDoiPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnDoiPhong.ForeColor = System.Drawing.Color.White;
-            this.btnDoiPhong.Location = new System.Drawing.Point(221, 467);
-            this.btnDoiPhong.Name = "btnDoiPhong";
-            this.btnDoiPhong.Size = new System.Drawing.Size(128, 45);
-            this.btnDoiPhong.TabIndex = 16;
-            this.btnDoiPhong.Text = "Đổi Phòng";
-            this.btnDoiPhong.Visible = false;
-            this.btnDoiPhong.Click += new System.EventHandler(this.btnDoiPhong_Click);
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.AutoSize = false;
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(3, 533);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(212, 41);
-            this.guna2HtmlLabel3.TabIndex = 17;
-            this.guna2HtmlLabel3.Text = "Đặt phòng mới:";
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // frmDatPhong
             // 

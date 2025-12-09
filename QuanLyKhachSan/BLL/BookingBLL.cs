@@ -113,6 +113,37 @@ namespace QuanLyKhachSan.BLL
     };
             bool result = DatabaseHelper.ExecuteNonQuery("sp_DoiPhongKhiCheckIn", para, CommandType.StoredProcedure);
             return result ? "Đổi phòng thành công!" : "Lỗi: Phòng mới có thể đã bị trùng lịch.";
+       
+        
+        }
+
+        // --- Dán vào BookingBLL.cs ---
+
+        public DataTable GetSoDoPhong(DateTime tuNgay, DateTime denNgay)
+        {
+            // Câu lệnh này lấy TOÀN BỘ phòng và tự tính xem phòng đó có bị dính lịch đặt không
+            // Cot 'TrangThai': 1 là Đang bận, 0 là Trống
+            string query = @"
+        SELECT P.MaPhong, P.TenPhong, LP.TenLP, LP.GiaMacDinh,
+               CASE 
+                   WHEN EXISTS (
+                       SELECT 1 FROM CHITIET_DATPHONG CD
+                       JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
+                       WHERE CD.MaPhong = P.MaPhong
+                       AND DP.TrangThai != N'Đã hủy'  -- Bỏ qua đơn đã hủy
+                       AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
+                   ) THEN 1 -- Có khách
+                   ELSE 0   -- Trống
+               END AS TrangThaiBan
+        FROM PHONG P
+        JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP";
+
+            SqlParameter[] para = {
+        new SqlParameter("@TuNgay", tuNgay),
+        new SqlParameter("@DenNgay", denNgay)
+    };
+
+            return DatabaseHelper.GetData(query, para, CommandType.Text);
         }
     }
 }

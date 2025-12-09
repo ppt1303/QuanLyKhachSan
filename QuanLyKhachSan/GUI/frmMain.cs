@@ -27,5 +27,9 @@ namespace QuanLyKhachSan.GUI
         {
         }
 
+        private void frmMain_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

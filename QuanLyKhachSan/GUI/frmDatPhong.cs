@@ -35,45 +35,55 @@ namespace QuanLyKhachSan.GUI
         }
 
         // 2. Hàm vẽ sơ đồ phòng (Core Function)
+        // --- Thay thế toàn bộ hàm LoadSoDoPhong cũ ---
+
         private void LoadSoDoPhong()
         {
             flowLayoutPanel1.Controls.Clear(); // Xóa nút cũ
 
-            // Lấy danh sách phòng trống từ BLL
-            DataTable dt = bll.FindRooms(dtpNgayDen.Value, dtpNgayDi.Value);
+            // GỌI HÀM MỚI trong BLL (Lấy tất cả phòng + Trạng thái)
+            DataTable dt = bll.GetSoDoPhong(dtpNgayDen.Value, dtpNgayDi.Value);
 
-            if (dt == null || dt.Rows.Count == 0)
-            {
-                // Không có phòng trống
-                return;
-            }
+            if (dt == null || dt.Rows.Count == 0) return;
 
             foreach (DataRow row in dt.Rows)
             {
-                // Tạo nút phòng bằng code
+                // 1. Tạo nút
                 Guna2TileButton btn = new Guna2TileButton();
                 btn.Width = 100;
                 btn.Height = 100;
                 btn.BorderRadius = 10;
-                btn.FillColor = Color.FromArgb(46, 204, 113); // Màu xanh lá (Trống)
-                btn.ForeColor = Color.White;
                 btn.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                btn.ForeColor = Color.White;
 
-                // Lấy thông tin
-                string ten = row["TenPhong"].ToString();
-                string loai = row["TenLP"].ToString();
+                // 2. Lấy thông tin
+                string tenPhong = row["TenPhong"].ToString();
+                string loaiPhong = row["TenLP"].ToString();
                 decimal gia = Convert.ToDecimal(row["GiaMacDinh"]);
+                int isBooked = Convert.ToInt32(row["TrangThaiBan"]); // 1: Bận, 0: Trống
 
-                // Set chữ hiển thị
-                btn.Text = $"{ten}\n{loai}\n{gia:N0}";
+                // 3. XỬ LÝ MÀU SẮC (Quan trọng nhất)
+                if (isBooked == 1)
+                {
+                    // Phòng ĐÃ CÓ NGƯỜI -> Màu Đỏ
+                    btn.FillColor = Color.Red;
+                    btn.Text = $"{tenPhong}\n{loaiPhong}\n(Đã đặt)";
+                    btn.Enabled = false; // (Tùy chọn) Khóa không cho bấm hoặc vẫn cho bấm để xem
+                }
+                else
+                {
+                    // Phòng TRỐNG -> Màu Xanh
+                    btn.FillColor = Color.FromArgb(46, 204, 113);
+                    btn.Text = $"{tenPhong}\n{loaiPhong}\n{gia:N0}";
+                }
 
-                // Lưu nguyên dòng data vào Tag để dùng sau
+                // 4. Lưu dữ liệu vào Tag
                 btn.Tag = row;
 
-                // Gắn sự kiện Click
+                // 5. Sự kiện Click
+                // Nếu bạn muốn phòng đỏ vẫn bấm được (để đổi phòng) thì đừng set Enabled = false ở trên
                 btn.Click += BtnPhong_Click;
 
-                // Thêm vào panel
                 flowLayoutPanel1.Controls.Add(btn);
             }
         }
@@ -84,15 +94,24 @@ namespace QuanLyKhachSan.GUI
             Guna2TileButton btn = (Guna2TileButton)sender;
             DataRow data = (DataRow)btn.Tag;
 
-            // Lưu thông tin phòng đang chọn
+            // Kiểm tra nếu phòng đang Đỏ (Bận)
+            if (btn.FillColor == Color.Red)
+            {
+                MessageBox.Show("Phòng này đã có người đặt trong khoảng thời gian bạn chọn!");
+                // Reset lựa chọn
+                _maPhongDangChon = 0;
+                lblPhongDangChon.Text = "PHÒNG: ĐÃ BẬN";
+                lblPhongDangChon.ForeColor = Color.Red;
+                return;
+            }
+
+            // Nếu phòng Xanh (Trống) -> Xử lý bình thường
             _maPhongDangChon = Convert.ToInt32(data["MaPhong"]);
             _giaPhongHienTai = Convert.ToDecimal(data["GiaMacDinh"]);
 
-            // Hiển thị lên Label đỏ bên phải
             lblPhongDangChon.Text = $"PHÒNG: {data["TenPhong"]}";
-            lblPhongDangChon.ForeColor = Color.Red;
+            lblPhongDangChon.ForeColor = Color.Green;
 
-            // Gợi ý tiền cọc (30%)
             txtTienCoc.Text = (_giaPhongHienTai * 0.3m).ToString("N0");
         }
 
@@ -306,6 +325,11 @@ namespace QuanLyKhachSan.GUI
                 _maPhongDangChon = 0;
                 lblPhongDangChon.Text = "PHÒNG: CHƯA CHỌN";
             }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
