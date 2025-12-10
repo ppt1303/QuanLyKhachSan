@@ -8,7 +8,6 @@ namespace QuanLyKhachSan.DAL
     {
         public bool TaoDatPhong(int maKH, int maPhong, DateTime ngayDen, DateTime ngayDi, decimal tienCoc)
         {
-            // Gọi Procedure sp_DatPhong
             SqlParameter[] parameters = {
                 new SqlParameter("@MaKH", maKH),
                 new SqlParameter("@MaPhong", maPhong),
