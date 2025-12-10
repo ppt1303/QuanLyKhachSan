@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\qlkstt\\QuanLyKhachSan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|D:\\qlkstt\\QuanLyKhachSan\\quanlykhachsan\\gui\\frmdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\frmdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|D:\\qlkstt\\QuanLyKhachSan\\quanlykhachsan\\gui\\frmdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\frmdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|D:\\qlkstt\\QuanLyKhachSan\\quanlykhachsan\\gui\\frmdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\frmdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|D:\\qlkstt\\QuanLyKhachSan\\quanlykhachsan\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,13 +63,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "frmDatPhong.cs",
               "DocumentMoniker": "D:\\qlkstt\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmDatPhong.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmDatPhong.cs",
               "ToolTip": "D:\\qlkstt\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmDatPhong.cs",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmDatPhong.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAAwL8AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAwwL8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-09T14:42:43.323Z",
               "EditorCaption": ""
@@ -88,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "frmDatPhong.cs [Design]",
               "DocumentMoniker": "D:\\qlkstt\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmDatPhong.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmDatPhong.cs",
