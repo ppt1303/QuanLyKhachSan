@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using QuanLyKhachSan.DAL; // Đảm bảo bạn đã có class DatabaseHelper trong DAL
+using QuanLyKhachSan.DAL;
 
 namespace QuanLyKhachSan.BLL
 {
     public class BookingBLL
     {
         // 1. Lấy sơ đồ phòng với 3 trạng thái ưu tiên: 2 (Đỏ - Đang ở) -> 1 (Vàng - Đã đặt) -> 0 (Xanh - Trống)
+        // (Giữ lại logic này vì nó xử lý màu sắc hiển thị trên giao diện tốt hơn)
         public DataTable GetSoDoPhong(DateTime tuNgay, DateTime denNgay)
         {
             string query = @"
