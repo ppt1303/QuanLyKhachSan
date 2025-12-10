@@ -75,9 +75,10 @@ namespace QuanLyKhachSan.BLL
         // --- Dán tiếp vào trong class BookingBLL ---
 
         // 1. Lấy danh sách các phòng khách này ĐÃ ĐẶT (chờ Check-in)
+        // Sửa lại hàm này trong BLL cho đơn giản và chính xác hơn
         public DataTable GetPhongDaDat(int maKH)
         {
-            // Lấy thông tin Mã Đặt Phòng, Tên Phòng, Ngày Đến, Ngày Đi
+            // Chỉ lấy những đơn có trạng thái là 'Đã đặt'
             string query = @"
         SELECT DP.MaDP, CD.MaPhong, P.TenPhong, LP.TenLP, 
                CD.NgayNhanPhong, CD.NgayTraPhong
@@ -86,13 +87,11 @@ namespace QuanLyKhachSan.BLL
         JOIN PHONG P ON CD.MaPhong = P.MaPhong
         JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
         WHERE DP.MaKH = @MaKH 
-        AND DP.TrangThai = N'Đã đặt' 
-        AND dbo.fn_KiemTraTrangThaiPhong(CD.MaPhong) != N'Đang ở'"; // Loại trừ phòng đã check-in rồi
+        AND DP.TrangThai = N'Đã đặt'"; // Quan trọng: Phải đúng chữ có dấu
 
             SqlParameter[] para = { new SqlParameter("@MaKH", maKH) };
             return DatabaseHelper.GetData(query, para, CommandType.Text);
         }
-
         // 2. Chức năng Check-in (Nhận phòng)
         public string CheckIn(int maDP)
         {
@@ -121,8 +120,6 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable GetSoDoPhong(DateTime tuNgay, DateTime denNgay)
         {
-            // Câu lệnh này lấy TOÀN BỘ phòng và tự tính xem phòng đó có bị dính lịch đặt không
-            // Cot 'TrangThai': 1 là Đang bận, 0 là Trống
             string query = @"
         SELECT P.MaPhong, P.TenPhong, LP.TenLP, LP.GiaMacDinh,
                CASE 
@@ -130,10 +127,10 @@ namespace QuanLyKhachSan.BLL
                        SELECT 1 FROM CHITIET_DATPHONG CD
                        JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
                        WHERE CD.MaPhong = P.MaPhong
-                       AND DP.TrangThai != N'Đã hủy'  -- Bỏ qua đơn đã hủy
+                       AND DP.TrangThai != N'Đã hủy'
                        AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
-                   ) THEN 1 -- Có khách
-                   ELSE 0   -- Trống
+                   ) THEN 1 
+                   ELSE 0 
                END AS TrangThaiBan
         FROM PHONG P
         JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP";

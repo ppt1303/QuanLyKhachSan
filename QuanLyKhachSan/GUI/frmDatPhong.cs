@@ -35,8 +35,6 @@ namespace QuanLyKhachSan.GUI
         }
 
         // 2. Hàm vẽ sơ đồ phòng (Core Function)
-        // --- Thay thế toàn bộ hàm LoadSoDoPhong cũ ---
-
         private void LoadSoDoPhong()
         {
             flowLayoutPanel1.Controls.Clear(); // Xóa nút cũ
@@ -48,7 +46,7 @@ namespace QuanLyKhachSan.GUI
 
             foreach (DataRow row in dt.Rows)
             {
-                // 1. Tạo nút
+                // Tạo nút phòng
                 Guna2TileButton btn = new Guna2TileButton();
                 btn.Width = 100;
                 btn.Height = 100;
@@ -56,19 +54,19 @@ namespace QuanLyKhachSan.GUI
                 btn.Font = new Font("Segoe UI", 9, FontStyle.Bold);
                 btn.ForeColor = Color.White;
 
-                // 2. Lấy thông tin
+                // Lấy thông tin
                 string tenPhong = row["TenPhong"].ToString();
                 string loaiPhong = row["TenLP"].ToString();
                 decimal gia = Convert.ToDecimal(row["GiaMacDinh"]);
                 int isBooked = Convert.ToInt32(row["TrangThaiBan"]); // 1: Bận, 0: Trống
 
-                // 3. XỬ LÝ MÀU SẮC (Quan trọng nhất)
+                // XỬ LÝ MÀU SẮC (Quan trọng nhất)
                 if (isBooked == 1)
                 {
                     // Phòng ĐÃ CÓ NGƯỜI -> Màu Đỏ
                     btn.FillColor = Color.Red;
                     btn.Text = $"{tenPhong}\n{loaiPhong}\n(Đã đặt)";
-                    btn.Enabled = false; // (Tùy chọn) Khóa không cho bấm hoặc vẫn cho bấm để xem
+                    // btn.Enabled = false; // Mở nếu muốn khóa click
                 }
                 else
                 {
@@ -77,11 +75,8 @@ namespace QuanLyKhachSan.GUI
                     btn.Text = $"{tenPhong}\n{loaiPhong}\n{gia:N0}";
                 }
 
-                // 4. Lưu dữ liệu vào Tag
+                // Lưu dữ liệu vào Tag và gắn sự kiện
                 btn.Tag = row;
-
-                // 5. Sự kiện Click
-                // Nếu bạn muốn phòng đỏ vẫn bấm được (để đổi phòng) thì đừng set Enabled = false ở trên
                 btn.Click += BtnPhong_Click;
 
                 flowLayoutPanel1.Controls.Add(btn);
@@ -97,11 +92,13 @@ namespace QuanLyKhachSan.GUI
             // Kiểm tra nếu phòng đang Đỏ (Bận)
             if (btn.FillColor == Color.Red)
             {
-                MessageBox.Show("Phòng này đã có người đặt trong khoảng thời gian bạn chọn!");
-                // Reset lựa chọn
+                MessageBox.Show("Phòng này đã có người đặt trong khoảng thời gian bạn chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Reset lựa chọn để không cho đặt đè
                 _maPhongDangChon = 0;
                 lblPhongDangChon.Text = "PHÒNG: ĐÃ BẬN";
                 lblPhongDangChon.ForeColor = Color.Red;
+                txtTienCoc.Clear();
                 return;
             }
 
@@ -112,6 +109,7 @@ namespace QuanLyKhachSan.GUI
             lblPhongDangChon.Text = $"PHÒNG: {data["TenPhong"]}";
             lblPhongDangChon.ForeColor = Color.Green;
 
+            // Gợi ý tiền cọc (30%)
             txtTienCoc.Text = (_giaPhongHienTai * 0.3m).ToString("N0");
         }
 
@@ -122,158 +120,188 @@ namespace QuanLyKhachSan.GUI
         }
 
         // 5. Nút "Tìm khách"
-        // 5. Nút "Tìm khách" - Đã nâng cấp Full thông tin
         private void btnTim_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearch.Text)) return;
+            if (string.IsNullOrEmpty(txtSearch.Text.Trim())) return;
 
-            // 1. Tìm thông tin khách
-            DataRow kh = bll.GetKhachHangInfo(txtSearch.Text);
+            // Tìm thông tin khách
+            DataRow kh = bll.GetKhachHangInfo(txtSearch.Text.Trim());
 
             if (kh != null)
             {
-                // Điền thông tin khách
+                // --- A. Điền thông tin ---
                 txtHoTen.Text = kh["HoTen"].ToString();
                 txtCCCD.Text = kh["CCCD"].ToString();
                 txtSDT.Text = kh["SDT"].ToString();
                 cboGioiTinh.Text = kh["GioiTinh"].ToString();
 
-                // --- LOGIC MỚI: HIỆN DANH SÁCH PHÒNG ĐÃ ĐẶT ---
+                if (kh["NgaySinh"] != DBNull.Value)
+                    dtpNgaySinh.Value = Convert.ToDateTime(kh["NgaySinh"]);
+
+                if (kh.Table.Columns.Contains("QuocTich"))
+                    txtQuocTich.Text = kh["QuocTich"].ToString();
+
+                // --- B. Hiện danh sách phòng đã đặt ---
                 int maKH = Convert.ToInt32(kh["MaKH"]);
                 DataTable dtBooking = bll.GetPhongDaDat(maKH);
+                // ... (Đoạn trên giữ nguyên) ...
 
-                if (dtBooking.Rows.Count > 0)
+                if (dtBooking != null && dtBooking.Rows.Count > 0)
                 {
-                    // Có phòng đặt trước -> Hiện bảng lên
+                    // 1. Hiện bảng
                     dgvPhongDaDat.Visible = true;
                     btnNhanPhong.Visible = true;
                     btnDoiPhong.Visible = true;
 
+                    // 2. Gán dữ liệu
                     dgvPhongDaDat.DataSource = dtBooking;
 
-                    // Ẩn cột ID đi cho đẹp (chỉ hiện Tên phòng, Loại, Ngày)
+                    // --- CÁC DÒNG QUAN TRỌNG ĐỂ HIỆN ĐẸP LUÔN ---
+
+                    // A. Đặt tên cột Tiếng Việt
+                    if (dgvPhongDaDat.Columns.Contains("TenPhong")) dgvPhongDaDat.Columns["TenPhong"].HeaderText = "Phòng";
+                    if (dgvPhongDaDat.Columns.Contains("TenLP")) dgvPhongDaDat.Columns["TenLP"].HeaderText = "Loại"; // Viết ngắn cho gọn
+                    if (dgvPhongDaDat.Columns.Contains("NgayNhanPhong")) dgvPhongDaDat.Columns["NgayNhanPhong"].HeaderText = "Ngày Đến";
+                    if (dgvPhongDaDat.Columns.Contains("NgayTraPhong")) dgvPhongDaDat.Columns["NgayTraPhong"].HeaderText = "Ngày Đi";
+
+                    // B. Định dạng ngày tháng
+                    dgvPhongDaDat.Columns["NgayNhanPhong"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    dgvPhongDaDat.Columns["NgayTraPhong"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+                    // C. Ẩn cột thừa
                     if (dgvPhongDaDat.Columns.Contains("MaDP")) dgvPhongDaDat.Columns["MaDP"].Visible = false;
                     if (dgvPhongDaDat.Columns.Contains("MaPhong")) dgvPhongDaDat.Columns["MaPhong"].Visible = false;
+
+                    // D. KHẮC PHỤC LỖI "PHẢI CLICK MỚI HIỆN":
+                    // Chỉnh chiều cao tiêu đề cố định (để không bị mất chữ)
+                    dgvPhongDaDat.ColumnHeadersHeight = 40;
+                    dgvPhongDaDat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+                    // Tự động giãn cột theo nội dung chữ (AllCells) thay vì Fill (để chữ dài không bị che)
+                    dgvPhongDaDat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                    // Nếu bảng còn dư chỗ trống thì cho cột "Loại Phòng" giãn hết mức
+                    if (dgvPhongDaDat.Columns.Contains("TenLP"))
+                        dgvPhongDaDat.Columns["TenLP"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    // Bỏ chọn dòng đầu tiên (để nhìn bảng sạch sẽ, không bị bôi xanh dòng đầu)
+                    dgvPhongDaDat.ClearSelection();
+
+                    MessageBox.Show($"Tìm thấy {dtBooking.Rows.Count} phòng đã đặt!");
                 }
+                // ... (Đoạn dưới giữ nguyên) ...
                 else
                 {
-                    // Không có phòng đặt trước -> Ẩn đi
+                    // Khách cũ nhưng không có phòng đặt trước
                     dgvPhongDaDat.Visible = false;
                     btnNhanPhong.Visible = false;
                     btnDoiPhong.Visible = false;
+                    MessageBox.Show("Đã tìm thấy hồ sơ khách hàng cũ.", "Thông báo");
                 }
-
-                MessageBox.Show("Đã tìm thấy khách hàng!");
             }
             else
             {
-                MessageBox.Show("Khách mới. Hãy nhập thông tin và Lưu khách mới.");
-                // Xóa trắng & Ẩn bảng
-                txtHoTen.Clear(); txtCCCD.Clear();
+                // Khách mới
+                MessageBox.Show("Khách hàng này chưa có trong hệ thống.\nVui lòng nhập thông tin và bấm 'Lưu Khách Mới'.", "Khách mới", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtHoTen.Clear(); txtCCCD.Clear(); txtSDT.Clear();
+                txtQuocTich.Text = "Việt Nam";
+                cboGioiTinh.StartIndex = 0;
+                dtpNgaySinh.Value = DateTime.Now;
+
                 dgvPhongDaDat.Visible = false;
                 btnNhanPhong.Visible = false;
                 btnDoiPhong.Visible = false;
+                txtHoTen.Focus();
             }
         }
 
         // 6. Nút "Lưu khách mới"
         private void btnThemKhach_Click(object sender, EventArgs e)
         {
-            // 1. Lấy dữ liệu từ giao diện
             string ten = txtHoTen.Text;
             string cccd = txtCCCD.Text;
             string sdt = txtSDT.Text;
-            string gioitinh = cboGioiTinh.Text; // Lấy từ ComboBox
+            string gioitinh = cboGioiTinh.Text;
             DateTime ngaysinh = dtpNgaySinh.Value;
             string quoctich = txtQuocTich.Text;
 
-            // 2. Kiểm tra sơ bộ
             if (string.IsNullOrEmpty(gioitinh))
             {
-                MessageBox.Show("Vui lòng chọn Giới tính!");
+                MessageBox.Show("Vui lòng chọn Giới tính!", "Cảnh báo");
                 return;
             }
 
-            // 3. Gọi BLL (Lúc này hàm AddKhachHang đã có đủ tham số)
             string ketQua = bll.AddKhachHang(ten, cccd, sdt, gioitinh, ngaysinh, quoctich);
-
             MessageBox.Show(ketQua);
         }
 
         // 7. Nút "Xác nhận đặt" (Final)
         private void btnDatPhong_Click(object sender, EventArgs e)
         {
-            // 1. Kiểm tra chọn phòng trên sơ đồ
             if (_maPhongDangChon == 0)
             {
-                MessageBox.Show("Vui lòng chọn phòng trống trên sơ đồ để đặt mới!");
+                MessageBox.Show("Vui lòng chọn phòng trống (Màu xanh) trên sơ đồ!", "Thông báo");
                 return;
             }
 
-            // 2. Kiểm tra khách
             if (string.IsNullOrEmpty(txtCCCD.Text))
             {
-                MessageBox.Show("Chưa có thông tin khách hàng!");
+                MessageBox.Show("Chưa có thông tin khách hàng!", "Thông báo");
                 return;
             }
 
-            // Lấy ID khách (Từ ô CCCD đang hiện)
             DataRow kh = bll.GetKhachHangInfo(txtCCCD.Text);
             if (kh == null)
             {
-                MessageBox.Show("Vui lòng Lưu khách mới trước khi đặt!");
+                MessageBox.Show("Vui lòng bấm 'Lưu Khách Mới' trước khi đặt!", "Thông báo");
                 return;
             }
+
             int maKH = Convert.ToInt32(kh["MaKH"]);
-
-            // 3. Lấy tiền cọc
             decimal tienCoc = 0;
-            decimal.TryParse(txtTienCoc.Text.Replace(",", ""), out tienCoc);
+            decimal.TryParse(txtTienCoc.Text.Replace(",", "").Replace(".", ""), out tienCoc);
 
-            // 4. Đặt phòng (Lấy ngày từ HEADER)
             string kq = bll.BookRoom(maKH, _maPhongDangChon, dtpNgayDen.Value, dtpNgayDi.Value, tienCoc);
-
             MessageBox.Show(kq);
 
             if (kq.Contains("thành công"))
             {
-                LoadSoDoPhong();
-                // Nếu là khách cũ, load lại bảng danh sách để thấy phòng mới đặt hiện ra
-                btnTim_Click(null, null);
+                LoadSoDoPhong(); // Vẽ lại sơ đồ
+                btnTim_Click(null, null); // Load lại thông tin khách
             }
         }
 
+        // 8. Nút làm mới (Reset form)
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            // 1. Xóa sạch chữ trong các ô nhập
             txtSearch.Clear();
             txtHoTen.Clear();
             txtCCCD.Clear();
             txtSDT.Clear();
             txtTienCoc.Clear();
+            txtQuocTich.Text = "Việt Nam";
+            cboGioiTinh.StartIndex = 0;
+            dtpNgaySinh.Value = DateTime.Now;
 
-            // 2. Reset các ô chọn về mặc định
-            txtQuocTich.Text = "Việt Nam";    // Mặc định lại là VN
-            cboGioiTinh.StartIndex = 0;      // -1 nghĩa là không chọn gì cả (trắng)
-            dtpNgaySinh.Value = DateTime.Now; // Reset ngày sinh về hôm nay
-
-            // 3. (Tùy chọn) Nếu bạn muốn Reset luôn cái phòng đang chọn thì mở comment 3 dòng dưới này ra:
-            /*
+            // Reset chọn phòng
             _maPhongDangChon = 0;
             lblPhongDangChon.Text = "PHÒNG: CHƯA CHỌN";
             lblPhongDangChon.ForeColor = Color.Black;
-            */
 
-            // Đặt con trỏ chuột quay về ô Tìm kiếm để nhập cho nhanh
+            dgvPhongDaDat.Visible = false;
+            btnNhanPhong.Visible = false;
+            btnDoiPhong.Visible = false;
+
             txtSearch.Focus();
         }
 
+        // 9. Nút Nhận Phòng (Check-in từ danh sách)
         private void btnNhanPhong_Click(object sender, EventArgs e)
         {
-            // Kiểm tra đã chọn dòng nào trong bảng chưa
             if (dgvPhongDaDat.CurrentRow == null)
             {
-                MessageBox.Show("Vui lòng chọn phòng trong bảng danh sách để nhận!");
+                MessageBox.Show("Vui lòng chọn phòng trong bảng danh sách để nhận!", "Thông báo");
                 return;
             }
 
@@ -285,34 +313,30 @@ namespace QuanLyKhachSan.GUI
                 string kq = bll.CheckIn(maDP);
                 MessageBox.Show(kq);
 
-                // Load lại tất cả
-                LoadSoDoPhong(); // Để phòng chuyển màu đỏ
-                btnTim_Click(null, null); // Để cập nhật lại bảng danh sách
+                LoadSoDoPhong();
+                btnTim_Click(null, null);
             }
         }
 
+        // 10. Nút Đổi Phòng
         private void btnDoiPhong_Click(object sender, EventArgs e)
         {
-            // 1. Phải chọn booking cũ trong bảng
             if (dgvPhongDaDat.CurrentRow == null)
             {
-                MessageBox.Show("Bước 1: Chọn phòng ĐÃ ĐẶT trong bảng danh sách!");
+                MessageBox.Show("Bước 1: Chọn phòng ĐÃ ĐẶT trong bảng danh sách!", "Hướng dẫn");
                 return;
             }
 
-            // 2. Phải chọn phòng mới trên sơ đồ
             if (_maPhongDangChon == 0)
             {
-                MessageBox.Show("Bước 2: Click chọn một phòng TRỐNG (Màu xanh) trên sơ đồ bên trái!");
+                MessageBox.Show("Bước 2: Click chọn một phòng TRỐNG (Màu xanh) trên sơ đồ!", "Hướng dẫn");
                 return;
             }
 
-            // Lấy dữ liệu
             int maDP = Convert.ToInt32(dgvPhongDaDat.CurrentRow.Cells["MaDP"].Value);
             int maPhongCu = Convert.ToInt32(dgvPhongDaDat.CurrentRow.Cells["MaPhong"].Value);
             int maPhongMoi = _maPhongDangChon;
 
-            // Gọi BLL
             string kq = bll.DoiPhongCheckIn(maDP, maPhongCu, maPhongMoi);
             MessageBox.Show(kq);
 
@@ -321,13 +345,18 @@ namespace QuanLyKhachSan.GUI
                 LoadSoDoPhong();
                 btnTim_Click(null, null);
 
-                // Reset lựa chọn
                 _maPhongDangChon = 0;
                 lblPhongDangChon.Text = "PHÒNG: CHƯA CHỌN";
+                lblPhongDangChon.ForeColor = Color.Black;
             }
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            // Không làm gì cả
+        }
+
+        private void guna2HtmlLabel3_Click(object sender, EventArgs e)
         {
 
         }
