@@ -13,7 +13,7 @@ namespace QuanLyKhachSan.DAL
 
         public DataTable TimPhongTrong(DateTime ngayDen, DateTime ngayDi)
         {
-            // Gọi Procedure sp_TimPhongTrong trong file SQL bạn gửi
+           
             SqlParameter[] parameters = {
                 new SqlParameter("@NgayDen", ngayDen),
                 new SqlParameter("@NgayDi", ngayDi)

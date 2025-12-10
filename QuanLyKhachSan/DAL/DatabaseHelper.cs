@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient; // Thư viện SQL
+using System.Data.SqlClient; 
 using System.Windows.Forms;
 
 namespace QuanLyKhachSan.DAL
 {
     public class DatabaseHelper
     {
-        // Chuỗi kết nối (Lấy từ ảnh bạn gửi)
+      
         private static string connectionString = @"Data Source=LAPTOP-Q4MLP930\SQLEXPRESS;Initial Catalog=QuanLyKhachSan;Integrated Security=True";
 
-        // 1. Hàm lấy dữ liệu (SELECT)
+       
         public static DataTable GetData(string query, SqlParameter[] parameters = null, CommandType cmdType = CommandType.Text)
         {
             DataTable dt = new DataTable();

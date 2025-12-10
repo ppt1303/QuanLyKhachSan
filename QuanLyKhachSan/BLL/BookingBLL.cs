@@ -142,5 +142,32 @@ namespace QuanLyKhachSan.BLL
 
             return DatabaseHelper.GetData(query, para, CommandType.Text);
         }
+        // --- Thêm vào BookingBLL.cs ---
+
+        public DataRow GetThongTinDatPhongByPhong(int maPhong, DateTime ngayHienTai)
+        {
+            // Lấy thông tin khách và thông tin đặt phòng
+            string query = @"
+        SELECT KH.HoTen, KH.CCCD, KH.SDT, KH.GioiTinh, KH.NgaySinh, KH.QuocTich,
+               DP.MaDP, CD.NgayNhanPhong, CD.NgayTraPhong,
+               P.TenPhong, LP.TenLP
+        FROM CHITIET_DATPHONG CD
+        JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
+        JOIN KHACHHANG KH ON DP.MaKH = KH.MaKH
+        JOIN PHONG P ON CD.MaPhong = P.MaPhong
+        JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
+        WHERE CD.MaPhong = @MaPhong 
+        AND DP.TrangThai != N'Đã hủy'
+        AND (CD.NgayNhanPhong <= @Ngay AND CD.NgayTraPhong >= @Ngay)";
+
+            SqlParameter[] para = {
+        new SqlParameter("@MaPhong", maPhong),
+        new SqlParameter("@Ngay", ngayHienTai)
+    };
+
+            DataTable dt = DatabaseHelper.GetData(query, para, CommandType.Text);
+            if (dt.Rows.Count > 0) return dt.Rows[0];
+            return null;
+        }
     }
 }
