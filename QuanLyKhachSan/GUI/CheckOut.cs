@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyKhachSan.GUI
 {
-    public partial class CheckOut : Form
+    public partial class frmCheckOut : Form
     {
-        public CheckOut()
+        public frmCheckOut()
         {
             InitializeComponent();
         }
