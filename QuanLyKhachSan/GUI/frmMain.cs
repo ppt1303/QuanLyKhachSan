@@ -31,5 +31,11 @@ namespace QuanLyKhachSan.GUI
         {
 
         }
+
+        private void accordionControlElement4_Click(object sender, EventArgs e)
+        {
+            frmQLDichVu f = new frmQLDichVu();
+            f.ShowDialog();
+        }
     }
 }

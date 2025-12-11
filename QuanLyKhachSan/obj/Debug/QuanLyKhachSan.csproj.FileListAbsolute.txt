@@ -131,3 +131,6 @@ D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.CoreCompi
 D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
 D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
 D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
+D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmQLDichVu.resources
+D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.QLThietBi.resources
+D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmQLThietBi.resources

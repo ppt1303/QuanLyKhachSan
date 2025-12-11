@@ -74,6 +74,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmQLThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLThietBi.Designer.cs">
+      <DependentUpon>frmQLThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmQLDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLDichVu.Designer.cs">
+      <DependentUpon>frmQLDichVu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmDatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,11 +106,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\frmQLDichVu.resx">
+      <DependentUpon>frmQLDichVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDatPhong.resx">
       <DependentUpon>frmDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmQLThietBi.resx">
+      <DependentUpon>frmQLThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucTrangChu.resx">
       <DependentUpon>ucTrangChu.cs</DependentUpon>

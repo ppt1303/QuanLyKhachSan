@@ -51,10 +51,10 @@
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(202, 39);
-            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(252, 39);
+            this.fluentDesignFormContainer1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(994, 719);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(944, 719);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // accordionControl1
@@ -68,10 +68,10 @@
             this.accordionControlElement5,
             this.accordionControlElement6});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
-            this.accordionControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(202, 719);
+            this.accordionControl1.Size = new System.Drawing.Size(252, 719);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -102,6 +102,7 @@
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "Quản lý Dịch vụ & Vật tư";
+            this.accordionControlElement4.Click += new System.EventHandler(this.accordionControlElement4_Click);
             // 
             // accordionControlElement5
             // 
@@ -134,24 +135,21 @@
             // 
             // buttonEdit1
             // 
-            this.buttonEdit1.Location = new System.Drawing.Point(43, 65);
-            this.buttonEdit1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEdit1.Location = new System.Drawing.Point(54, 81);
+            this.buttonEdit1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEdit1.MenuManager = this.fluentFormDefaultManager1;
             this.buttonEdit1.Name = "buttonEdit1";
-            // 
-            // 
-            // 
             this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit1.Size = new System.Drawing.Size(122, 22);
+            this.buttonEdit1.Size = new System.Drawing.Size(152, 22);
             this.buttonEdit1.TabIndex = 2;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(74, 64);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.simpleButton1.Location = new System.Drawing.Point(92, 80);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(92, 28);
+            this.simpleButton1.Size = new System.Drawing.Size(115, 35);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "simpleButton1";
             // 
