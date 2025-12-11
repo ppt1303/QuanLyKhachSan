@@ -84,50 +84,136 @@ D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
 C:\Users\admin\OneDrive\Documents\codecsharp\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
 >>>>>>> 1178875e5aa36f1b4d9d9ce2c6574b24ea4640f7
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe.config
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.pdb
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\Guna.UI2.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.dll
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.xml
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.AssemblyReference.cache
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDatPhong.resources
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmMain.resources
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Properties.Resources.resources
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.GenerateResource.cache
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe.licenses
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.CoreCompileInputs.cache
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
-D:\QLKS2\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe.config
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.pdb
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\Guna.UI2.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.dll
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.xml
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.AssemblyReference.cache
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe.config
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDatPhong.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmMain.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Properties.Resources.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.GenerateResource.cache
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe.licenses
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.CoreCompileInputs.cache
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.AssemblyReference.cache
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDatPhong.resources
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmMain.resources
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Properties.Resources.resources
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.GenerateResource.cache
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe.licenses
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.CoreCompileInputs.cache
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe.config
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.pdb
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\Guna.UI2.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.dll
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.xml
+D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe.config
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.pdb
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\Guna.UI2.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.dll
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Data.Desktop.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Data.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Drawing.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Printing.v24.1.Core.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Utils.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraBars.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraEditors.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraGrid.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraLayout.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraPrinting.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Core.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Pdf.v24.1.Drawing.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Sparkline.v24.1.Core.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.RichEdit.v24.1.Core.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.XtraTreeList.v24.1.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\bin\Debug\DevExpress.Office.v24.1.Core.xml
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.AssemblyReference.cache
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmDatPhong.resources
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmMain.resources
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucTrangChu.resources
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Properties.Resources.resources
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.GenerateResource.cache
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe.licenses
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.CoreCompileInputs.cache
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKh.7BBD220C.Up2Date
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.CheckOut.resources

@@ -57,5 +57,10 @@ namespace QuanLyKhachSan.GUI
         }
         private void frmMain_Load_1(object sender, EventArgs e) { }
         private void accordionControlElement1_Click(object sender, EventArgs e) { }
+
+        private void aceDatPhong_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
