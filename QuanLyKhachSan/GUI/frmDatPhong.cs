@@ -91,7 +91,7 @@ namespace QuanLyKhachSan.GUI
             int maPhongClick = Convert.ToInt32(data["MaPhong"]);
 
             // --- TRƯỜNG HỢP A: Click vào phòng VÀNG hoặc ĐỎ (Xem thông tin) ---
-            if (trangThai == 1 || trangThai == 2)
+            if (trangThai == 1)
             {
                 // Reset biến chọn phòng (để ko bị đặt nhầm)
                 _maPhongDangChon = 0;
@@ -124,6 +124,29 @@ namespace QuanLyKhachSan.GUI
                     // MessageBox.Show($"Thông tin phòng {data["TenPhong"]}:\n- Khách: {kh["HoTen"]}\n- SĐT: {kh["SDT"]}", "Thông tin phòng");
                 }
                 return; // Kết thúc, không làm gì thêm
+            }
+            else if (trangThai == 2) // TRƯỜNG HỢP C: Phòng đang ở (Màu ĐỎ) -> Muốn thanh toán
+            {
+                // Bước 1: Gọi BLL để tìm xem "Mã Nhận Phòng" nào đang ở trong "Mã Phòng" này
+                // (Lưu ý: biến 'bll' phải được khai báo ở đầu Form, ví dụ: BookingBLL bll = new BookingBLL();)
+                int maNP = bll.GetCurrentStayID(maPhongClick);
+
+                if (maNP > 0)
+                {
+                    // Bước 2: Khởi tạo Form CheckOut và TRUYỀN maNP VÀO
+                    QuanLyKhachSan.GUI.CheckOut frm = new QuanLyKhachSan.GUI.CheckOut(maNP);
+
+                    // Bước 3: Hiện Form lên
+                    frm.ShowDialog();
+
+                    // Bước 4: Sau khi Form CheckOut đóng lại (đã thanh toán xong), 
+                    // bạn cần load lại danh sách phòng để cái nút màu Đỏ chuyển thành màu Xanh/Trắng
+                    LoadSoDoPhong(); // <--- Bỏ comment dòng này nếu bạn có hàm load lại phòng
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi dữ liệu: Phòng báo đang ở nhưng không tìm thấy thông tin Nhận phòng (MaNP)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             // --- TRƯỜNG HỢP B: Click vào phòng XANH (Chọn để đặt mới) ---

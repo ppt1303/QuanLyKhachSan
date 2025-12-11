@@ -152,5 +152,60 @@ namespace QuanLyKhachSan.BLL
             bool result = DatabaseHelper.ExecuteNonQuery("sp_DoiPhongKhiCheckIn", para, CommandType.StoredProcedure);
             return result ? "Đổi phòng thành công!" : "Lỗi: Phòng mới không khả dụng.";
         }
+
+        // File: BLL/BookingBLL.cs
+
+        public int GetCurrentStayID(int maPhong)
+        {
+            DatPhongDAL dal = new DatPhongDAL();
+            return dal.LayMaNPDangO(maPhong);
+        }
+
+        private DatPhongDAL dal = new DatPhongDAL();
+
+        // --- CÁC HÀM GET DỮ LIỆU ---
+        public DataTable GetCheckOutInfo(int maNP)
+        {
+            return dal.LayThongTinCheckOut(maNP);
+        }
+
+        public DataTable GetServices(int maNP)
+        {
+            return dal.LayDichVuDaDung(maNP);
+        }
+
+        public DataTable GetSurcharges(int maNP)
+        {
+            return dal.LayPhuThuDaDung(maNP);
+        }
+
+        // --- LOGIC THANH TOÁN TRỌN GÓI ---
+        // Hàm này sẽ gọi liên tiếp 3 hành động dưới Database
+        public bool ThanhToanFull(int maNP, string tinhTrang, int kieuTT)
+        {
+            try
+            {
+                // Bước 1: Gọi DAL trả phòng (Cập nhật giờ ra, tình trạng phòng)
+                bool ketQuaTra = dal.ThucHienTraPhong(maNP, tinhTrang, "Thanh toán tại quầy");
+
+                if (ketQuaTra)
+                {
+                    // Bước 2: Lấy ID phiếu trả phòng vừa sinh ra
+                    int maTraPhong = dal.LayMaTraPhongMoiNhat(maNP);
+
+                    if (maTraPhong > 0)
+                    {
+                        // Bước 3: Tạo hóa đơn chốt sổ
+                        dal.TaoHoaDon(maTraPhong, kieuTT);
+                        return true; // Thành công mỹ mãn
+                    }
+                }
+                return false; // Lỗi ở bước trả phòng hoặc không lấy được ID
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
