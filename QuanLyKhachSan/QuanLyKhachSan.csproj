@@ -64,12 +64,18 @@
   <ItemGroup>
     <Compile Include="BLL\addPicture.cs" />
     <Compile Include="BLL\BookingBLL.cs" />
+    <Compile Include="BLL\DichVuBLL.cs" />
     <Compile Include="BLL\PhongBLL.cs" />
+    <Compile Include="BLL\PhongThietBiBLL.cs" />
+    <Compile Include="BLL\ThietBiBLL.cs" />
     <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DAL\DatPhongDAl.cs" />
+    <Compile Include="DAL\DichVuDAL.cs" />
     <Compile Include="DAL\KhachHangDAL.cs" />
     <Compile Include="DAL\LoaiPhongDAL.cs" />
     <Compile Include="DAL\PhongDAL.cs" />
+    <Compile Include="DAL\PhongThietBiDAL.cs" />
+    <Compile Include="DAL\ThietBiDAL.cs" />
     <Compile Include="DTO\RoomStatistics.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
