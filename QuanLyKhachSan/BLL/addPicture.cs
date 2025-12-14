@@ -8,7 +8,7 @@ namespace QuanLyKhachSan.BLL
 {
     public class addPicture
     {
-       private string _duongDanAnh = @"D:\qlkstt\QuanLyKhachSan2\QuanLyKhachSan\Picture\khachsan.jpg";
+       private string _duongDanAnh = @"D:\kali-linux-2025.2-virtualbox-amd64\Hocki1nam3\CSDL\thuchanhthuctap\baitaplon\winform4\QuanLyKhachSan\QuanLyKhachSan\Picture\khachsan.jpg";
         public void ThemHinhNen(Control container)
         {  
             if (!File.Exists(_duongDanAnh))

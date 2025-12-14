@@ -207,5 +207,83 @@ namespace QuanLyKhachSan.BLL
                 return false;
             }
         }
+
+
+        /// <summary>
+        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
+        /// </summary>
+        /// <param name="maNP"></param>
+        /// <returns></returns>
+        // 9. Lấy thông tin khách và phòng đang ở
+        public DataTable GetRoomAndGuestDetails(int maNP)
+        {
+            string query = @"
+        SELECT KH.HoTen, P.TenPhong, LP.TenLP, NP.ThoiGianNhan 
+        FROM NHANPHONG NP
+        JOIN PHONG P ON NP.MaPhong = P.MaPhong
+        JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
+        JOIN DATPHONG DP ON NP.MaDP = DP.MaDP
+        JOIN KHACHHANG KH ON DP.MaKH = KH.MaKH
+        WHERE NP.MaNP = @MaNP";
+            SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
+            return DatabaseHelper.GetData(query, para, CommandType.Text);
+        }
+
+        // 10. Tải danh sách tất cả dịch vụ (Dùng cho ComboBox)
+        public DataTable LoadAllDichVu()
+        {
+            // Sử dụng sp_loadDV có sẵn trong nhat.sql
+            return DatabaseHelper.GetData("sp_loadDV", null, CommandType.StoredProcedure);
+        }
+
+        // 11. Ghi nhận thêm dịch vụ cho khách đang ở
+        public bool ThemDichVuSuDung(int maNP, short maDV, short soLuong)
+        {
+            // Sử dụng sp_ThemDichVuSuDung có sẵn trong nhat.sql
+            SqlParameter[] para = {
+        new SqlParameter("@MaNP", maNP),
+        new SqlParameter("@MaDV", maDV),
+        new SqlParameter("@SoLuong", soLuong)
+    };
+            return DatabaseHelper.ExecuteNonQuery("sp_ThemDichVuSuDung", para, CommandType.StoredProcedure);
+        }
+
+        // 12. Tải lịch sử chi tiêu (Dịch vụ và Phụ thu)
+        public DataTable LoadLichSuChiTieu(int maNP)
+        {
+            // Lấy chi tiết dịch vụ và phụ thu, hiển thị dạng thống nhất cho DataGridView
+            string query = @"
+        -- Dịch vụ
+        SELECT  DV.TenDV AS DichVu, SD.SoLuong, DV.Gia, (SD.SoLuong * DV.Gia) AS ThanhTien, SD.NgaySuDung
+        FROM SUDUNG_DICHVU SD
+        JOIN DICHVU DV ON SD.MaDV = DV.MaDV
+        WHERE SD.MaNP = @MaNP
+        
+        UNION ALL
+        
+        -- Phụ thu
+        SELECT  PT.Ten AS DichVu, SP.SoLuong, SP.GiaHienTai AS Gia, (SP.SoLuong * SP.GiaHienTai) AS ThanhTien, CAST(SP.ThoiGianGhiNhan AS DATE)
+        FROM SUDUNG_PHUTHU SP
+        JOIN PHUTHU PT ON SP.MaPhuThu = PT.MaPhuThu
+        WHERE SP.MaNP = @MaNP
+        ORDER BY NgaySuDung DESC";
+            SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
+            return DatabaseHelper.GetData(query, para, CommandType.Text);
+        }
+
+        // 13. Tính tổng tiền tạm thời
+        public decimal TinhTienTam(int maNP)
+        {
+            // Sử dụng sp_TinhTienTam có sẵn trong nhat.sql
+            SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
+            DataTable dt = DatabaseHelper.GetData("sp_TinhTienTam", para, CommandType.StoredProcedure);
+
+            if (dt != null && dt.Rows.Count > 0 && dt.Rows[0]["TongTienTamTinh"] != DBNull.Value)
+            {
+                return Convert.ToDecimal(dt.Rows[0]["TongTienTamTinh"]);
+            }
+            return 0;
+        }
+        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
     }
 }

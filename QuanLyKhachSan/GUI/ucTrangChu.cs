@@ -24,6 +24,7 @@ namespace QuanLyKhachSan.GUI
 
         // --- 2. BIẾN DỮ LIỆU ---
         private PhongBLL _bll;
+        private BookingBLL _bookingBLL;
         private DataTable _dtPhong;
 
         // Biến lưu trạng thái lọc (Mặc định: Tất cả)
@@ -34,6 +35,7 @@ namespace QuanLyKhachSan.GUI
         {
             InitializeComponent();
             _bll = new PhongBLL();
+            _bookingBLL = new BookingBLL();
 
             // Dựng giao diện bằng code (Tránh lỗi Designer)
             KhoiTaoGiaoDien();
@@ -365,16 +367,71 @@ namespace QuanLyKhachSan.GUI
             item.Elements.Add(eIcon);
             item.Elements.Add(eFooter);
         }
-
+        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
         // --- 8. SỰ KIỆN CLICK PHÒNG ---
         private void Item_ItemClick(object sender, TileItemEventArgs e)
         {
             if (e.Item.Tag != null)
             {
                 int maPhong = Convert.ToInt32(e.Item.Tag);
-                XtraMessageBox.Show("Mã phòng: " + maPhong);
-                // TODO: Mở form Check-in/Check-out tại đây
+                // 1. Lấy DataRow tương ứng với phòng vừa click để xác định trạng thái
+                DataRow[] rows = _dtPhong.Select($"MaPhong = {maPhong}");
+
+                if (rows.Length > 0)
+                {
+                    DataRow roomRow = rows[0];
+                    string tenPhong = roomRow["TenPhong"].ToString();
+                    string statusO = roomRow["TrangThaiO"].ToString(); // "Đang ở", "Đặt trước", "Trống"
+                    int ttPhong = Convert.ToInt32(roomRow["TrangThaiPhong"]); // 0:Bảo trì, 1:Sẵn sàng, 2:Dơ
+
+                    // Biến để lưu Mã Nhận Phòng (MaNP), mặc định là 0 nếu phòng không có khách đang ở.
+                    int maNP = 0;
+
+                    // 2. Xác định MaNP chỉ khi phòng đang có khách ở
+                    if (statusO == "Đang ở")
+                    {
+                        // Phòng đang có khách -> Lấy Mã Nhận Phòng (MaNP) từ BLL
+                        maNP = _bookingBLL.GetCurrentStayID(maPhong);
+
+                        if (maNP <= 0)
+                        {
+                            // Trường hợp lỗi dữ liệu: trạng thái là "Đang ở" nhưng không tìm thấy MaNP. 
+                            // Vẫn nên thông báo lỗi và ngăn form mở với dữ liệu lỗi.
+                            XtraMessageBox.Show("Lỗi hệ thống: Không tìm thấy Mã Nhận Phòng (MaNP) đang hoạt động cho phòng đang có khách.", "Lỗi dữ liệu");
+                            return;
+                        }
+                    }
+                    // KHÔNG CẦN ELSE/ELSE IF cho các trạng thái khác ("Đặt trước", "Trống", Bảo trì/Dơ) nữa.
+                    // Nếu không phải "Đang ở", maNP sẽ giữ giá trị mặc định là 0.
+
+                    // 3. Mở Form Chi tiết phòng với maNP (0 hoặc ID hợp lệ) và maPhong
+                    // Form frmChiTietPhong cần được chỉnh sửa để xử lý maNP = 0 như một chỉ báo 
+                    // rằng form được mở để thực hiện Check-in/Booking mới hoặc thay đổi trạng thái kỹ thuật.
+                    frmChiTietPhong frm = new frmChiTietPhong(maNP, maPhong);
+
+                    // Đặt tiêu đề form rõ ràng hơn dựa trên trạng thái
+                    if (maNP > 0)
+                    {
+                        frm.Text = $"Chi Tiết & Thanh Toán Phòng {tenPhong}";
+                    }
+                    else
+                    {
+                        string trangThaiKyThuat = (ttPhong == 0) ? "Bảo Trì" : (ttPhong == 2) ? "Chờ Dọn Dẹp" : "Sẵn Sàng";
+                        frm.Text = $"Quản Lý Phòng {tenPhong} - TT: {statusO} ({trangThaiKyThuat})";
+                    }
+
+                    frm.ShowDialog();
+
+                    // 4. Cập nhật lại sơ đồ phòng sau khi đóng form (để làm mới trạng thái)
+                    LoadData();
+                }
             }
         }
+        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
+        private void ucTrangChu_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
