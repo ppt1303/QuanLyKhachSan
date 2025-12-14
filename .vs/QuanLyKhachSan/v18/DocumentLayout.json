@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\kali-linux-2025.2-virtualbox-amd64\\Hocki1nam3\\CSDL\\thuchanhthuctap\\baitaplon\\winform4\\QuanLyKhachSan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|D:\\kali-linux-2025.2-virtualbox-amd64\\Hocki1nam3\\CSDL\\thuchanhthuctap\\baitaplon\\winform4\\QuanLyKhachSan\\quanlykhachsan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|d:\\kali-linux-2025.2-virtualbox-amd64\\hocki1nam3\\csdl\\thuchanhthuctap\\baitaplon\\winform4\\quanlykhachsan\\quanlykhachsan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\dal\\datphongdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|d:\\kali-linux-2025.2-virtualbox-amd64\\hocki1nam3\\csdl\\thuchanhthuctap\\baitaplon\\winform4\\quanlykhachsan\\quanlykhachsan\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|D:\\kali-linux-2025.2-virtualbox-amd64\\Hocki1nam3\\CSDL\\thuchanhthuctap\\baitaplon\\winform4\\QuanLyKhachSan\\quanlykhachsan\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
@@ -50,8 +50,7 @@
               "RelativeToolTip": "QuanLyKhachSan\\.gitignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-14T16:10:28.185Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-14T16:10:28.185Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "QuanLyKhachSan\\DAL\\DatPhongDAl.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-14T16:01:06.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-14T16:01:06.997Z"
             },
             {
               "$type": "Document",
