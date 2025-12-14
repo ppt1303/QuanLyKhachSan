@@ -83,6 +83,12 @@
     <Compile Include="GUI\CheckOut.Designer.cs">
       <DependentUpon>CheckOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmChiTietPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmChiTietPhong.Designer.cs">
+      <DependentUpon>frmChiTietPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmDatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\CheckOut.resx">
       <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmChiTietPhong.resx">
+      <DependentUpon>frmChiTietPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDatPhong.resx">
       <DependentUpon>frmDatPhong.cs</DependentUpon>

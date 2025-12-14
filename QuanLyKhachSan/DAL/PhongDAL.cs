@@ -59,5 +59,6 @@ namespace QuanLyKhachSan.DAL
             string query = "SELECT DISTINCT Tang FROM PHONG ORDER BY Tang ASC";
             return DatabaseHelper.GetData(query);
         }
+
     }
 }
