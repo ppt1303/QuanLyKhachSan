@@ -35,10 +35,14 @@ namespace QuanLyKhachSan.GUI
                 LoadUserControl(typeof(ucTrangChu));
             }
             // Sau này bạn có thể thêm các else if cho các nút khác
-            // else if (e.Element.Name == "aceQuanLyPhong") 
-            // {
-            //     LoadUserControl(typeof(ucQuanLyPhong));
-            // }
+            else if (e.Element.Name == "aceDichVu") 
+            {
+                LoadUserControl(typeof(ucDichVu));
+            }
+            else if (e.Element.Name == "aceThietBi")
+            {
+                LoadUserControl(typeof(ucThietBi));
+            }
         }
         private void LoadUserControl(Type controlType)
         {
@@ -61,6 +65,10 @@ namespace QuanLyKhachSan.GUI
         private void aceDatPhong_Click(object sender, EventArgs e)
         {
 
+        }
+        private void accordionControlElement3_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

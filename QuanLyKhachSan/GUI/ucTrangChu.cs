@@ -17,30 +17,20 @@ namespace QuanLyKhachSan.GUI
         private FlowLayoutPanel flowStats;    // Hàng 2: Thống kê trạng thái
         private FlowLayoutPanel flowFloors;   // Hàng 3: Bộ lọc Tầng
         private TileControl tileControlPhong; // Hàng 4: Sơ đồ phòng
-
         private DateEdit dtpNgay;
         private TimeEdit dtpGio;
         private SearchControl txtTimKiem;
-
-        // --- 2. BIẾN DỮ LIỆU ---
         private PhongBLL _bll;
         private BookingBLL _bookingBLL;
         private DataTable _dtPhong;
-
-        // Biến lưu trạng thái lọc (Mặc định: Tất cả)
         private int _filterTang = 0;
         private int _filterTrangThai = -1;
-
         public ucTrangChu()
         {
             InitializeComponent();
             _bll = new PhongBLL();
             _bookingBLL = new BookingBLL();
-
-            // Dựng giao diện bằng code (Tránh lỗi Designer)
             KhoiTaoGiaoDien();
-
-            // Đăng ký sự kiện Load
             this.Load += UcTrangChu_Load;
         }
 
@@ -48,21 +38,13 @@ namespace QuanLyKhachSan.GUI
         {
             if (!this.DesignMode) LoadData();
         }
-
-        // --- 3. DỰNG GIAO DIỆN (LAYOUT CHUẨN KHÔNG BỊ CHE) ---
         private void KhoiTaoGiaoDien()
         {
-            // A. Khởi tạo các thành phần (Chưa Add vào Form)
-
-            // 1. Header (Panel trên cùng)
             pnlHeader = new PanelControl();
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Height = 60;
             pnlHeader.Padding = new Padding(10);
             pnlHeader.BorderStyle = BorderStyles.NoBorder;
-
-            // --- Các control con trong Header ---
-            // Date Picker
             dtpNgay = new DateEdit();
             dtpNgay.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Fluent;
             dtpNgay.DateTime = DateTime.Now;
@@ -71,16 +53,12 @@ namespace QuanLyKhachSan.GUI
             dtpNgay.Width = 120;
             dtpNgay.Properties.NullText = "Chọn ngày";
             dtpNgay.EditValueChanged += (s, e) => LoadData(); // Load lại khi đổi ngày
-
-            // Time Picker
             dtpGio = new TimeEdit();
             dtpGio.Time = DateTime.Now;
             dtpGio.Parent = pnlHeader;
             dtpGio.Location = new Point(140, 15);
             dtpGio.Width = 100;
             dtpGio.EditValueChanged += (s, e) => LoadData(); // Load lại khi đổi giờ
-
-            // Search Box
             txtTimKiem = new SearchControl();
             txtTimKiem.Parent = pnlHeader;
             txtTimKiem.Location = new Point(260, 15);
@@ -88,7 +66,7 @@ namespace QuanLyKhachSan.GUI
             txtTimKiem.Properties.NullValuePrompt = "Tìm tên phòng, loại phòng...";
             txtTimKiem.TextChanged += (s, e) => VeSoDoPhong(); // Tìm kiếm Realtime
 
-            // 2. Hàng Thống kê (Statistics)
+    
             flowStats = new FlowLayoutPanel();
             flowStats.Dock = DockStyle.Top;
             flowStats.Height = 45;
@@ -111,10 +89,6 @@ namespace QuanLyKhachSan.GUI
             tileControlPhong.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Top;
             tileControlPhong.ScrollMode = TileControlScrollMode.ScrollBar;
             tileControlPhong.Padding = new Padding(10);
-
-            // B. THÊM VÀO FORM (ADD NGƯỢC ĐỂ XẾP ĐÚNG Z-ORDER)
-            // Thứ tự muốn hiển thị từ trên xuống: Header -> Stats -> Floors -> Tile
-            // Thứ tự Add code: Tile -> Floors -> Stats -> Header
 
             this.Controls.Add(tileControlPhong); // Dưới cùng
             this.Controls.Add(flowFloors);       // Đè lên Tile
@@ -145,36 +119,44 @@ namespace QuanLyKhachSan.GUI
                 XtraMessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
             }
         }
-
         // --- 5. TẠO THANH CÔNG CỤ (NÚT BẤM & HIGHLIGHT) ---
         private void TaoThanhBoLocVaThongKe()
         {
-            // A. Cập nhật Thống kê
             flowStats.Controls.Clear();
+
+            // Tính toán số lượng từ dữ liệu hiện tại
             RoomStatistics stats = _bll.TinhThongKe(_dtPhong);
 
-            // Các mã trạng thái lọc: -1(All), 1(Trống), 2(Đang ở), 3(Đặt trước), 0(Bảo trì/Dơ)
+            // QUY ƯỚC MÃ LỌC (_filterTrangThai) ĐỂ KHỚP VỚI HÀM VeSoDoPhong:
+            // -1: Tất cả
+            //  1: Trống
+            //  2: Đang ở
+            //  3: Đặt trước
+            //  4: Chưa dọn
+            //  0: Bảo trì
+
             AddStatButton(flowStats, $"TẤT CẢ ({stats.TongSo})", Color.Black, -1);
             AddStatButton(flowStats, $"TRỐNG ({stats.Trong})", Color.SeaGreen, 1);
             AddStatButton(flowStats, $"ĐANG Ở ({stats.DangO})", Color.Firebrick, 2);
             AddStatButton(flowStats, $"ĐẶT TRƯỚC ({stats.DatTruoc})", Color.Goldenrod, 3);
-            AddStatButton(flowStats, $"BẢO TRÌ/DƠ ({stats.BaoTri + stats.Ban})", Color.DimGray, 0);
+            AddStatButton(flowStats, $"CHƯA DỌN ({stats.Ban})", Color.Gray, 4);
+            AddStatButton(flowStats, $"BẢO TRÌ ({stats.BaoTri})", Color.Purple, 0);
 
-            // B. Cập nhật Tầng
             flowFloors.Controls.Clear();
 
-            // Nút Mọi tầng
+            // 1. Tạo nút "Mọi tầng"
             SimpleButton btnAll = new SimpleButton { Text = "Mọi tầng", Size = new Size(100, 35) };
-            HighlightButton(btnAll, _filterTang == 0); // Highlight nếu đang chọn
+            HighlightButton(btnAll, _filterTang == 0); // Highlight nếu đang chọn (0 là mặc định)
+
             btnAll.Click += (s, e) =>
             {
-                _filterTang = 0;
-                VeSoDoPhong();
-                TaoThanhBoLocVaThongKe(); // Redraw buttons
+                _filterTang = 0;           // 0 nghĩa là lấy tất cả tầng
+                VeSoDoPhong();             // Vẽ lại sơ đồ
+                TaoThanhBoLocVaThongKe();  // Vẽ lại nút để cập nhật highlight
             };
             flowFloors.Controls.Add(btnAll);
 
-            // Các nút tầng động từ DB
+            // 2. Tạo các nút tầng động từ CSDL
             DataTable dtTang = _bll.LayDanhSachTang(_dtPhong);
             if (dtTang != null)
             {
@@ -185,11 +167,11 @@ namespace QuanLyKhachSan.GUI
                         int tang = Convert.ToInt32(row["Tang"]);
                         SimpleButton btn = new SimpleButton { Text = "Tầng " + tang, Tag = tang, Size = new Size(80, 35) };
 
-                        HighlightButton(btn, _filterTang == tang); // Highlight
+                        HighlightButton(btn, _filterTang == tang); // Highlight nếu tầng này đang được chọn
 
                         btn.Click += (s, e) =>
                         {
-                            _filterTang = (int)((SimpleButton)s).Tag;
+                            _filterTang = (int)((SimpleButton)s).Tag; // Lưu tầng vừa chọn
                             VeSoDoPhong();
                             TaoThanhBoLocVaThongKe();
                         };
@@ -199,46 +181,46 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // Hàm tạo nút thống kê
+        // --- HÀM HỖ TRỢ 1: TẠO NÚT THỐNG KÊ ---
         private void AddStatButton(FlowLayoutPanel panel, string text, Color color, int statusFilter)
         {
             SimpleButton btn = new SimpleButton { Text = text, Tag = statusFilter, AutoSize = true };
             btn.Padding = new Padding(5);
             btn.Margin = new Padding(3, 3, 10, 3);
 
-            // Highlight nếu đang chọn trạng thái này
+            // Highlight nút thống kê nếu nó đang được chọn
             if (_filterTrangThai == statusFilter)
             {
                 btn.Appearance.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                btn.Appearance.ForeColor = Color.Blue;
+                btn.Appearance.ForeColor = Color.Blue; // Màu xanh dương để biết đang chọn                                                                                               
             }
             else
             {
                 btn.Appearance.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                btn.Appearance.ForeColor = color;
+                btn.Appearance.ForeColor = color; // Màu đặc trưng của trạng thái (Đỏ, Xanh, Vàng...)
             }
 
             btn.Click += (s, e) =>
             {
                 _filterTrangThai = (int)((SimpleButton)s).Tag;
-                VeSoDoPhong();
-                TaoThanhBoLocVaThongKe(); // Redraw
+                VeSoDoPhong();            // Vẽ lại sơ đồ theo bộ lọc mới
+                TaoThanhBoLocVaThongKe(); // Vẽ lại các nút để cập nhật hiệu ứng highlight
             };
             panel.Controls.Add(btn);
         }
 
-        // Hàm highlight nút Tầng
+        // --- HÀM HỖ TRỢ 2: HIGHLIGHT NÚT TẦNG ---
         private void HighlightButton(SimpleButton btn, bool isActive)
         {
             if (isActive)
             {
                 btn.Appearance.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                btn.Appearance.ForeColor = Color.Blue;
+                btn.Appearance.ForeColor = Color.Blue; // Đang chọn
             }
             else
             {
                 btn.Appearance.Font = new Font("Segoe UI", 9, FontStyle.Regular);
-                btn.Appearance.ForeColor = Color.Black;
+                btn.Appearance.ForeColor = Color.Black; // Bình thường
             }
         }
 
@@ -247,7 +229,7 @@ namespace QuanLyKhachSan.GUI
         {
             tileControlPhong.Groups.Clear();
 
-            // Bước 1: Lọc cơ bản (Tầng + Search) bằng SQL Select string
+            // Bước 1: Lọc SQL cơ bản (Giữ nguyên)
             string filterExpr = "1=1";
             if (_filterTang > 0) filterExpr += $" AND Tang = {_filterTang}";
 
@@ -259,25 +241,36 @@ namespace QuanLyKhachSan.GUI
 
             DataRow[] rows = _dtPhong.Select(filterExpr, "Tang ASC, TenPhong ASC");
 
-            // Bước 2: Lọc nâng cao (Trạng thái) bằng LINQ
+            // Bước 2: Lọc nâng cao (Trạng thái)
             if (_filterTrangThai != -1)
             {
                 rows = rows.Where(r =>
                 {
-                    int code = Convert.ToInt32(r["TrangThaiPhong"]); // 0,1,2
-                    string statusO = r["TrangThaiO"].ToString();     // "Trống", "Đang ở"...
+                    int code = Convert.ToInt32(r["TrangThaiPhong"]); // 0:Bảo trì, 1:Sẵn sàng, 2:Dơ
+                    string statusO = r["TrangThaiO"].ToString();     // "Trống", "Đang ở", "Đặt trước"
 
-                    if (_filterTrangThai == 0) return code == 0 || code == 2; // Bảo trì hoặc Dơ
+                    // TH 0: Bảo trì (Chỉ lấy code = 0)
+                    if (_filterTrangThai == 0) return code == 0;
+
+                    // TH 4: Chưa dọn/Dơ (Chỉ lấy code = 2)
+                    if (_filterTrangThai == 4) return code == 2;
+
+                    // TH 1: Trống (Phải Sạch & Trống)
                     if (_filterTrangThai == 1) return code == 1 && statusO == "Trống";
-                    if (_filterTrangThai == 2) return statusO == "Đang ở";
-                    if (_filterTrangThai == 3) return statusO == "Đặt trước";
+
+                    // TH 2: Đang ở (Phải Sạch & Đang ở)
+                    if (_filterTrangThai == 2) return code == 1 && statusO == "Đang ở";
+
+                    // TH 3: Đặt trước (Phải Sạch & Đặt trước)
+                    if (_filterTrangThai == 3) return code == 1 && statusO == "Đặt trước";
+
                     return true;
                 }).ToArray();
             }
 
             if (rows.Length == 0) return;
 
-            // Bước 3: Vẽ Tile theo nhóm
+            // Bước 3: Vẽ Tile (Giữ nguyên)
             var distinctTang = rows.Select(r => r["Tang"]).Distinct().OrderBy(t => t);
             foreach (var tang in distinctTang)
             {
@@ -290,7 +283,7 @@ namespace QuanLyKhachSan.GUI
                     TileItem item = new TileItem();
                     FormatTileItem_Final(item, row);
                     item.Tag = row["MaPhong"];
-                    item.ItemClick += Item_ItemClick; // Xử lý click
+                    // item.ItemClick += Item_ItemClick; 
                     group.Items.Add(item);
                 }
             }
@@ -310,25 +303,23 @@ namespace QuanLyKhachSan.GUI
             Color backColor;
             string statusText;
             string iconText;
-
-            // Logic màu sắc chuẩn
-            if (ttPhong == 0) // Bảo trì
+            if (ttPhong == 0) 
             {
-                backColor = Color.FromArgb(255, 140, 0);
+                backColor = Color.Purple;
                 statusText = "Đang bảo trì";
                 iconText = "🛠";
             }
-            else if (ttPhong == 2) // Dơ
+            else if (ttPhong == 2)
             {
                 backColor = Color.Gray;
                 statusText = "Chưa dọn dẹp";
                 iconText = "🧹";
             }
-            else // Sẵn sàng
+            else 
             {
                 if (ttO == "Đang ở")
                 {
-                    backColor = Color.FromArgb(105, 105, 105);
+                    backColor = Color.Firebrick;
                     statusText = "Đang thuê";
                     iconText = "👤";
                 }
@@ -338,9 +329,9 @@ namespace QuanLyKhachSan.GUI
                     statusText = "Đã đặt trước";
                     iconText = "📅";
                 }
-                else // Trống
+                else 
                 {
-                    backColor = Color.FromArgb(46, 204, 113);
+                    backColor = Color.Green;
                     statusText = "Phòng trống";
                     iconText = "✔";
                 }
@@ -349,7 +340,6 @@ namespace QuanLyKhachSan.GUI
             item.AppearanceItem.Normal.BackColor = backColor;
             item.AppearanceItem.Normal.BorderColor = Color.Transparent;
 
-            // Vẽ thông tin lên Card
             TileItemElement eTen = new TileItemElement { Text = tenPhong, TextAlignment = TileItemContentAlignment.TopLeft };
             eTen.Appearance.Normal.Font = new Font("Segoe UI", 16, FontStyle.Bold);
 
@@ -369,69 +359,61 @@ namespace QuanLyKhachSan.GUI
         }
         /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
         // --- 8. SỰ KIỆN CLICK PHÒNG ---
-        private void Item_ItemClick(object sender, TileItemEventArgs e)
-        {
-            if (e.Item.Tag != null)
-            {
-                int maPhong = Convert.ToInt32(e.Item.Tag);
-                // 1. Lấy DataRow tương ứng với phòng vừa click để xác định trạng thái
-                DataRow[] rows = _dtPhong.Select($"MaPhong = {maPhong}");
+        //private void Item_ItemClick(object sender, TileItemEventArgs e)
+        //{
+        //    if (e.Item.Tag != null)
+        //    {
+        //        int maPhong = Convert.ToInt32(e.Item.Tag);
+        //        // 1. Lấy DataRow tương ứng với phòng vừa click để xác định trạng thái
+        //        DataRow[] rows = _dtPhong.Select($"MaPhong = {maPhong}");
 
-                if (rows.Length > 0)
-                {
-                    DataRow roomRow = rows[0];
-                    string tenPhong = roomRow["TenPhong"].ToString();
-                    string statusO = roomRow["TrangThaiO"].ToString(); // "Đang ở", "Đặt trước", "Trống"
-                    int ttPhong = Convert.ToInt32(roomRow["TrangThaiPhong"]); // 0:Bảo trì, 1:Sẵn sàng, 2:Dơ
+        //        if (rows.Length > 0)
+        //        {
+        //            DataRow roomRow = rows[0];
+        //            string tenPhong = roomRow["TenPhong"].ToString();
+        //            string statusO = roomRow["TrangThaiO"].ToString(); // "Đang ở", "Đặt trước", "Trống"
+        //            int ttPhong = Convert.ToInt32(roomRow["TrangThaiPhong"]); // 0:Bảo trì, 1:Sẵn sàng, 2:Dơ
 
-                    // Biến để lưu Mã Nhận Phòng (MaNP), mặc định là 0 nếu phòng không có khách đang ở.
-                    int maNP = 0;
+        //            // Biến để lưu Mã Nhận Phòng (MaNP), mặc định là 0 nếu phòng không có khách đang ở.
+        //            int maNP = 0;
 
-                    // 2. Xác định MaNP chỉ khi phòng đang có khách ở
-                    if (statusO == "Đang ở")
-                    {
-                        // Phòng đang có khách -> Lấy Mã Nhận Phòng (MaNP) từ BLL
-                        maNP = _bookingBLL.GetCurrentStayID(maPhong);
+        //            // 2. Xác định MaNP chỉ khi phòng đang có khách ở
+        //            if (statusO == "Đang ở")
+        //            {
+        //                // Phòng đang có khách -> Lấy Mã Nhận Phòng (MaNP) từ BLL
+        //                maNP = _bookingBLL.GetCurrentStayID(maPhong);
 
-                        if (maNP <= 0)
-                        {
-                            // Trường hợp lỗi dữ liệu: trạng thái là "Đang ở" nhưng không tìm thấy MaNP. 
-                            // Vẫn nên thông báo lỗi và ngăn form mở với dữ liệu lỗi.
-                            XtraMessageBox.Show("Lỗi hệ thống: Không tìm thấy Mã Nhận Phòng (MaNP) đang hoạt động cho phòng đang có khách.", "Lỗi dữ liệu");
-                            return;
-                        }
-                    }
-                    // KHÔNG CẦN ELSE/ELSE IF cho các trạng thái khác ("Đặt trước", "Trống", Bảo trì/Dơ) nữa.
-                    // Nếu không phải "Đang ở", maNP sẽ giữ giá trị mặc định là 0.
+        //                if (maNP <= 0)
+        //                {
+        //                    // Trường hợp lỗi dữ liệu: trạng thái là "Đang ở" nhưng không tìm thấy MaNP. 
+        //                    // Vẫn nên thông báo lỗi và ngăn form mở với dữ liệu lỗi.
+        //                    XtraMessageBox.Show("Lỗi hệ thống: Không tìm thấy Mã Nhận Phòng (MaNP) đang hoạt động cho phòng đang có khách.", "Lỗi dữ liệu");
+        //                    return;
+        //                }
+        //            }
+        //            // KHÔNG CẦN ELSE/ELSE IF cho các trạng thái khác ("Đặt trước", "Trống", Bảo trì/Dơ) nữa.
+        //            // Nếu không phải "Đang ở", maNP sẽ giữ giá trị mặc định là 0.
 
-                    // 3. Mở Form Chi tiết phòng với maNP (0 hoặc ID hợp lệ) và maPhong
-                    // Form frmChiTietPhong cần được chỉnh sửa để xử lý maNP = 0 như một chỉ báo 
-                    // rằng form được mở để thực hiện Check-in/Booking mới hoặc thay đổi trạng thái kỹ thuật.
-                    frmChiTietPhong frm = new frmChiTietPhong(maNP, maPhong);
+        //            // 3. Mở Form Chi tiết phòng với maNP (0 hoặc ID hợp lệ) và maPhong
+        //            // Form frmChiTietPhong cần được chỉnh sửa để xử lý maNP = 0 như một chỉ báo 
+        //            // rằng form được mở để thực hiện Check-in/Booking mới hoặc thay đổi trạng thái kỹ thuật.
+        //            frmChiTietPhong frm = new frmChiTietPhong(maNP, maPhong);
 
-                    // Đặt tiêu đề form rõ ràng hơn dựa trên trạng thái
-                    if (maNP > 0)
-                    {
-                        frm.Text = $"Chi Tiết & Thanh Toán Phòng {tenPhong}";
-                    }
-                    else
-                    {
-                        string trangThaiKyThuat = (ttPhong == 0) ? "Bảo Trì" : (ttPhong == 2) ? "Chờ Dọn Dẹp" : "Sẵn Sàng";
-                        frm.Text = $"Quản Lý Phòng {tenPhong} - TT: {statusO} ({trangThaiKyThuat})";
-                    }
-
-                    frm.ShowDialog();
-
-                    // 4. Cập nhật lại sơ đồ phòng sau khi đóng form (để làm mới trạng thái)
-                    LoadData();
-                }
-            }
-        }
-        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
-        private void ucTrangChu_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
+        //            // Đặt tiêu đề form rõ ràng hơn dựa trên trạng thái
+        //            if (maNP > 0)
+        //            {
+        //                frm.Text = $"Chi Tiết & Thanh Toán Phòng {tenPhong}";
+        //            }
+        //            else
+        //            {
+        //                string trangThaiKyThuat = (ttPhong == 0) ? "Bảo Trì" : (ttPhong == 2) ? "Chờ Dọn Dẹp" : "Sẵn Sàng";
+        //                frm.Text = $"Quản Lý Phòng {tenPhong} - TT: {statusO} ({trangThaiKyThuat})";
+        //            }
+        //            frm.ShowDialog();
+        //            // 4. Cập nhật lại sơ đồ phòng sau khi đóng form (để làm mới trạng thái)
+        //            LoadData();
+        //        }
+        //    }
+        //}
     }
 }

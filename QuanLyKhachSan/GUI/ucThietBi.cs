@@ -8,54 +8,90 @@ using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {
-    public partial class frmQLThietBi : Form
+    public partial class ucThietBi : UserControl
     {
+        // ==========================================
+        // KHAI BÁO BIẾN
+        // ==========================================
         private ThietBiBLL thietBiBLL = new ThietBiBLL();
         private PhongBLL phongBLL = new PhongBLL();
         private PhongThietBiBLL ptbBLL = new PhongThietBiBLL();
 
-        // Cờ chặn sự kiện (QUAN TRỌNG NHẤT)
-        private bool isBindingData = false;
-
+        private bool isBindingData = false; // Cờ chặn sự kiện
         private int selectedMaTB_Tab1 = -1;
-        private int currentMaPhong_Tab2 = -1;
         private int selectedMaTB_Tab2 = -1;
 
-        public frmQLThietBi()
+        // ==========================================
+        // CONSTRUCTOR
+        // ==========================================
+        public ucThietBi()
         {
             InitializeComponent();
+
+            // Đăng ký sự kiện Load
+            this.Load += ucThietBi_Load;
+
+            // Đăng ký sự kiện cho Tab
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+
+            // Setup các hàm sự kiện
             SetupTab1Events();
             SetupTab2Events();
+        }
+
+        private void ucThietBi_Load(object sender, EventArgs e)
+        {
             LoadKhoThietBi();
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Name == "tabPage2")
+            {
+                // Load Tab 2
+                isBindingData = true;
+                LoadComboboxTab2_Empty();
+                FilterData_Internal(-1, -1);
+                ResetTab2(true);
+                isBindingData = false;
+            }
+            else if (tabControl1.SelectedTab.Name == "tabPage1")
+            {
+                // Load Tab 1
+                LoadKhoThietBi();
+            }
+        }
+
         // =========================================================================
-        // TAB 1: QUẢN LÝ KHO THIẾT BỊ
+        // PHẦN 1: LOGIC TAB 1 (KHO THIẾT BỊ)
         // =========================================================================
+
         private void SetupTab1Events()
         {
             dgvThietBi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvThietBi.MultiSelect = false;
             dgvThietBi.ReadOnly = true;
+
+            // Hủy sự kiện cũ trước khi gán mới để tránh bị gọi 2 lần
+            dgvThietBi.SelectionChanged -= dgvThietBi_SelectionChanged;
             dgvThietBi.SelectionChanged += dgvThietBi_SelectionChanged;
 
             btnThemTB.Click -= btnThemTB_Click; btnThemTB.Click += btnThemTB_Click;
             btnSuaTB.Click -= btnSuaTB_Click; btnSuaTB.Click += btnSuaTB_Click;
             btnXoaTB.Click -= btnXoaTB_Click; btnXoaTB.Click += btnXoaTB_Click;
 
-            panel1.Click += (s, e) => ResetTab1(true);
-            panel2.Click += (s, e) => ResetTab1(true);
-
-            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            if (panel1 != null) panel1.Click += (s, e) => ResetTab1(true);
+            if (panel2 != null) panel2.Click += (s, e) => ResetTab1(true);
         }
 
         private void LoadKhoThietBi()
         {
             try
             {
-                isBindingData = true; // Chặn sự kiện
+                isBindingData = true;
                 dgvThietBi.DataSource = thietBiBLL.LayDSThietBi();
 
+                // Format cột
                 if (dgvThietBi.Columns.Contains("MaTB")) dgvThietBi.Columns["MaTB"].HeaderText = "Mã TB";
                 if (dgvThietBi.Columns.Contains("TenTB")) dgvThietBi.Columns["TenTB"].HeaderText = "Tên Thiết Bị";
                 if (dgvThietBi.Columns.Contains("SoLuong"))
@@ -65,7 +101,8 @@ namespace QuanLyKhachSan.GUI
                 }
                 if (dgvThietBi.Columns.Contains("MoTa")) dgvThietBi.Columns["MoTa"].HeaderText = "Mô Tả";
 
-                dgvThietBi.ClearSelection(); // Bỏ chọn dòng đầu
+                dgvThietBi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvThietBi.ClearSelection();
                 ResetTab1(false);
             }
             catch { }
@@ -85,8 +122,11 @@ namespace QuanLyKhachSan.GUI
                     txtTenTB.Text = row.Cells["TenTB"].Value.ToString();
                     txtMoTaTB.Text = row.Cells["MoTa"].Value.ToString();
 
-                    if (dgvThietBi.Columns.Contains("SoLuong") && row.Cells["SoLuong"].Value != null && Controls.ContainsKey("txtSoLuongKho"))
-                        Controls["txtSoLuongKho"].Text = row.Cells["SoLuong"].Value.ToString();
+                    if (dgvThietBi.Columns.Contains("SoLuong") && row.Cells["SoLuong"].Value != null)
+                    {
+                        Control[] ctrls = this.Controls.Find("txtSoLuongKho", true);
+                        if (ctrls.Length > 0) ctrls[0].Text = row.Cells["SoLuong"].Value.ToString();
+                    }
 
                     btnThemTB.Enabled = false;
                     btnSuaTB.Enabled = true;
@@ -102,7 +142,9 @@ namespace QuanLyKhachSan.GUI
             selectedMaTB_Tab1 = -1;
             txtTenTB.Clear();
             txtMoTaTB.Clear();
-            if (Controls.ContainsKey("txtSoLuongKho")) Controls["txtSoLuongKho"].Text = "";
+
+            Control[] ctrls = this.Controls.Find("txtSoLuongKho", true);
+            if (ctrls.Length > 0) ctrls[0].Text = "";
 
             btnThemTB.Enabled = true;
             btnSuaTB.Enabled = false;
@@ -116,11 +158,14 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
+        // --- CÁC HÀM SỰ KIỆN NÚT BẤM TAB 1 ---
         private void btnThemTB_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenTB.Text)) return;
+
             int slKho = 0;
-            if (Controls.ContainsKey("txtSoLuongKho")) int.TryParse(Controls["txtSoLuongKho"].Text, out slKho);
+            Control[] ctrls = this.Controls.Find("txtSoLuongKho", true);
+            if (ctrls.Length > 0) int.TryParse(ctrls[0].Text, out slKho);
 
             if (thietBiBLL.ThemThietBi(txtTenTB.Text, txtMoTaTB.Text, slKho))
             {
@@ -134,7 +179,8 @@ namespace QuanLyKhachSan.GUI
             if (selectedMaTB_Tab1 > 0)
             {
                 int slKho = 0;
-                if (Controls.ContainsKey("txtSoLuongKho")) int.TryParse(Controls["txtSoLuongKho"].Text, out slKho);
+                Control[] ctrls = this.Controls.Find("txtSoLuongKho", true);
+                if (ctrls.Length > 0) int.TryParse(ctrls[0].Text, out slKho);
 
                 if (thietBiBLL.SuaThietBi(selectedMaTB_Tab1, txtTenTB.Text, txtMoTaTB.Text, slKho))
                 {
@@ -153,13 +199,12 @@ namespace QuanLyKhachSan.GUI
                     MessageBox.Show("Đã xóa!");
                     LoadKhoThietBi();
                 }
-                else MessageBox.Show("Không thể xóa (đang được sử dụng).");
+                else MessageBox.Show("Không thể xóa (đang được sử dụng hoặc lỗi).");
             }
         }
 
-
         // =========================================================================
-        // TAB 2: QUẢN LÝ THIẾT BỊ PHÒNG
+        // PHẦN 2: LOGIC TAB 2 (THIẾT BỊ TRONG PHÒNG)
         // =========================================================================
 
         private void SetupTab2Events()
@@ -168,21 +213,24 @@ namespace QuanLyKhachSan.GUI
             dgvThietBiPhong.MultiSelect = true;
             dgvThietBiPhong.ReadOnly = true;
 
-            //btnSuaTBP.Visible = false;
             btnThemTBP.Text = "Cập nhật";
 
-            // Gán sự kiện lọc
+            // Gán sự kiện cho ComboBox
             cboTenPhong.SelectedIndexChanged += (s, e) => { if (!isBindingData) FilterData(); };
             cboTenTBP.SelectedIndexChanged += (s, e) => { if (!isBindingData) FilterData(); };
 
             // Gán sự kiện Grid
+            dgvThietBiPhong.SelectionChanged -= dgvThietBiPhong_SelectionChanged;
             dgvThietBiPhong.SelectionChanged += dgvThietBiPhong_SelectionChanged;
 
-            // Gán sự kiện Nút
-            btnThemTBP.Click -= BtnCapNhatTBP_Click; btnThemTBP.Click += BtnCapNhatTBP_Click;
-            btnXoaTBP.Click -= BtnXoaTBP_Click; btnXoaTBP.Click += BtnXoaTBP_Click;
+            // Gán sự kiện Nút (TÊN HÀM ĐÃ ĐƯỢC CHUẨN HÓA)
+            btnThemTBP.Click -= btnCapNhatTBP_Click;
+            btnThemTBP.Click += btnCapNhatTBP_Click;
 
-            // Gán sự kiện Nút Reset
+            btnXoaTBP.Click -= btnXoaTBP_Click;
+            btnXoaTBP.Click += btnXoaTBP_Click;
+
+            // Nút Reset
             Control[] btns = this.Controls.Find("btnReset", true);
             if (btns.Length > 0)
             {
@@ -190,41 +238,14 @@ namespace QuanLyKhachSan.GUI
                 btns[0].Click += btnReset_Click;
             }
 
-            panel3.Click += (s, e) => ResetTab2(true);
-            panel4.Click += (s, e) => ResetTab2(true);
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedTab.Name == "tabPage2")
-            {
-                // BẮT ĐẦU CHẶN SỰ KIỆN TOÀN CỤC
-                isBindingData = true;
-
-                LoadComboboxTab2_Empty();
-                FilterData_Internal(-1, -1);
-                ResetTab2(true);
-
-                // MỞ KHÓA SỰ KIỆN
-                isBindingData = false;
-            }
-            else if (tabControl1.SelectedTab.Name == "tabPage1")
-            {
-                LoadKhoThietBi();
-            }
-        }
-
-        // --- HÀM NÚT RESET ---
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            ResetTab2(true);
+            if (panel3 != null) panel3.Click += (s, e) => ResetTab2(true);
+            if (panel4 != null) panel4.Click += (s, e) => ResetTab2(true);
         }
 
         private void LoadComboboxTab2_Empty()
         {
             try
             {
-                // Không cần gán isBindingData=true ở đây nữa vì đã gán ở hàm gọi
                 DataTable dtPhong = phongBLL.LayTatCaPhong(DateTime.Now);
                 if (dtPhong != null)
                 {
@@ -232,7 +253,7 @@ namespace QuanLyKhachSan.GUI
                     cboTenPhong.DisplayMember = "TenPhong";
                     cboTenPhong.ValueMember = "MaPhong";
                     cboTenPhong.SelectedIndex = -1;
-                    cboTenPhong.Text = ""; // Xóa text hiển thị         
+                    cboTenPhong.Text = "";
                 }
 
                 DataTable dtTB = ptbBLL.LayTatCaThietBi();
@@ -261,7 +282,6 @@ namespace QuanLyKhachSan.GUI
             if (cboTenTBP.SelectedIndex != -1 && cboTenTBP.SelectedValue != null)
                 maTB = Convert.ToInt32(cboTenTBP.SelectedValue);
 
-            // Bật cờ khi lọc để tránh SelectionChanged nhảy lung tung
             bool oldState = isBindingData;
             isBindingData = true;
             FilterData_Internal(maPhong, maTB);
@@ -278,7 +298,7 @@ namespace QuanLyKhachSan.GUI
                 if (dgvThietBiPhong.Columns.Contains("MaPhong")) dgvThietBiPhong.Columns["MaPhong"].Visible = false;
                 if (dgvThietBiPhong.Columns.Contains("MaTB")) dgvThietBiPhong.Columns["MaTB"].Visible = false;
 
-                // QUAN TRỌNG: Bỏ chọn ngay lập tức
+                dgvThietBiPhong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvThietBiPhong.ClearSelection();
             }
             catch { }
@@ -286,13 +306,11 @@ namespace QuanLyKhachSan.GUI
 
         private void dgvThietBiPhong_SelectionChanged(object sender, EventArgs e)
         {
-            // Nếu đang binding (đang load lại trang/reset) -> Không được điền dữ liệu
             if (isBindingData) return;
 
             if (dgvThietBiPhong.SelectedRows.Count == 1)
             {
-                // Bật cờ tạm thời để khi gán giá trị cho ComboBox, nó không gọi lại Filter
-                isBindingData = true;
+                isBindingData = true; // Chặn Binding tạm thời
 
                 DataGridViewRow row = dgvThietBiPhong.SelectedRows[0];
 
@@ -312,21 +330,16 @@ namespace QuanLyKhachSan.GUI
                 btnThemTBP.Enabled = true;
                 btnXoaTBP.Enabled = true;
 
-                cboTenTBP.Enabled = false; // Khóa khi sửa
+                cboTenTBP.Enabled = false;
                 cboTenPhong.Enabled = false;
 
-                isBindingData = false; // Mở lại cờ
-            }
-            else
-            {
-                // Nếu không chọn dòng nào (do ClearSelection)
-                // Không làm gì để tránh reset form khi người dùng đang nhập dở
+                isBindingData = false;
             }
         }
 
+        // Hàm ResetTab2 được gọi ở trên, giờ định nghĩa nó ở đây
         private void ResetTab2(bool clearGrid)
         {
-            // Bật cờ để chặn sự kiện
             bool oldState = isBindingData;
             isBindingData = true;
 
@@ -345,14 +358,21 @@ namespace QuanLyKhachSan.GUI
             if (clearGrid)
             {
                 dgvThietBiPhong.ClearSelection();
-                // Khi reset, load lại toàn bộ lưới để người dùng thấy tất cả
                 FilterData_Internal(-1, -1);
             }
 
             isBindingData = oldState;
         }
 
-        private void BtnCapNhatTBP_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetTab2(true);
+        }
+
+        // --- CÁC HÀM SỰ KIỆN NÚT BẤM TAB 2 ---
+
+        // Tên hàm này phải khớp với dòng 'btnThemTBP.Click += btnCapNhatTBP_Click;' ở trên
+        private void btnCapNhatTBP_Click(object sender, EventArgs e)
         {
             if (cboTenPhong.SelectedIndex == -1) { MessageBox.Show("Chưa chọn phòng!"); return; }
             if (cboTenTBP.SelectedIndex == -1) { MessageBox.Show("Chưa chọn thiết bị!"); return; }
@@ -378,7 +398,8 @@ namespace QuanLyKhachSan.GUI
             else MessageBox.Show("Lỗi cập nhật CSDL.");
         }
 
-        private void BtnXoaTBP_Click(object sender, EventArgs e)
+        // Tên hàm này phải khớp với dòng 'btnXoaTBP.Click += btnXoaTBP_Click;' ở trên
+        private void btnXoaTBP_Click(object sender, EventArgs e)
         {
             if (dgvThietBiPhong.SelectedRows.Count == 0) return;
 
@@ -395,14 +416,5 @@ namespace QuanLyKhachSan.GUI
                 ResetTab2(true);
             }
         }
-
-        // --- HÀM DESIGNER ---
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-        private void panel3_Paint(object sender, PaintEventArgs e) { }
-        private void panel4_Paint(object sender, PaintEventArgs e) { }
-        private void btnXoaTB_Click_1(object sender, EventArgs e) { }
-        private void dgvThietBi_CellClick(object sender, DataGridViewCellEventArgs e) { }
-        private void frmQLThietBi_Load(object sender, EventArgs e) { LoadKhoThietBi(); }
-        private void frmQLThietBi_Load_1(object sender, EventArgs e) { LoadKhoThietBi(); }
-    }
-}
+    } // Kết thúc Class ucThietBi
+} // Kết thúc Namespace

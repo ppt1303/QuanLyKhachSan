@@ -286,3 +286,9 @@ D:\kali-linux-2025.2-virtualbox-amd64\Hocki1nam3\CSDL\thuchanhthuctap\baitaplon\
 D:\kali-linux-2025.2-virtualbox-amd64\Hocki1nam3\CSDL\thuchanhthuctap\baitaplon\winform4\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
 D:\kali-linux-2025.2-virtualbox-amd64\Hocki1nam3\CSDL\thuchanhthuctap\baitaplon\winform4\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
 D:\kali-linux-2025.2-virtualbox-amd64\Hocki1nam3\CSDL\thuchanhthuctap\baitaplon\winform4\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmChiTietPhong.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.CheckOut.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmChiTietPhong.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmQLDichVu.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmQLThietBi.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucDichVu.resources
+C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucThietBi.resources

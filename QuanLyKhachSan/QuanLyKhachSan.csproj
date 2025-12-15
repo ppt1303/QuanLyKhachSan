@@ -107,17 +107,17 @@
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmQLDichVu.cs">
-      <SubType>Form</SubType>
+    <Compile Include="GUI\ucDichVu.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\frmQLDichVu.Designer.cs">
-      <DependentUpon>frmQLDichVu.cs</DependentUpon>
+    <Compile Include="GUI\ucDichVu.Designer.cs">
+      <DependentUpon>ucDichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmQLThietBi.cs">
-      <SubType>Form</SubType>
+    <Compile Include="GUI\ucThietBi.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\frmQLThietBi.Designer.cs">
-      <DependentUpon>frmQLThietBi.cs</DependentUpon>
+    <Compile Include="GUI\ucThietBi.Designer.cs">
+      <DependentUpon>ucThietBi.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ucTrangChu.cs">
       <SubType>UserControl</SubType>
@@ -139,11 +139,11 @@
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmQLDichVu.resx">
-      <DependentUpon>frmQLDichVu.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ucDichVu.resx">
+      <DependentUpon>ucDichVu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmQLThietBi.resx">
-      <DependentUpon>frmQLThietBi.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ucThietBi.resx">
+      <DependentUpon>ucThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucTrangChu.resx">
       <DependentUpon>ucTrangChu.cs</DependentUpon>

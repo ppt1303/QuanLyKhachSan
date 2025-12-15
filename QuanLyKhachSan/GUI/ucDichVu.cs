@@ -5,26 +5,28 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using QuanLyKhachSan.BLL; // Đã thêm using BLL
+using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {
-    public partial class frmQLDichVu : Form
+    // THAY ĐỔI 1: Kế thừa từ UserControl thay vì Form
+    public partial class ucDichVu : UserControl
     {
         // =================================================================
         // KHAI BÁO BIẾN VÀ BLL
         // =================================================================
         private DichVuBLL dichVuBLL = new DichVuBLL();
         private int selectedMaDV_ForEdit = -1;
-        private int lastClickedRowIndex = -1; // Cho chức năng Toggle
+        private int lastClickedRowIndex = -1;
 
-        // Constructor
-        public frmQLDichVu()
+        // THAY ĐỔI 2: Constructor mang tên ucDichVu
+        public ucDichVu()
         {
             InitializeComponent();
 
             // Cấu hình DataGridView
-            // Giả định tên controls: dgvDIchVu, txtTenDV, txtGia, btnThem, btnSua, btnXoa
+            // Lưu ý: Bạn cần copy các control (dgvDIchVu, txtTenDV, txtGia, btn...) 
+            // từ Form cũ sang giao diện UserControl này.
             dgvDIchVu.MultiSelect = true;
             dgvDIchVu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDIchVu.ReadOnly = true;
@@ -33,7 +35,9 @@ namespace QuanLyKhachSan.GUI
             dgvDIchVu.SelectionChanged += dgvDIchVu_SelectionChanged;
             dgvDIchVu.CellClick += dgvDIchVu_CellClick;
 
-            this.Load += frmQLDichVu_Load;
+            // Sự kiện Load của UserControl
+            this.Load += ucDichVu_Load;
+
             btnThem.Click += btnThem_Click;
             btnSua.Click += btnSua_Click;
             btnXoa.Click += btnXoa_Click;
@@ -45,7 +49,8 @@ namespace QuanLyKhachSan.GUI
         // 1. TẢI DỮ LIỆU & RESET
         // =================================================================
 
-        private void frmQLDichVu_Load(object sender, EventArgs e)
+        // THAY ĐỔI 3: Đổi tên hàm xử lý sự kiện Load
+        private void ucDichVu_Load(object sender, EventArgs e)
         {
             LoadDichVu();
         }
@@ -54,18 +59,23 @@ namespace QuanLyKhachSan.GUI
         {
             try
             {
-                // GỌI BLL:
                 dgvDIchVu.DataSource = dichVuBLL.LayDSDichVu();
                 dgvDIchVu.ClearSelection();
 
-                // Cấu hình hiển thị cột (Đảm bảo cột tồn tại)
+                // Cấu hình hiển thị cột
                 if (dgvDIchVu.Columns.Contains("MaDV"))
                 {
                     dgvDIchVu.Columns["MaDV"].HeaderText = "Mã DV";
                     dgvDIchVu.Columns["TenDV"].HeaderText = "Tên Dịch Vụ";
                     dgvDIchVu.Columns["Gia"].HeaderText = "Giá";
                     dgvDIchVu.Columns["Gia"].DefaultCellStyle.Format = "N0";
+
+                    // Ẩn cột MaDV nếu không muốn hiển thị
+                    // dgvDIchVu.Columns["MaDV"].Visible = false; 
                 }
+
+                // Tự động giãn cột cho đẹp
+                dgvDIchVu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
@@ -78,9 +88,11 @@ namespace QuanLyKhachSan.GUI
             selectedMaDV_ForEdit = -1;
             txtTenDV.Clear();
             txtGia.Clear();
+
             btnThem.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+
             dgvDIchVu.ClearSelection();
             txtTenDV.Focus();
         }
@@ -115,7 +127,7 @@ namespace QuanLyKhachSan.GUI
                     btnXoa.Enabled = true;
                 }
             }
-            // Chọn nhiều hàng: Ẩn Sửa
+            // Chọn nhiều hàng: Ẩn Sửa, chỉ cho Xóa
             else
             {
                 selectedMaDV_ForEdit = -1;
@@ -128,12 +140,12 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // Sự kiện CellClick dùng để Toggle (Nhấn lần 2 hủy chọn)
         private void dgvDIchVu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
             DataGridView dgv = sender as DataGridView;
+            // Kiểm tra xem có phải đang click lại vào hàng đã chọn để bỏ chọn không
             bool isToggleOffCandidate = dgv.Rows[e.RowIndex].Selected && (e.RowIndex == lastClickedRowIndex);
 
             if (isToggleOffCandidate && (Control.ModifierKeys & Keys.Control) != Keys.Control)
@@ -141,23 +153,24 @@ namespace QuanLyKhachSan.GUI
                 dgv.Rows[e.RowIndex].Selected = false;
                 dgv.ClearSelection();
                 lastClickedRowIndex = -1;
+                ResetForm(); // Reset lại form khi bỏ chọn
             }
             else
             {
                 if ((Control.ModifierKeys & Keys.Control) != Keys.Control)
                 {
-                    dgv.ClearSelection();
-                    dgv.Rows[e.RowIndex].Selected = true;
+                    // Nếu không giữ Ctrl thì clear các lựa chọn cũ
+                    // Lưu ý: Dòng này có thể gây xung đột với MultiSelect nếu không cẩn thận, 
+                    // nhưng với logic toggle đơn giản thì ổn.
                 }
                 lastClickedRowIndex = e.RowIndex;
             }
         }
 
         // =================================================================
-        // 3. LOGIC NÚT THAO TÁC VÀ HÀM HỖ TRỢ BÊN TRONG
+        // 3. LOGIC NÚT THAO TÁC
         // =================================================================
 
-        // HÀM HỖ TRỢ: Đã bị thiếu trong code của bạn
         private bool KiemTraDuLieuDichVu()
         {
             if (string.IsNullOrWhiteSpace(txtTenDV.Text) || string.IsNullOrWhiteSpace(txtGia.Text))
@@ -165,7 +178,7 @@ namespace QuanLyKhachSan.GUI
                 MessageBox.Show("Vui lòng nhập đầy đủ Tên Dịch Vụ và Giá.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            // Sử dụng TryParse an toàn hơn
+
             if (!decimal.TryParse(txtGia.Text.Replace(",", ""), out _))
             {
                 MessageBox.Show("Giá phải là một số hợp lệ.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -177,33 +190,55 @@ namespace QuanLyKhachSan.GUI
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (!KiemTraDuLieuDichVu()) return;
-            // Xử lý giá để loại bỏ ký tự định dạng nếu có
-            decimal gia = decimal.Parse(txtGia.Text.Replace(",", ""));
 
-            if (dichVuBLL.ThemDichVu(txtTenDV.Text.Trim(), gia)) // GỌI BLL
+            try
             {
-                MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDichVu();
+                decimal gia = decimal.Parse(txtGia.Text.Replace(",", ""));
+
+                if (dichVuBLL.ThemDichVu(txtTenDV.Text.Trim(), gia))
+                {
+                    MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDichVu();
+                    ResetForm();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm dịch vụ thất bại (Lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thêm dịch vụ thất bại (Lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi định dạng giá: " + ex.Message);
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (selectedMaDV_ForEdit == -1 || !KiemTraDuLieuDichVu()) return;
-            decimal gia = decimal.Parse(txtGia.Text.Replace(",", ""));
-
-            if (dichVuBLL.SuaDichVu(selectedMaDV_ForEdit, txtTenDV.Text.Trim(), gia)) // GỌI BLL
+            if (selectedMaDV_ForEdit == -1)
             {
-                MessageBox.Show("Sửa dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDichVu();
+                MessageBox.Show("Vui lòng chọn dịch vụ cần sửa.", "Thông báo");
+                return;
             }
-            else
+            if (!KiemTraDuLieuDichVu()) return;
+
+            try
             {
-                MessageBox.Show("Sửa dịch vụ thất bại (Lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                decimal gia = decimal.Parse(txtGia.Text.Replace(",", ""));
+
+                if (dichVuBLL.SuaDichVu(selectedMaDV_ForEdit, txtTenDV.Text.Trim(), gia))
+                {
+                    MessageBox.Show("Sửa dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDichVu();
+                    ResetForm();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa dịch vụ thất bại (Lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
@@ -211,31 +246,27 @@ namespace QuanLyKhachSan.GUI
         {
             if (dgvDIchVu.SelectedRows.Count == 0) return;
 
-            // Xây dựng biến maDVList: Đã bị thiếu trong code bạn gửi
+            // Lấy danh sách ID các dòng đang chọn
             string maDVList = string.Join(",", dgvDIchVu.SelectedRows.Cast<DataGridViewRow>()
                 .Where(row => row.Cells["MaDV"].Value != DBNull.Value && row.Cells["MaDV"].Value != null)
                 .Select(row => row.Cells["MaDV"].Value.ToString()));
 
             if (string.IsNullOrWhiteSpace(maDVList)) return;
 
-
-            if (MessageBox.Show($"Bạn có chắc chắn muốn xóa {dgvDIchVu.SelectedRows.Count} dịch vụ đã chọn?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"Bạn có chắc chắn muốn xóa {dgvDIchVu.SelectedRows.Count} dịch vụ đã chọn?",
+                                "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (dichVuBLL.XoaDichVu(maDVList)) // GỌI BLL
+                if (dichVuBLL.XoaDichVu(maDVList))
                 {
                     MessageBox.Show("Xóa dịch vụ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDichVu();
+                    ResetForm();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa dịch vụ thất bại (Có thể do ràng buộc dữ liệu).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Xóa dịch vụ thất bại (Có thể do ràng buộc dữ liệu hóa đơn).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
-        // Giữ lại các hàm Designer không sử dụng
-        private void txtGia_TextChanged(object sender, EventArgs e) { }
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-        private void panel1_Click(object sender, EventArgs e) { }
     }
 }
