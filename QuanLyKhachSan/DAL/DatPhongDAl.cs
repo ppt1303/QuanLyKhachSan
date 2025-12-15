@@ -6,6 +6,13 @@ namespace QuanLyKhachSan.DAL
 {
     public class DatPhongDAL
     {
+        // --- BỔ SUNG HÀM NÀY ĐỂ FIX LỖI FORM DANH SÁCH ---
+        public DataTable GetDanhSachDonDat()
+        {
+            return DatabaseHelper.GetData("sp_LayDanhSachDonDat_ChiTiet", null);
+        }
+        // -------------------------------------------------
+
         public bool TaoDatPhong(int maKH, int maPhong, DateTime ngayDen, DateTime ngayDi, decimal tienCoc)
         {
             SqlParameter[] parameters = {
@@ -14,23 +21,21 @@ namespace QuanLyKhachSan.DAL
                 new SqlParameter("@NgayDen", ngayDen),
                 new SqlParameter("@NgayDi", ngayDi),
                 new SqlParameter("@TienCoc", tienCoc)
+                // SQL có tham số @SoNguoi mặc định là 1, nên ở đây không truyền cũng được
             };
             return DatabaseHelper.ExecuteNonQuery("sp_DatPhong", parameters, CommandType.StoredProcedure);
         }
 
-        // File: DAL/DatPhongDAL.cs
-
         public int LayMaNPDangO(int maPhong)
         {
-            // SỬA LẠI QUERY: Thêm ORDER BY ... DESC
             string query = @"
-        SELECT TOP 1 NP.MaNP 
-        FROM NHANPHONG NP
-        WHERE NP.MaPhong = @MaPhong 
-        AND NP.MaNP NOT IN (SELECT MaNP FROM TRAPHONG) -- Chưa có trong bảng trả phòng
-        ORDER BY NP.ThoiGianNhan DESC"; 
-  
-    SqlParameter[] param = { new SqlParameter("@MaPhong", maPhong) };
+                SELECT TOP 1 NP.MaNP 
+                FROM NHANPHONG NP
+                WHERE NP.MaPhong = @MaPhong 
+                AND NP.MaNP NOT IN (SELECT MaNP FROM TRAPHONG)
+                ORDER BY NP.ThoiGianNhan DESC";
+
+            SqlParameter[] param = { new SqlParameter("@MaPhong", maPhong) };
 
             DataTable dt = DatabaseHelper.GetData(query, param);
 
@@ -41,7 +46,6 @@ namespace QuanLyKhachSan.DAL
 
             return 0;
         }
-
 
         public DataTable LayThongTinCheckOut(int maNP)
         {
@@ -62,12 +66,9 @@ namespace QuanLyKhachSan.DAL
                 WHERE NP.MaNP = @MaNP";
 
             SqlParameter[] param = { new SqlParameter("@MaNP", maNP) };
-
-            // Gọi DatabaseHelper của cậu
             return DatabaseHelper.GetData(query, param);
         }
 
-        // 2. Lấy danh sách Dịch vụ (Grid bên trái)
         public DataTable LayDichVuDaDung(int maNP)
         {
             string query = @"
@@ -84,7 +85,6 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.GetData(query, param);
         }
 
-        // 3. Lấy danh sách Phụ thu (Grid bên trái)
         public DataTable LayPhuThuDaDung(int maNP)
         {
             string query = @"
@@ -101,35 +101,27 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.GetData(query, param);
         }
 
-        // 4. Bước 1: Trả phòng (Gọi Stored Procedure sp_ThucHienTraPhong)
         public bool ThucHienTraPhong(int maNP, string tinhTrang, string ghiChu)
         {
             string spName = "sp_ThucHienTraPhong";
-
             SqlParameter[] parameters = {
                 new SqlParameter("@MaNP", maNP),
                 new SqlParameter("@TinhTrangPhong", tinhTrang),
                 new SqlParameter("@GhiChu", ghiChu)
             };
-
-            // Gọi ExecuteNonQuery (Trả về true nếu chạy thành công)
             return DatabaseHelper.ExecuteNonQuery(spName, parameters, CommandType.StoredProcedure);
         }
 
-        // 5. Bước 2: Tạo hóa đơn (Gọi Stored Procedure sp_TaoHoaDonThanhToan)
         public void TaoHoaDon(int maTraPhong, int maPTTT)
         {
             string spName = "sp_TaoHoaDonThanhToan";
-
             SqlParameter[] parameters = {
                 new SqlParameter("@MaTraPhong", maTraPhong),
                 new SqlParameter("@MaPTTT", maPTTT)
             };
-
             DatabaseHelper.ExecuteNonQuery(spName, parameters, CommandType.StoredProcedure);
         }
 
-        // Helper: Lấy Mã trả phòng vừa tạo (Để truyền vào bước Tạo hóa đơn)
         public int LayMaTraPhongMoiNhat(int maNP)
         {
             string query = "SELECT MAX(MaTraPhong) FROM TRAPHONG WHERE MaNP = @MaNP";

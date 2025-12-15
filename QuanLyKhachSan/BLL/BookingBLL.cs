@@ -284,6 +284,12 @@ namespace QuanLyKhachSan.BLL
             }
             return 0;
         }
-        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
+
+        // Trong class BookingBLL
+        public DataTable GetDanhSachDonDat()
+        {
+            // Gọi Stored Procedure đã có sẵn trong database: sp_LayDanhSachDonDat_ChiTiet
+            return DatabaseHelper.GetData("sp_LayDanhSachDonDat_ChiTiet", null, CommandType.StoredProcedure);
+        }
     }
 }

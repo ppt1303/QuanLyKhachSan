@@ -293,3 +293,10 @@ C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmQLThiet
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucDichVu.resources
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucThietBi.resources
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucDatPhong.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.CheckOut.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.frmChiTietPhong.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucDatPhong.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucDichVu.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucThietBi.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.ucQuanLyDatPhonng.resources
+D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQuanLyDatPhong.resources

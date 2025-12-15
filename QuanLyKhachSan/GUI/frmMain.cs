@@ -62,8 +62,24 @@ namespace QuanLyKhachSan.GUI
         }
         private void aceDatPhong_Click(object sender, EventArgs e)
         {
-            frmDatPhong frmDP = new frmDatPhong();
-            frmDP.ShowDialog();
+            fluentDesignFormContainer1.Controls.Clear();
+
+            // 2. Khởi tạo UserControl Quản Lý Đặt Phòng
+            ucQuanLyDatPhong uc = new ucQuanLyDatPhong();
+
+            // 3. Cài đặt để nó bung full kích thước khung chứa
+            uc.Dock = DockStyle.Fill;
+
+            // 4. Thêm nó vào khung chứa chính (fluentDesignFormContainer1)
+            fluentDesignFormContainer1.Controls.Add(uc);
+
+            // 5. Đưa nó lên lớp trên cùng để hiển thị
+            uc.BringToFront();
+        }
+
+        private void frmMain_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -249,5 +249,10 @@ namespace QuanLyKhachSan.GUI
             // SỬA LỖI: Dùng .Value
             dtpNgaySinh.Value = DateTime.Now.AddYears(-18);
         }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
