@@ -83,7 +83,6 @@
             this.aceTrangChu.Name = "aceTrangChu";
             this.aceTrangChu.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceTrangChu.Text = "Trang chủ";
-            this.aceTrangChu.Click += new System.EventHandler(this.accordionControlElement1_Click);
             // 
             // aceDatPhong
             // 
@@ -116,11 +115,10 @@
             // 
             // aceThietBi
             // 
-            this.aceThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("acrVatTu.ImageOptions.SvgImage")));
+            this.aceThietBi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("aceThietBi.ImageOptions.SvgImage")));
             this.aceThietBi.Name = "aceThietBi";
             this.aceThietBi.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceThietBi.Text = "Quản lý Vật tư";
-            this.aceThietBi.Click += new System.EventHandler(this.accordionControlElement3_Click);
             // 
             // acePhong
             // 
@@ -180,7 +178,6 @@
             this.Name = "frmMain";
             this.NavigationControl = this.accordionControl1;
             this.Text = "Quản lý Khách sạn";
-            this.Load += new System.EventHandler(this.frmMain_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).EndInit();

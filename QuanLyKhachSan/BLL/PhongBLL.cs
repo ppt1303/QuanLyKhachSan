@@ -74,5 +74,9 @@ namespace QuanLyKhachSan.BLL
             if (tang > 0) expr += $" AND Tang = {tang}";
             return dt.Select(expr, "TenPhong ASC");
         }
+        public DataTable LayDanhSachPhongTrangChu()
+        {
+            return _dal.LayDanhSachPhongTrangChu();
+        }
     }
 }

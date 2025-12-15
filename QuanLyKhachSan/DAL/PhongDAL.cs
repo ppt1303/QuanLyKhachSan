@@ -52,12 +52,20 @@ namespace QuanLyKhachSan.DAL
 
             return DatabaseHelper.GetData(query, param, CommandType.Text);
         }
-
-        // ... Các hàm khác giữ nguyên
         public DataTable LayDanhSachTang(DataTable dt)
         {
             string query = "SELECT DISTINCT Tang FROM PHONG ORDER BY Tang ASC";
             return DatabaseHelper.GetData(query);
+        }
+        public DataTable LayDanhSachPhongTrangChu()
+        {
+            string spName = "sp_LayDanhSachPhong_TrangChu";
+
+            // Gọi hàm GetData từ Helper của bạn
+            // Tham số 1: Tên SP
+            // Tham số 2: null (vì SP này không cần tham số đầu vào)
+            // Tham số 3: CommandType.StoredProcedure
+            return DatabaseHelper.GetData(spName, null, CommandType.StoredProcedure);
         }
     }
 }

@@ -71,7 +71,6 @@
             this.lblTenPhong.TabIndex = 0;
             this.lblTenPhong.Text = "label1";
             this.lblTenPhong.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblTenPhong.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblTenKhach
             // 
@@ -96,24 +95,22 @@
             this.lblGioNhan.TabIndex = 2;
             this.lblGioNhan.Text = "label3";
             this.lblGioNhan.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblGioNhan.Click += new System.EventHandler(this.label3_Click);
             // 
             // cboDichVu
             // 
             this.cboDichVu.BackColor = System.Drawing.Color.Orange;
             this.cboDichVu.FormattingEnabled = true;
             this.cboDichVu.Location = new System.Drawing.Point(116, 20);
-            this.cboDichVu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDichVu.Margin = new System.Windows.Forms.Padding(4);
             this.cboDichVu.Name = "cboDichVu";
             this.cboDichVu.Size = new System.Drawing.Size(306, 32);
             this.cboDichVu.TabIndex = 3;
-            this.cboDichVu.SelectedIndexChanged += new System.EventHandler(this.cboDichVu_SelectedIndexChanged);
             // 
             // txtSoLuong
             // 
             this.txtSoLuong.BackColor = System.Drawing.Color.Orange;
             this.txtSoLuong.Location = new System.Drawing.Point(694, 22);
-            this.txtSoLuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSoLuong.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(100, 29);
             this.txtSoLuong.TabIndex = 4;
@@ -122,13 +119,12 @@
             // 
             this.btnThemDV.BackColor = System.Drawing.Color.Orange;
             this.btnThemDV.Location = new System.Drawing.Point(938, 21);
-            this.btnThemDV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemDV.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemDV.Name = "btnThemDV";
             this.btnThemDV.Size = new System.Drawing.Size(176, 34);
             this.btnThemDV.TabIndex = 5;
             this.btnThemDV.Text = "Thêm Dịch Vụ";
             this.btnThemDV.UseVisualStyleBackColor = false;
-            this.btnThemDV.Click += new System.EventHandler(this.btnThemDV_Click_1);
             // 
             // dgvLichSuDV
             // 
@@ -147,7 +143,7 @@
             this.dgvLichSuDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLichSuDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLichSuDV.Location = new System.Drawing.Point(18, 18);
-            this.dgvLichSuDV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvLichSuDV.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLichSuDV.Name = "dgvLichSuDV";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -172,13 +168,12 @@
             this.lblTieuDeTrangThai.Size = new System.Drawing.Size(64, 25);
             this.lblTieuDeTrangThai.TabIndex = 7;
             this.lblTieuDeTrangThai.Text = "label1";
-            this.lblTieuDeTrangThai.Click += new System.EventHandler(this.lblTieuDeTrangThai_Click);
             // 
             // btnLuu
             // 
             this.btnLuu.BackColor = System.Drawing.Color.Orange;
             this.btnLuu.Location = new System.Drawing.Point(37, 366);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(102, 34);
             this.btnLuu.TabIndex = 8;
@@ -190,24 +185,23 @@
             // 
             this.btnCloseFrm.BackColor = System.Drawing.Color.Orange;
             this.btnCloseFrm.Location = new System.Drawing.Point(263, 366);
-            this.btnCloseFrm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCloseFrm.Margin = new System.Windows.Forms.Padding(4);
             this.btnCloseFrm.Name = "btnCloseFrm";
             this.btnCloseFrm.Size = new System.Drawing.Size(103, 34);
             this.btnCloseFrm.TabIndex = 9;
             this.btnCloseFrm.Text = "Đóng";
             this.btnCloseFrm.UseVisualStyleBackColor = false;
-            this.btnCloseFrm.Click += new System.EventHandler(this.btnCloseFrm_Click_1);
+            this.btnCloseFrm.Click += new System.EventHandler(this.btnCloseFrm_Click);
             // 
             // cboTrangThaiPhong
             // 
             this.cboTrangThaiPhong.BackColor = System.Drawing.Color.Orange;
             this.cboTrangThaiPhong.FormattingEnabled = true;
             this.cboTrangThaiPhong.Location = new System.Drawing.Point(128, 189);
-            this.cboTrangThaiPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTrangThaiPhong.Margin = new System.Windows.Forms.Padding(4);
             this.cboTrangThaiPhong.Name = "cboTrangThaiPhong";
             this.cboTrangThaiPhong.Size = new System.Drawing.Size(236, 32);
             this.cboTrangThaiPhong.TabIndex = 10;
-            this.cboTrangThaiPhong.SelectedIndexChanged += new System.EventHandler(this.cboTrangThaiPhong_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -252,7 +246,6 @@
             this.label4.Size = new System.Drawing.Size(83, 25);
             this.label4.TabIndex = 14;
             this.label4.Text = "Dịch vụ:";
-            this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // label5
             // 
@@ -275,7 +268,6 @@
             this.label6.Size = new System.Drawing.Size(173, 25);
             this.label6.TabIndex = 16;
             this.label6.Text = "Trạng thái hiện tại:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -300,7 +292,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblTenPhong);
             this.panel1.Location = new System.Drawing.Point(16, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1429, 108);
             this.panel1.TabIndex = 18;
@@ -315,7 +307,7 @@
             this.panel2.Controls.Add(this.txtSoLuong);
             this.panel2.Controls.Add(this.btnThemDV);
             this.panel2.Location = new System.Drawing.Point(16, 135);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1429, 88);
             this.panel2.TabIndex = 19;
@@ -331,7 +323,7 @@
             this.panel3.Controls.Add(this.btnCloseFrm);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Location = new System.Drawing.Point(1030, 232);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(415, 464);
             this.panel3.TabIndex = 20;
@@ -342,11 +334,10 @@
             this.panel4.BackColor = System.Drawing.SystemColors.Info;
             this.panel4.Controls.Add(this.dgvLichSuDV);
             this.panel4.Location = new System.Drawing.Point(16, 232);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1005, 464);
             this.panel4.TabIndex = 16;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // frmChiTietPhong
             // 
@@ -359,7 +350,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmChiTietPhong";
             this.Text = "frmChiTietPhong";
             this.Load += new System.EventHandler(this.frmChiTietPhong_Load);

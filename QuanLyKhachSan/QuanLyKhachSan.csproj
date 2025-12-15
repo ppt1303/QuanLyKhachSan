@@ -107,6 +107,12 @@
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ucDatPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucDatPhong.Designer.cs">
+      <DependentUpon>ucDatPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ucDichVu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucDatPhong.resx">
+      <DependentUpon>ucDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDichVu.resx">
       <DependentUpon>ucDichVu.cs</DependentUpon>

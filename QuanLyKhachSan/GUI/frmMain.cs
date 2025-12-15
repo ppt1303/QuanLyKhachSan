@@ -5,7 +5,7 @@ using QuanLyKhachSan.BLL;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq; // Cần thêm thư viện này để dùng FirstOrDefault
+using System.Linq; 
 
 namespace QuanLyKhachSan.GUI
 {
@@ -17,8 +17,6 @@ namespace QuanLyKhachSan.GUI
         {
             InitializeComponent();
             _bllAddPicture = new addPicture();
-
-            // Đăng ký các sự kiện
             this.Load += FrmMain_Load;
             accordionControl1.ElementClick += AccordionControl1_ElementClick;
         }
@@ -34,7 +32,6 @@ namespace QuanLyKhachSan.GUI
             {
                 LoadUserControl(typeof(ucTrangChu));
             }
-            // Sau này bạn có thể thêm các else if cho các nút khác
             else if (e.Element.Name == "aceDichVu") 
             {
                 LoadUserControl(typeof(ucDichVu));
@@ -43,6 +40,10 @@ namespace QuanLyKhachSan.GUI
             {
                 LoadUserControl(typeof(ucThietBi));
             }
+            //else if (e.Element.Name == "aceDatPhong")
+            //{
+            //    LoadUserControl(typeof(ucDatPhong));
+            //}
         }
         private void LoadUserControl(Type controlType)
         {
@@ -59,16 +60,10 @@ namespace QuanLyKhachSan.GUI
             fluentDesignFormContainer1.Controls.Add(control);
             control.BringToFront();
         }
-        private void frmMain_Load_1(object sender, EventArgs e) { }
-        private void accordionControlElement1_Click(object sender, EventArgs e) { }
-
         private void aceDatPhong_Click(object sender, EventArgs e)
         {
-
-        }
-        private void accordionControlElement3_Click(object sender, EventArgs e)
-        {
-          
+            frmDatPhong frmDP = new frmDatPhong();
+            frmDP.ShowDialog();
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿namespace QuanLyKhachSan.GUI
 {
-    partial class frmDatPhong
+    partial class ucDatPhong
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -31,14 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatPhong));
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnLocPhong = new Guna.UI2.WinForms.Guna2Button();
-            this.dtpNgayDi = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtpNgayDen = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnDoiPhong = new Guna.UI2.WinForms.Guna2Button();
             this.btnNhanPhong = new Guna.UI2.WinForms.Guna2Button();
@@ -57,127 +49,18 @@
             this.btnTim = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblPhongDangChon = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnLocPhong = new Guna.UI2.WinForms.Guna2Button();
+            this.dtpNgayDi = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.dtpNgayDen = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhongDaDat)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.btnLocPhong);
-            this.guna2Panel1.Controls.Add(this.dtpNgayDi);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
-            this.guna2Panel1.Controls.Add(this.dtpNgayDen);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1210, 90);
-            this.guna2Panel1.TabIndex = 0;
-            // 
-            // btnLocPhong
-            // 
-            this.btnLocPhong.BorderRadius = 20;
-            this.btnLocPhong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLocPhong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLocPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLocPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLocPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnLocPhong.ForeColor = System.Drawing.Color.White;
-            this.btnLocPhong.Image = global::QuanLyKhachSan.Properties.Resources.kinh;
-            this.btnLocPhong.Location = new System.Drawing.Point(1005, 14);
-            this.btnLocPhong.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLocPhong.Name = "btnLocPhong";
-            this.btnLocPhong.Size = new System.Drawing.Size(186, 68);
-            this.btnLocPhong.TabIndex = 4;
-            this.btnLocPhong.Text = "Tìm Phòng";
-            this.btnLocPhong.Click += new System.EventHandler(this.btnLocPhong_Click);
-            // 
-            // dtpNgayDi
-            // 
-            this.dtpNgayDi.Checked = true;
-            this.dtpNgayDi.CustomFormat = "dd/MM/yyyy";
-            this.dtpNgayDi.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpNgayDi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayDi.Location = new System.Drawing.Point(690, 18);
-            this.dtpNgayDi.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpNgayDi.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpNgayDi.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpNgayDi.Name = "dtpNgayDi";
-            this.dtpNgayDi.Size = new System.Drawing.Size(275, 54);
-            this.dtpNgayDi.TabIndex = 3;
-            this.dtpNgayDi.Value = new System.DateTime(2025, 12, 9, 9, 19, 55, 195);
-            // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.AutoSize = false;
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(499, 18);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(183, 46);
-            this.guna2HtmlLabel2.TabIndex = 2;
-            this.guna2HtmlLabel2.Text = "Đến ngày";
-            // 
-            // dtpNgayDen
-            // 
-            this.dtpNgayDen.Checked = true;
-            this.dtpNgayDen.CustomFormat = "dd/MM/yyyy";
-            this.dtpNgayDen.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpNgayDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgayDen.Location = new System.Drawing.Point(170, 18);
-            this.dtpNgayDen.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpNgayDen.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpNgayDen.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpNgayDen.Name = "dtpNgayDen";
-            this.dtpNgayDen.Size = new System.Drawing.Size(275, 54);
-            this.dtpNgayDen.TabIndex = 1;
-            this.dtpNgayDen.Value = new System.DateTime(2025, 12, 9, 9, 18, 0, 164);
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.AutoSize = false;
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(16, 18);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(146, 46);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Từ ngày:";
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel3);
-            this.guna2Panel2.Controls.Add(this.btnDoiPhong);
-            this.guna2Panel2.Controls.Add(this.btnNhanPhong);
-            this.guna2Panel2.Controls.Add(this.dgvPhongDaDat);
-            this.guna2Panel2.Controls.Add(this.lblDanhSachDat);
-            this.guna2Panel2.Controls.Add(this.btnLamMoi);
-            this.guna2Panel2.Controls.Add(this.txtSDT);
-            this.guna2Panel2.Controls.Add(this.btnDatPhong);
-            this.guna2Panel2.Controls.Add(this.txtTienCoc);
-            this.guna2Panel2.Controls.Add(this.btnThemKhach);
-            this.guna2Panel2.Controls.Add(this.txtQuocTich);
-            this.guna2Panel2.Controls.Add(this.dtpNgaySinh);
-            this.guna2Panel2.Controls.Add(this.cboGioiTinh);
-            this.guna2Panel2.Controls.Add(this.txtCCCD);
-            this.guna2Panel2.Controls.Add(this.txtHoTen);
-            this.guna2Panel2.Controls.Add(this.btnTim);
-            this.guna2Panel2.Controls.Add(this.txtSearch);
-            this.guna2Panel2.Controls.Add(this.lblPhongDangChon);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel2.FillColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2Panel2.Location = new System.Drawing.Point(682, 90);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(528, 1071);
-            this.guna2Panel2.TabIndex = 1;
             // 
             // guna2HtmlLabel3
             // 
@@ -190,7 +73,6 @@
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(292, 62);
             this.guna2HtmlLabel3.TabIndex = 17;
             this.guna2HtmlLabel3.Text = "Đặt phòng mới:";
-            this.guna2HtmlLabel3.Click += new System.EventHandler(this.guna2HtmlLabel3_Click);
             // 
             // btnDoiPhong
             // 
@@ -209,7 +91,6 @@
             this.btnDoiPhong.TabIndex = 16;
             this.btnDoiPhong.Text = "Đổi Phòng";
             this.btnDoiPhong.Visible = false;
-            this.btnDoiPhong.Click += new System.EventHandler(this.btnDoiPhong_Click);
             // 
             // btnNhanPhong
             // 
@@ -227,7 +108,6 @@
             this.btnNhanPhong.TabIndex = 15;
             this.btnNhanPhong.Text = "Nhận Phòng";
             this.btnNhanPhong.Visible = false;
-            this.btnNhanPhong.Click += new System.EventHandler(this.btnNhanPhong_Click);
             // 
             // dgvPhongDaDat
             // 
@@ -235,7 +115,7 @@
             this.dgvPhongDaDat.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.142858F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -245,8 +125,8 @@
             this.dgvPhongDaDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.142858F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -310,7 +190,6 @@
             this.btnLamMoi.Size = new System.Drawing.Size(161, 51);
             this.btnLamMoi.TabIndex = 12;
             this.btnLamMoi.Text = "Làm Mới";
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // txtSDT
             // 
@@ -348,7 +227,6 @@
             this.btnDatPhong.Size = new System.Drawing.Size(183, 75);
             this.btnDatPhong.TabIndex = 10;
             this.btnDatPhong.Text = "XÁC NHẬN ĐẶT";
-            this.btnDatPhong.Click += new System.EventHandler(this.btnDatPhong_Click);
             // 
             // txtTienCoc
             // 
@@ -387,7 +265,6 @@
             this.btnThemKhach.Size = new System.Drawing.Size(197, 68);
             this.btnThemKhach.TabIndex = 8;
             this.btnThemKhach.Text = "Lưu Khách Mới";
-            this.btnThemKhach.Click += new System.EventHandler(this.btnThemKhach_Click);
             // 
             // txtQuocTich
             // 
@@ -485,7 +362,6 @@
             this.txtHoTen.SelectedText = "";
             this.txtHoTen.Size = new System.Drawing.Size(258, 57);
             this.txtHoTen.TabIndex = 3;
-            this.txtHoTen.TextChanged += new System.EventHandler(this.txtHoTen_TextChanged);
             // 
             // btnTim
             // 
@@ -503,7 +379,6 @@
             this.btnTim.Size = new System.Drawing.Size(148, 51);
             this.btnTim.TabIndex = 2;
             this.btnTim.Text = "Tìm";
-            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // txtSearch
             // 
@@ -538,6 +413,77 @@
             this.lblPhongDangChon.TabIndex = 0;
             this.lblPhongDangChon.Text = "PHÒNG:CHƯA CHỌN";
             // 
+            // btnLocPhong
+            // 
+            this.btnLocPhong.BorderRadius = 20;
+            this.btnLocPhong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLocPhong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLocPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLocPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLocPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLocPhong.ForeColor = System.Drawing.Color.White;
+            this.btnLocPhong.Image = global::QuanLyKhachSan.Properties.Resources.kinh;
+            this.btnLocPhong.Location = new System.Drawing.Point(1005, 14);
+            this.btnLocPhong.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLocPhong.Name = "btnLocPhong";
+            this.btnLocPhong.Size = new System.Drawing.Size(186, 68);
+            this.btnLocPhong.TabIndex = 4;
+            this.btnLocPhong.Text = "Tìm Phòng";
+            // 
+            // dtpNgayDi
+            // 
+            this.dtpNgayDi.Checked = true;
+            this.dtpNgayDi.CustomFormat = "dd/MM/yyyy";
+            this.dtpNgayDi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpNgayDi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgayDi.Location = new System.Drawing.Point(690, 18);
+            this.dtpNgayDi.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpNgayDi.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpNgayDi.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpNgayDi.Name = "dtpNgayDi";
+            this.dtpNgayDi.Size = new System.Drawing.Size(275, 54);
+            this.dtpNgayDi.TabIndex = 3;
+            this.dtpNgayDi.Value = new System.DateTime(2025, 12, 9, 9, 19, 55, 195);
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.AutoSize = false;
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(499, 18);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(183, 46);
+            this.guna2HtmlLabel2.TabIndex = 2;
+            this.guna2HtmlLabel2.Text = "Đến ngày";
+            // 
+            // dtpNgayDen
+            // 
+            this.dtpNgayDen.Checked = true;
+            this.dtpNgayDen.CustomFormat = "dd/MM/yyyy";
+            this.dtpNgayDen.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpNgayDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgayDen.Location = new System.Drawing.Point(170, 18);
+            this.dtpNgayDen.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpNgayDen.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpNgayDen.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpNgayDen.Name = "dtpNgayDen";
+            this.dtpNgayDen.Size = new System.Drawing.Size(275, 54);
+            this.dtpNgayDen.TabIndex = 1;
+            this.dtpNgayDen.Value = new System.DateTime(2025, 12, 9, 9, 18, 0, 164);
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.AutoSize = false;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(16, 18);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(146, 46);
+            this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = "Từ ngày:";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -545,58 +491,97 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 90);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(682, 1071);
-            this.flowLayoutPanel1.TabIndex = 2;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(843, 700);
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
-            // frmDatPhong
+            // guna2Panel2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.guna2Panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel3);
+            this.guna2Panel2.Controls.Add(this.btnDoiPhong);
+            this.guna2Panel2.Controls.Add(this.btnNhanPhong);
+            this.guna2Panel2.Controls.Add(this.dgvPhongDaDat);
+            this.guna2Panel2.Controls.Add(this.lblDanhSachDat);
+            this.guna2Panel2.Controls.Add(this.btnLamMoi);
+            this.guna2Panel2.Controls.Add(this.txtSDT);
+            this.guna2Panel2.Controls.Add(this.btnDatPhong);
+            this.guna2Panel2.Controls.Add(this.txtTienCoc);
+            this.guna2Panel2.Controls.Add(this.btnThemKhach);
+            this.guna2Panel2.Controls.Add(this.txtQuocTich);
+            this.guna2Panel2.Controls.Add(this.dtpNgaySinh);
+            this.guna2Panel2.Controls.Add(this.cboGioiTinh);
+            this.guna2Panel2.Controls.Add(this.txtCCCD);
+            this.guna2Panel2.Controls.Add(this.txtHoTen);
+            this.guna2Panel2.Controls.Add(this.btnTim);
+            this.guna2Panel2.Controls.Add(this.txtSearch);
+            this.guna2Panel2.Controls.Add(this.lblPhongDangChon);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2Panel2.FillColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guna2Panel2.Location = new System.Drawing.Point(843, 90);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(528, 700);
+            this.guna2Panel2.TabIndex = 4;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.btnLocPhong);
+            this.guna2Panel1.Controls.Add(this.dtpNgayDi);
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
+            this.guna2Panel1.Controls.Add(this.dtpNgayDen);
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1371, 90);
+            this.guna2Panel1.TabIndex = 3;
+            // 
+            // ucDatPhong
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1210, 1161);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmDatPhong";
-            this.Text = "frmDatPhong";
-            this.Load += new System.EventHandler(this.frmDatPhong_Load);
-            this.guna2Panel1.ResumeLayout(false);
+            this.Name = "ucDatPhong";
+            this.Size = new System.Drawing.Size(1371, 790);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhongDaDat)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhongDaDat)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgayDen;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2Button btnDoiPhong;
+        private Guna.UI2.WinForms.Guna2Button btnNhanPhong;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvPhongDaDat;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblDanhSachDat;
+        private Guna.UI2.WinForms.Guna2Button btnLamMoi;
+        private Guna.UI2.WinForms.Guna2TextBox txtSDT;
+        private Guna.UI2.WinForms.Guna2Button btnDatPhong;
+        private Guna.UI2.WinForms.Guna2TextBox txtTienCoc;
+        private Guna.UI2.WinForms.Guna2Button btnThemKhach;
+        private Guna.UI2.WinForms.Guna2TextBox txtQuocTich;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgaySinh;
+        private Guna.UI2.WinForms.Guna2ComboBox cboGioiTinh;
+        private Guna.UI2.WinForms.Guna2TextBox txtCCCD;
+        private Guna.UI2.WinForms.Guna2TextBox txtHoTen;
+        private Guna.UI2.WinForms.Guna2Button btnTim;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblPhongDangChon;
         private Guna.UI2.WinForms.Guna2Button btnLocPhong;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgayDi;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgayDen;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblPhongDangChon;
-        private Guna.UI2.WinForms.Guna2Button btnTim;
-        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2TextBox txtCCCD;
-        private Guna.UI2.WinForms.Guna2TextBox txtHoTen;
-        private Guna.UI2.WinForms.Guna2ComboBox cboGioiTinh;
-        private Guna.UI2.WinForms.Guna2TextBox txtQuocTich;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgaySinh;
-        private Guna.UI2.WinForms.Guna2TextBox txtTienCoc;
-        private Guna.UI2.WinForms.Guna2Button btnThemKhach;
-        private Guna.UI2.WinForms.Guna2Button btnDatPhong;
-        private Guna.UI2.WinForms.Guna2TextBox txtSDT;
-        private Guna.UI2.WinForms.Guna2Button btnLamMoi;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblDanhSachDat;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvPhongDaDat;
-        private Guna.UI2.WinForms.Guna2Button btnDoiPhong;
-        private Guna.UI2.WinForms.Guna2Button btnNhanPhong;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

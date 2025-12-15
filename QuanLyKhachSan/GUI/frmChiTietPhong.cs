@@ -1,234 +1,244 @@
 ﻿using QuanLyKhachSan.BLL;
-using QuanLyKhachSan.DAL; // Cần dùng để truy cập DatabaseHelper
+using QuanLyKhachSan.DAL; // Sử dụng DatabaseHelper
 using System;
 using System.Data;
-using System.Data.SqlClient; // Cần dùng cho SqlParameter
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing;
 
 namespace QuanLyKhachSan.GUI
 {
-    public partial class frmChiTietPhong : Form
+    public partial class frmChiTietPhong : Form 
     {
-        public frmChiTietPhong()
-        {
-            InitializeComponent();
-        }
-
-        private int maNP;
-        private int maPhong;
-
-        // 2. Khai báo BLL để sử dụng (Giữ lại để thêm dịch vụ)
-        private PhongBLL phongBLL = new PhongBLL();
+        private int maNP;    
+        private int maPhong; 
         private BookingBLL bookingBLL = new BookingBLL();
 
-        // Constructor mới
         public frmChiTietPhong(int maNP, int maPhong)
         {
             InitializeComponent();
             this.maNP = maNP;
             this.maPhong = maPhong;
-
-            // Đảm bảo nút được liên kết trong Designer, sau đó code sẽ chạy các phương thức dưới đây
-            LoadDanhSachDichVu();
-            LoadLichSuDichVu();
-            LoadDanhSachTrangThaiPhong();
-            LoadThongTinChung();
         }
 
-        // --- HÀM HỖ TRỢ TRẠNG THÁI ---
-
-        // Map ID (0, 1, 2) sang chuỗi trạng thái hiển thị
-        private string GetTrangThaiString(int maTrangThai)
+        private void frmChiTietPhong_Load(object sender, EventArgs e)
         {
-            switch (maTrangThai)
-            {
-                case 1: return "Sẵn sàng (Trống)";
-                case 2: return "Cần dọn dẹp (Dơ)";
-                case 0: return "Đang bảo trì/Sửa chữa";
-                default: return "Không xác định";
-            }
+            
+            LoadDanhSachTrangThaiPhong(); 
+            LoadDanhSachDichVu();       
+
+            LoadThongTinChung();          
+            LoadLichSuDichVu();          
         }
-
-        // Hàm lấy trạng thái hiện tại của phòng từ DB (Sử dụng DatabaseHelper trực tiếp)
-        private int GetTrangThaiPhongHienTai()
-        {
-            // Truy vấn trực tiếp vào bảng PHONG
-            string query = "SELECT TrangThaiPhong FROM PHONG WHERE MaPhong = @MaPhong";
-            SqlParameter[] para = { new SqlParameter("@MaPhong", this.maPhong) };
-
-            DataTable dt = DatabaseHelper.GetData(query, para, CommandType.Text);
-
-            if (dt != null && dt.Rows.Count > 0 && dt.Rows[0]["TrangThaiPhong"] != DBNull.Value)
-            {
-                return Convert.ToInt32(dt.Rows[0]["TrangThaiPhong"]);
-            }
-            return 1; // Mặc định là Sẵn sàng (1)
-        }
-
-        // Hàm tải danh sách trạng thái phòng cho ComboBox
-        private void LoadDanhSachTrangThaiPhong()
-        {
-            // Tạo dữ liệu mô phỏng dựa trên mã trạng thái trong DB: 0, 1, 2
-            DataTable dtTrangThai = new DataTable();
-            dtTrangThai.Columns.Add("MaTrangThai", typeof(int));
-            dtTrangThai.Columns.Add("TenTrangThai", typeof(string));
-
-            dtTrangThai.Rows.Add(1, "Sẵn sàng (Trống)");
-            dtTrangThai.Rows.Add(2, "Cần dọn dẹp (Dơ)");
-            dtTrangThai.Rows.Add(0, "Đang bảo trì/Sửa chữa");
-
-            cboTrangThaiPhong.DataSource = dtTrangThai;
-            cboTrangThaiPhong.DisplayMember = "TenTrangThai";
-            cboTrangThaiPhong.ValueMember = "MaTrangThai";
-        }
-
-        // --- HÀM XỬ LÝ SỰ KIỆN NÚT ---
-
-        // Xử lý nút LƯU (Cập nhật trạng thái phòng)
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void LoadThongTinChung()
         {
             try
             {
-                if (cboTrangThaiPhong.SelectedValue == null)
+                // A. Lấy tên phòng và loại phòng
+                string queryPhong = @"
+                    SELECT P.TenPhong, LP.TenLP, P.TrangThaiPhong
+                    FROM PHONG P 
+                    JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP 
+                    WHERE P.MaPhong = @MaPhong";
+
+                DataTable dtPhong = DatabaseHelper.GetData(queryPhong, new SqlParameter[] {
+                    new SqlParameter("@MaPhong", this.maPhong)
+                });
+
+                if (dtPhong.Rows.Count > 0)
                 {
-                    MessageBox.Show("Vui lòng chọn trạng thái phòng mới.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    string tenPhong = dtPhong.Rows[0]["TenPhong"].ToString();
+                    string tenLP = dtPhong.Rows[0]["TenLP"].ToString();
+                    int trangThaiHienTai = Convert.ToInt32(dtPhong.Rows[0]["TrangThaiPhong"]);
+
+                    lblTenPhong.Text = $"{tenPhong} - {tenLP}";
+                    lblTieuDeTrangThai.Text = GetTrangThaiString(trangThaiHienTai);
+
+                    // Set giá trị cho ComboBox trạng thái
+                    if (cboTrangThaiPhong.Items.Count > 0)
+                        cboTrangThaiPhong.SelectedValue = trangThaiHienTai;
                 }
 
-                int maTrangThaiMoi = Convert.ToInt32(cboTrangThaiPhong.SelectedValue);
-                string ghiChu = "Cập nhật thủ công từ Form Chi Tiết";
-
-                // GỌI STORED PROCEDURE: sp_CapNhatTrangThaiDonDep (Có sẵn trong nhat.sql)
-                string procName = "sp_CapNhatTrangThaiDonDep";
-                SqlParameter[] para = {
-                    new SqlParameter("@MaPhong", this.maPhong),
-                    new SqlParameter("@TrangThai", maTrangThaiMoi),
-                    new SqlParameter("@GhiChu", ghiChu)
-                };
-
-                if (DatabaseHelper.ExecuteNonQuery(procName, para, CommandType.StoredProcedure))
+                // B. Lấy thông tin Khách hàng (Nếu đang có người ở - maNP > 0)
+                if (this.maNP > 0)
                 {
-                    MessageBox.Show("Cập nhật trạng thái phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close(); // Đóng Form sau khi lưu
+                    // JOIN 3 Bảng: NHANPHONG -> DATPHONG -> KHACHHANG
+                    string queryKhach = @"
+                        SELECT KH.HoTen, NP.ThoiGianNhan
+                        FROM NHANPHONG NP
+                        JOIN DATPHONG DP ON NP.MaDP = DP.MaDP
+                        JOIN KHACHHANG KH ON DP.MaKH = KH.MaKH
+                        WHERE NP.MaNP = @MaNP";
+
+                    DataTable dtKhach = DatabaseHelper.GetData(queryKhach, new SqlParameter[] {
+                        new SqlParameter("@MaNP", this.maNP)
+                    });
+
+                    if (dtKhach.Rows.Count > 0)
+                    {
+                        lblTenKhach.Text = dtKhach.Rows[0]["HoTen"].ToString();
+                        DateTime timeNhan = Convert.ToDateTime(dtKhach.Rows[0]["ThoiGianNhan"]);
+                        lblGioNhan.Text = timeNhan.ToString("dd/MM/yyyy HH:mm");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Cập nhật trạng thái phòng thất bại. Lỗi hệ thống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblTenKhach.Text = "---";
+                    lblGioNhan.Text = "---";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi tải thông tin chung: " + ex.Message);
             }
         }
 
-        // Xử lý nút ĐÓNG Form
-        private void btnCloseFrm_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        // --- CÁC HÀM TẢI DỮ LIỆU ---
-
-        private (string TenPhong, string TenLP) GetRoomDetailsById()
-        {
-            string query = @"
-                SELECT P.TenPhong, LP.TenLP 
-                FROM PHONG P 
-                JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP 
-                WHERE P.MaPhong = @MaPhong";
-
-            SqlParameter[] para = { new SqlParameter("@MaPhong", this.maPhong) };
-
-            DataTable dt = DatabaseHelper.GetData(query, para, CommandType.Text);
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                return (dt.Rows[0]["TenPhong"].ToString(), dt.Rows[0]["TenLP"].ToString());
-            }
-            return ("Lỗi tải phòng", "");
-        }
-
-        // --- HÀM TẢI DỮ LIỆU CŨ (SỬA ĐỂ TẢI TÊN PHÒNG LUÔN) ---
-        private void LoadThongTinChung()
-        {
-            // BƯỚC 1: LUÔN HIỂN THỊ TÊN PHÒNG VÀ LOẠI PHÒNG
-            var roomDetails = GetRoomDetailsById();
-            lblTenPhong.Text = roomDetails.TenPhong + " (" + roomDetails.TenLP + ")";
-
-            // Tải thông tin khách đang ở phòng 
-            DataTable dtGuest = bookingBLL.GetRoomAndGuestDetails(this.maNP);
-
-            if (dtGuest != null && dtGuest.Rows.Count > 0 && this.maNP > 0)
-            {
-                DataRow row = dtGuest.Rows[0];
-                // KHÔNG CẦN SET LẠI lblTenPhong
-                lblTenKhach.Text = row["HoTen"].ToString();
-                lblGioNhan.Text = Convert.ToDateTime(row["ThoiGianNhan"]).ToString("dd/MM/yyyy HH:mm");
-            }
-            else
-            {
-                // Phòng Trống/Đang Sửa/Bảo trì (MaNP=0)
-                lblTenKhach.Text = "Không có khách đang ở";
-                lblGioNhan.Text = "---";
-            }
-
-            // BƯỚC 2: HIỂN THỊ TRẠNG THÁI HIỆN TẠI
-            int currentStatusId = GetTrangThaiPhongHienTai();
-            string currentStatusName = GetTrangThaiString(currentStatusId);
-
-            lblTieuDeTrangThai.Text = currentStatusName;
-
-            if (cboTrangThaiPhong.Items.Count > 0)
-            {
-                cboTrangThaiPhong.SelectedValue = currentStatusId;
-            }
-        }
-
-        private void LoadDanhSachDichVu()
-        {
-            // Tải danh sách dịch vụ vào ComboBox
-            DataTable dtDichVu = bookingBLL.LoadAllDichVu();
-            cboDichVu.DataSource = dtDichVu;
-            cboDichVu.DisplayMember = "TenDV";
-            cboDichVu.ValueMember = "MaDV";
-        }
-
+        // 1.2 Tải lịch sử sử dụng Dịch vụ & Phụ thu (UNION 2 bảng)
         public void LoadLichSuDichVu()
         {
-            // Tải lịch sử chi tiêu (Dịch vụ và Phụ thu) vào DataGridView
-            DataTable dtChiTieu = bookingBLL.LoadLichSuChiTieu(this.maNP);
-            dgvLichSuDV.DataSource = dtChiTieu;
-        }
+            if (this.maNP <= 0) return; // Không có khách thì không có lịch sử
 
-        // --- CÁC HANDLER KHÁC ---
-
-        private void btnThemDV_Click_1(object sender, EventArgs e)
-        {
-            // Logic thêm dịch vụ (Giữ nguyên)
             try
             {
-                if (cboDichVu.SelectedValue == null || string.IsNullOrEmpty(txtSoLuong.Text))
+                // Query kết hợp Dịch vụ và Phụ thu
+                string query = @"
+                    SELECT 
+                        DV.TenDV AS [Tên Dịch Vụ/Phụ Thu], 
+                        SD.SoLuong AS [SL], 
+                        FORMAT(DV.Gia, 'N0') AS [Đơn Giá], 
+                        FORMAT(SD.SoLuong * DV.Gia, 'N0') AS [Thành Tiền],
+                        SD.NgaySuDung AS [Thời Gian]
+                    FROM SUDUNG_DICHVU SD 
+                    JOIN DICHVU DV ON SD.MaDV = DV.MaDV 
+                    WHERE SD.MaNP = @MaNP
+
+                    UNION ALL
+
+                    SELECT 
+                        PT.Ten AS [Tên Dịch Vụ/Phụ Thu], 
+                        SP.SoLuong AS [SL], 
+                        FORMAT(SP.GiaHienTai, 'N0') AS [Đơn Giá], 
+                        FORMAT(SP.SoLuong * SP.GiaHienTai, 'N0') AS [Thành Tiền],
+                        SP.ThoiGianGhiNhan AS [Thời Gian]
+                    FROM SUDUNG_PHUTHU SP 
+                    JOIN PHUTHU PT ON SP.MaPhuThu = PT.MaPhuThu 
+                    WHERE SP.MaNP = @MaNP";
+
+                DataTable dt = DatabaseHelper.GetData(query, new SqlParameter[] {
+                    new SqlParameter("@MaNP", this.maNP)
+                });
+
+                dgvLichSuDV.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải lịch sử dịch vụ: " + ex.Message);
+            }
+        }
+        private void LoadDanhSachTrangThaiPhong()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Val", typeof(int));
+            dt.Columns.Add("Name", typeof(string));
+
+            dt.Rows.Add(1, "Sẵn sàng");
+            dt.Rows.Add(2, "Chưa dọn dẹp");
+            dt.Rows.Add(0, "Bảo trì");
+
+            cboTrangThaiPhong.DataSource = dt;
+            cboTrangThaiPhong.DisplayMember = "Name";
+            cboTrangThaiPhong.ValueMember = "Val";
+        }
+
+        // 1.4 Load ComboBox Dịch Vụ
+        private void LoadDanhSachDichVu()
+        {
+            try
+            {
+                string query = "SELECT MaDV, TenDV, Gia FROM DICHVU";
+                DataTable dt = DatabaseHelper.GetData(query);
+
+                cboDichVu.DataSource = dt;
+                cboDichVu.DisplayMember = "TenDV"; // Hiển thị tên
+                cboDichVu.ValueMember = "MaDV";    // Giá trị là mã
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải danh sách dịch vụ: " + ex.Message);
+            }
+        }
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int trangThaiMoi = Convert.ToInt32(cboTrangThaiPhong.SelectedValue);
+
+                // Gọi SP: sp_CapNhatTrangThaiDonDep
+                // Tham số: @MaPhong, @TrangThai, @GhiChu
+                string spName = "sp_CapNhatTrangThaiDonDep";
+                SqlParameter[] p = {
+                    new SqlParameter("@MaPhong", this.maPhong),
+                    new SqlParameter("@TrangThai", trangThaiMoi),
+                    new SqlParameter("@GhiChu", "Cập nhật từ chi tiết phòng")
+                };
+
+                if (DatabaseHelper.ExecuteNonQuery(spName, p, CommandType.StoredProcedure))
                 {
-                    MessageBox.Show("Vui lòng chọn dịch vụ và nhập số lượng.", "Cảnh báo");
+                    MessageBox.Show("Cập nhật trạng thái thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Nếu cập nhật thành công, load lại màu chữ
+                    lblTieuDeTrangThai.Text = GetTrangThaiString(trangThaiMoi);
+
+                    // Có thể đóng form luôn nếu muốn
+                    // this.Close(); 
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
+            }
+        }
+
+        // 2.2 Thêm dịch vụ cho phòng
+        private void btnThemDV_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra: Phòng phải có khách (MaNP > 0) mới thêm dịch vụ được
+            if (this.maNP <= 0)
+            {
+                MessageBox.Show("Phòng chưa có khách check-in, không thể thêm dịch vụ!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Lấy dữ liệu từ giao diện
+                short maDV = Convert.ToInt16(cboDichVu.SelectedValue); // DB dùng smallint -> C# Int16
+                short soLuong = 0;
+
+                if (!short.TryParse(txtSoLuong.Text, out soLuong) || soLuong <= 0)
+                {
+                    MessageBox.Show("Vui lòng nhập số lượng hợp lệ (>0).", "Thông báo");
                     return;
                 }
 
-                short maDV = Convert.ToInt16(cboDichVu.SelectedValue);
-                short soLuong = Convert.ToInt16(txtSoLuong.Text);
+                // Gọi SP: sp_ThemDichVuSuDung
+                // Tham số: @MaNP, @MaDV, @SoLuong, @GhiChu
+                string spName = "sp_ThemDichVuSuDung";
+                SqlParameter[] p = {
+                    new SqlParameter("@MaNP", this.maNP),
+                    new SqlParameter("@MaDV", maDV),
+                    new SqlParameter("@SoLuong", soLuong),
+                    new SqlParameter("@GhiChu", DBNull.Value)
+                };
 
-                if (soLuong <= 0)
-                {
-                    MessageBox.Show("Số lượng phải lớn hơn 0.", "Lỗi nhập liệu");
-                    return;
-                }
-
-                if (bookingBLL.ThemDichVuSuDung(this.maNP, maDV, soLuong))
+                if (DatabaseHelper.ExecuteNonQuery(spName, p, CommandType.StoredProcedure))
                 {
                     MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo");
-                    LoadLichSuDichVu();
-                    txtSoLuong.Text = "1";
+                    LoadLichSuDichVu(); // Refresh lại lưới
+                    txtSoLuong.Text = "1"; // Reset số lượng về 1
                 }
                 else
                 {
@@ -237,84 +247,25 @@ namespace QuanLyKhachSan.GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Dữ liệu nhập không hợp lệ hoặc lỗi hệ thống: " + ex.Message, "Lỗi");
+                MessageBox.Show("Lỗi thêm dịch vụ: " + ex.Message);
             }
         }
 
-        // Giữ lại các handler trống
-        private void frmChiTietPhong_Load(object sender, EventArgs e) { }
-        private void btnCheckOut_Click(object sender, EventArgs e) { }
-        private void cboDichVu_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void label3_Click(object sender, EventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void label4_Click(object sender, EventArgs e) { }
-        private void lblTieuDeTrangThai_Click(object sender, EventArgs e) { }
-        private void cboTrangThaiPhong_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void btnThemDV_Click(object sender, EventArgs e)
+        // --- HÀM HỖ TRỢ ---
+        private string GetTrangThaiString(int statusId)
         {
-            btnThemDV_Click_1(sender, e);
-        }
-
-        private void btnLuu_Click_1(object sender, EventArgs e)
-        {
-            try
+            switch (statusId)
             {
-                if (cboTrangThaiPhong.SelectedValue == null)
-                {
-                    MessageBox.Show("Vui lòng chọn trạng thái phòng mới.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                int maTrangThaiMoi = Convert.ToInt32(cboTrangThaiPhong.SelectedValue);
-                string ghiChu = "Cập nhật thủ công từ Form Chi Tiết";
-
-                // GỌI STORED PROCEDURE: sp_CapNhatTrangThaiDonDep
-                string procName = "sp_CapNhatTrangThaiDonDep";
-                SqlParameter[] para = {
-                    new SqlParameter("@MaPhong", this.maPhong),
-                    new SqlParameter("@TrangThai", maTrangThaiMoi),
-                    new SqlParameter("@GhiChu", ghiChu)
-                };
-
-                if (DatabaseHelper.ExecuteNonQuery(procName, para, CommandType.StoredProcedure))
-                {
-                    MessageBox.Show("Cập nhật trạng thái phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close(); // Đóng Form sau khi lưu
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật trạng thái phòng thất bại. Lỗi hệ thống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case 1: return "Sẵn sàng đón khách";
+                case 2: return "Phòng chưa dọn dẹp";
+                case 0: return "Đang bảo trì";
+                default: return "Không xác định";
             }
         }
 
-        private void btnCloseFrm_Click_1(object sender, EventArgs e)
+        private void btnCloseFrm_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
