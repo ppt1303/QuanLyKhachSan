@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting;
 
 namespace QuanLyKhachSan
 {
@@ -12,9 +13,9 @@ namespace QuanLyKhachSan
         {
             // 1. Cấu hình trang giấy
             this.Name = "rptHoaDon";
-            this.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+            this.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50); // Lề chuẩn
 
-            // 2. Gọi hàm vẽ giao diện
+            // 2. Vẽ giao diện
             CreateReportLayout();
         }
 
@@ -22,7 +23,7 @@ namespace QuanLyKhachSan
         {
             // --- TẠO CÁC BĂNG (BANDS) ---
             DetailBand detail = new DetailBand();
-            detail.HeightF = 30;
+            detail.HeightF = 35; // Chiều cao dòng
 
             ReportHeaderBand reportHeader = new ReportHeaderBand();
             reportHeader.HeightF = 150;
@@ -32,83 +33,82 @@ namespace QuanLyKhachSan
 
             this.Bands.AddRange(new Band[] { reportHeader, detail, reportFooter });
 
-            // --- PHẦN ĐẦU: TIÊU ĐỀ ---
+            // =================================================================
+            // 1. PHẦN ĐẦU: TIÊU ĐỀ
+            // =================================================================
             XRLabel lblTitle = new XRLabel();
             lblTitle.Text = "HÓA ĐƠN THANH TOÁN";
-            lblTitle.Font = new Font("Arial", 16, FontStyle.Bold);
-            lblTitle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            lblTitle.BoundsF = new RectangleF(0, 50, 650, 30);
+            lblTitle.Font = new Font("Arial", 18, FontStyle.Bold);
+            lblTitle.TextAlignment = TextAlignment.MiddleCenter;
+            lblTitle.BoundsF = new RectangleF(0, 50, 650, 40); // Width 650 (An toàn)
             reportHeader.Controls.Add(lblTitle);
 
-            // Tiêu đề bảng
+            // HEADER BẢNG (Tiêu đề cột)
             XRTable tableHeader = new XRTable();
-            tableHeader.BoundsF = new RectangleF(0, 110, 650, 25);
-            tableHeader.Borders = DevExpress.XtraPrinting.BorderSide.All;
+            tableHeader.BoundsF = new RectangleF(0, 110, 650, 30);
+            tableHeader.Borders = BorderSide.All;
             tableHeader.BackColor = Color.LightGray;
             tableHeader.Font = new Font("Arial", 10, FontStyle.Bold);
+            tableHeader.BeginInit(); // Bắt đầu vẽ
 
             XRTableRow headerRow = new XRTableRow();
             headerRow.Cells.Add(new XRTableCell { Text = "Nội Dung", WidthF = 450 });
-            headerRow.Cells.Add(new XRTableCell { Text = "Thành Tiền", WidthF = 200, TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight });
+            headerRow.Cells.Add(new XRTableCell { Text = "Thành Tiền", WidthF = 200, TextAlignment = TextAlignment.MiddleRight });
+
             tableHeader.Rows.Add(headerRow);
+            tableHeader.EndInit(); // Kết thúc vẽ
             reportHeader.Controls.Add(tableHeader);
 
-            // --- PHẦN THÂN: DỮ LIỆU (QUAN TRỌNG NHẤT) ---
+            // =================================================================
+            // 2. PHẦN THÂN: DỮ LIỆU (CHI TIẾT)
+            // =================================================================
             XRTable tableDetail = new XRTable();
-            tableDetail.BoundsF = new RectangleF(0, 0, 650, 25);
-            tableDetail.Borders = DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom;
+            tableDetail.BoundsF = new RectangleF(0, 0, 650, 30);
+            tableDetail.Borders = BorderSide.Bottom | BorderSide.Left | BorderSide.Right; // Viền rõ ràng
+            tableDetail.BorderWidth = 1;
+            tableDetail.Font = new Font("Arial", 11);
+            tableDetail.BeginInit(); // Bắt đầu vẽ
 
             XRTableRow detailRow = new XRTableRow();
 
-            // Ô 1: Bind vào cột [NoiDung]
+            // Ô 1: Bind vào [NoiDung]
             XRTableCell cellTen = new XRTableCell();
             cellTen.WidthF = 450;
-            cellTen.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[NoiDung]")); // Khớp SQL
-            cellTen.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0);
+            cellTen.Padding = new PaddingInfo(5, 0, 0, 0);
+            // Binding dữ liệu
+            cellTen.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[NoiDung]"));
 
-            // Ô 2: Bind vào cột [ThanhTien]
+            // Ô 2: Bind vào [ThanhTien]
             XRTableCell cellTien = new XRTableCell();
             cellTien.WidthF = 200;
-            cellTien.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cellTien.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[ThanhTien]")); // Khớp SQL
+            cellTien.Padding = new PaddingInfo(0, 5, 0, 0);
+            cellTien.TextAlignment = TextAlignment.MiddleRight;
+            // Binding dữ liệu
+            cellTien.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[ThanhTien]"));
             cellTien.TextFormatString = "{0:N0}";
-            cellTien.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 5, 0, 0);
 
             detailRow.Cells.Add(cellTen);
             detailRow.Cells.Add(cellTien);
             tableDetail.Rows.Add(detailRow);
+
+            tableDetail.EndInit(); // Kết thúc vẽ
+
+            // QUAN TRỌNG: Phải Add vào Detail Band
             detail.Controls.Add(tableDetail);
 
-            // --- PHẦN ĐUÔI: TỔNG TIỀN ---
-            // --- PHẦN 4: FOOTER (TỔNG TIỀN) ---
-
-            // 1. Tạo Label Tổng
+            // =================================================================
+            // 3. PHẦN ĐUÔI: TỔNG CỘNG
+            // =================================================================
             XRLabel lblTong = new XRLabel();
-            lblTong.BoundsF = new RectangleF(300, 10, 350, 25); // Chỉnh lại tọa độ xíu cho cân
+            lblTong.BoundsF = new RectangleF(350, 10, 300, 30);
             lblTong.Font = new Font("Arial", 12, FontStyle.Bold);
-            lblTong.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            lblTong.TextAlignment = TextAlignment.MiddleRight;
 
-            // 2. Cấu hình tính tổng (Quan trọng nhất đoạn này)
-            XRSummary summary = new XRSummary();
+            // Bind vào cột [TongCong] từ SQL
+            lblTong.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[TongCong]"));
+            lblTong.TextFormatString = "TỔNG CỘNG: {0:N0} VNĐ";
 
-            // Phải chọn là Report (Tính hết cả bài)
-            summary.Running = SummaryRunning.Report;
-
-            // QUAN TRỌNG: Phải chọn phép tính là SUM (Cộng). Cậu đang thiếu dòng này nè!
-            summary.Func = SummaryFunc.Sum;
-
-            // Format số tiền
-            summary.FormatString = "{0:N0} VNĐ";
-            summary.IgnoreNullValues = true;
-
-            // 3. Gán dữ liệu vào
-            // Lưu ý: "Text" phải bind vào cột [ThanhTien] thì nó mới biết lấy cột đó để cộng
-            lblTong.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[ThanhTien]"));
-            lblTong.Summary = summary;
-
-            // Thêm vào Footer
             reportFooter.Controls.Add(lblTong);
-            
         }
     }
 }

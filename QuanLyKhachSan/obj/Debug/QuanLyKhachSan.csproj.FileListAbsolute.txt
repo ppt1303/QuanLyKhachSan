@@ -644,3 +644,4 @@ C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucHoaDon.r
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.rptHoaDon.resources
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQuanLyDatPhong.resources
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQLPhong.resources
+D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQLPhong.resources

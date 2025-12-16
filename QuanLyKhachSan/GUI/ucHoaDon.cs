@@ -114,26 +114,29 @@ namespace QuanLyKhachSan.GUI
 
             try
             {
-                // 1. Lấy MaHD
-                // SỬA: Kiểm tra tên cột trên GridView của cậu là "Mã HĐ" hay "MaHD" nhé!
                 int maHD = Convert.ToInt32(dgvHoaDon.SelectedRows[0].Cells["Mã HĐ"].Value);
 
-                // 2. Lấy dữ liệu (Gọi BLL -> DAL -> sp_LayChiTietHoaDon vừa sửa ở Bước 1)
-                System.Data.DataTable dt = _bll.GetInvoiceDetails(maHD);
+                // Lấy dữ liệu từ SQL lên
+                DataTable dt = _bll.GetInvoiceDetails(maHD);
+
+                // --- ĐOẠN CODE "SOI KÈO" ---
+                string tenCot = "";
+                foreach (DataColumn col in dt.Columns)
+                {
+                    tenCot += col.ColumnName + " | ";
+                }
+                
+                // ---------------------------
 
                 if (dt.Rows.Count > 0)
                 {
-                    // 3. Gọi Report vừa viết lại ở Bước 2
                     QuanLyKhachSan.rptHoaDon rpt = new QuanLyKhachSan.rptHoaDon();
                     rpt.DataSource = dt;
+
+                    // QUAN TRỌNG: Dòng này phải là rỗng ""
                     rpt.DataMember = "";
 
-                    // 4. Hiện lên
                     rpt.ShowPreviewDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Hóa đơn này không có chi tiết (Rỗng)!");
                 }
             }
             catch (Exception ex)

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckOut));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelLeft = new System.Windows.Forms.Panel();
@@ -141,10 +141,10 @@
             this.tabTienPhong.BackColor = System.Drawing.Color.White;
             this.tabTienPhong.Controls.Add(this.grpTinhTien);
             this.tabTienPhong.Controls.Add(this.grpThongTin);
-            this.tabTienPhong.Location = new System.Drawing.Point(4, 41);
+            this.tabTienPhong.Location = new System.Drawing.Point(8, 51);
             this.tabTienPhong.Name = "tabTienPhong";
             this.tabTienPhong.Padding = new System.Windows.Forms.Padding(10);
-            this.tabTienPhong.Size = new System.Drawing.Size(884, 712);
+            this.tabTienPhong.Size = new System.Drawing.Size(876, 698);
             this.tabTienPhong.TabIndex = 0;
             this.tabTienPhong.Text = "Tiền phòng";
             // 
@@ -159,7 +159,7 @@
             this.grpTinhTien.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpTinhTien.Location = new System.Drawing.Point(10, 260);
             this.grpTinhTien.Name = "grpTinhTien";
-            this.grpTinhTien.Size = new System.Drawing.Size(864, 250);
+            this.grpTinhTien.Size = new System.Drawing.Size(856, 250);
             this.grpTinhTien.TabIndex = 1;
             this.grpTinhTien.TabStop = false;
             this.grpTinhTien.Text = "Tính toán";
@@ -171,7 +171,7 @@
             this.lblThanhTienPhong.ForeColor = System.Drawing.Color.Navy;
             this.lblThanhTienPhong.Location = new System.Drawing.Point(220, 150);
             this.lblThanhTienPhong.Name = "lblThanhTienPhong";
-            this.lblThanhTienPhong.Size = new System.Drawing.Size(289, 51);
+            this.lblThanhTienPhong.Size = new System.Drawing.Size(331, 59);
             this.lblThanhTienPhong.TabIndex = 5;
             this.lblThanhTienPhong.Text = "1.250.000 VNĐ";
             // 
@@ -180,7 +180,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(30, 160);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(211, 32);
+            this.label9.Size = new System.Drawing.Size(243, 38);
             this.label9.TabIndex = 4;
             this.label9.Text = "Thành tiền phòng:";
             // 
@@ -190,7 +190,7 @@
             this.lblDonGia.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDonGia.Location = new System.Drawing.Point(223, 100);
             this.lblDonGia.Name = "lblDonGia";
-            this.lblDonGia.Size = new System.Drawing.Size(186, 32);
+            this.lblDonGia.Size = new System.Drawing.Size(213, 38);
             this.lblDonGia.TabIndex = 3;
             this.lblDonGia.Text = "500.000 / ngày";
             // 
@@ -199,7 +199,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(30, 100);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 32);
+            this.label7.Size = new System.Drawing.Size(121, 38);
             this.label7.TabIndex = 2;
             this.label7.Text = "Đơn giá:";
             // 
@@ -209,7 +209,7 @@
             this.lblThoiGianO.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblThoiGianO.Location = new System.Drawing.Point(223, 50);
             this.lblThoiGianO.Name = "lblThoiGianO";
-            this.lblThoiGianO.Size = new System.Drawing.Size(156, 32);
+            this.lblThoiGianO.Size = new System.Drawing.Size(180, 38);
             this.lblThoiGianO.TabIndex = 1;
             this.lblThoiGianO.Text = "2 ngày 4 giờ";
             // 
@@ -218,7 +218,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(30, 50);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 32);
+            this.label5.Size = new System.Drawing.Size(164, 38);
             this.label5.TabIndex = 0;
             this.label5.Text = "Thời gian ở:";
             // 
@@ -235,7 +235,7 @@
             this.grpThongTin.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpThongTin.Location = new System.Drawing.Point(10, 10);
             this.grpThongTin.Name = "grpThongTin";
-            this.grpThongTin.Size = new System.Drawing.Size(864, 250);
+            this.grpThongTin.Size = new System.Drawing.Size(856, 250);
             this.grpThongTin.TabIndex = 0;
             this.grpThongTin.TabStop = false;
             this.grpThongTin.Text = "Thông tin";
@@ -246,7 +246,7 @@
             this.dtpNgayRa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayRa.Location = new System.Drawing.Point(227, 175);
             this.dtpNgayRa.Name = "dtpNgayRa";
-            this.dtpNgayRa.Size = new System.Drawing.Size(250, 39);
+            this.dtpNgayRa.Size = new System.Drawing.Size(250, 44);
             this.dtpNgayRa.TabIndex = 7;
             // 
             // label4
@@ -254,7 +254,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(30, 180);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 32);
+            this.label4.Size = new System.Drawing.Size(120, 38);
             this.label4.TabIndex = 6;
             this.label4.Text = "Ngày ra:";
             // 
@@ -264,7 +264,7 @@
             this.lblNgayVao.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayVao.Location = new System.Drawing.Point(223, 130);
             this.lblNgayVao.Name = "lblNgayVao";
-            this.lblNgayVao.Size = new System.Drawing.Size(218, 32);
+            this.lblNgayVao.Size = new System.Drawing.Size(249, 38);
             this.lblNgayVao.TabIndex = 5;
             this.lblNgayVao.Text = "10/12/2025 14:00";
             // 
@@ -273,7 +273,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(30, 130);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 32);
+            this.label3.Size = new System.Drawing.Size(139, 38);
             this.label3.TabIndex = 4;
             this.label3.Text = "Ngày vào:";
             // 
@@ -283,7 +283,7 @@
             this.lblKhachHang.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKhachHang.Location = new System.Drawing.Point(223, 80);
             this.lblKhachHang.Name = "lblKhachHang";
-            this.lblKhachHang.Size = new System.Drawing.Size(212, 32);
+            this.lblKhachHang.Size = new System.Drawing.Size(246, 38);
             this.lblKhachHang.TabIndex = 3;
             this.lblKhachHang.Text = "Bùi Bằng đẹp trai";
             // 
@@ -292,7 +292,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 32);
+            this.label2.Size = new System.Drawing.Size(168, 38);
             this.label2.TabIndex = 2;
             this.label2.Text = "Khách hàng:";
             // 
@@ -302,7 +302,7 @@
             this.lblPhong.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhong.Location = new System.Drawing.Point(221, 25);
             this.lblPhong.Name = "lblPhong";
-            this.lblPhong.Size = new System.Drawing.Size(269, 45);
+            this.lblPhong.Size = new System.Drawing.Size(309, 51);
             this.lblPhong.TabIndex = 1;
             this.lblPhong.Text = "Phòng 301 - VIP";
             // 
@@ -311,7 +311,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 32);
+            this.label1.Size = new System.Drawing.Size(103, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Phòng:";
             // 
@@ -321,10 +321,10 @@
             this.tabDichVu.Controls.Add(this.lblThanhTienDichVu);
             this.tabDichVu.Controls.Add(this.label6);
             this.tabDichVu.Controls.Add(this.panel);
-            this.tabDichVu.Location = new System.Drawing.Point(4, 41);
+            this.tabDichVu.Location = new System.Drawing.Point(8, 51);
             this.tabDichVu.Name = "tabDichVu";
             this.tabDichVu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDichVu.Size = new System.Drawing.Size(688, 629);
+            this.tabDichVu.Size = new System.Drawing.Size(876, 698);
             this.tabDichVu.TabIndex = 1;
             this.tabDichVu.Text = "Dịch vụ";
             this.tabDichVu.UseVisualStyleBackColor = true;
@@ -345,7 +345,7 @@
             this.lblThanhTienDichVu.ForeColor = System.Drawing.Color.Navy;
             this.lblThanhTienDichVu.Location = new System.Drawing.Point(193, 324);
             this.lblThanhTienDichVu.Name = "lblThanhTienDichVu";
-            this.lblThanhTienDichVu.Size = new System.Drawing.Size(289, 51);
+            this.lblThanhTienDichVu.Size = new System.Drawing.Size(331, 59);
             this.lblThanhTienDichVu.TabIndex = 6;
             this.lblThanhTienDichVu.Text = "1.250.000 VNĐ";
             // 
@@ -354,7 +354,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(28, 333);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(219, 32);
+            this.label6.Size = new System.Drawing.Size(252, 38);
             this.label6.TabIndex = 5;
             this.label6.Text = "Thành tiền dịch vụ:";
             // 
@@ -363,14 +363,14 @@
             this.panel.AllowUserToAddRows = false;
             this.panel.BackgroundColor = System.Drawing.Color.White;
             this.panel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.panel.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.panel.DefaultCellStyle = dataGridViewCellStyle1;
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(3, 3);
             this.panel.Name = "panel";
@@ -379,7 +379,7 @@
             this.panel.RowHeadersWidth = 51;
             this.panel.RowTemplate.Height = 24;
             this.panel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.panel.Size = new System.Drawing.Size(682, 623);
+            this.panel.Size = new System.Drawing.Size(870, 692);
             this.panel.TabIndex = 0;
             // 
             // tabPhuThu
@@ -388,10 +388,10 @@
             this.tabPhuThu.Controls.Add(this.label11);
             this.tabPhuThu.Controls.Add(this.dgvPhuThu);
             this.tabPhuThu.Controls.Add(this.panel2);
-            this.tabPhuThu.Location = new System.Drawing.Point(4, 41);
+            this.tabPhuThu.Location = new System.Drawing.Point(8, 51);
             this.tabPhuThu.Name = "tabPhuThu";
             this.tabPhuThu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPhuThu.Size = new System.Drawing.Size(688, 629);
+            this.tabPhuThu.Size = new System.Drawing.Size(876, 698);
             this.tabPhuThu.TabIndex = 2;
             this.tabPhuThu.Text = "Phụ thu";
             this.tabPhuThu.UseVisualStyleBackColor = true;
@@ -403,7 +403,7 @@
             this.lblThanhTienPhuThu.ForeColor = System.Drawing.Color.Navy;
             this.lblThanhTienPhuThu.Location = new System.Drawing.Point(177, 301);
             this.lblThanhTienPhuThu.Name = "lblThanhTienPhuThu";
-            this.lblThanhTienPhuThu.Size = new System.Drawing.Size(289, 51);
+            this.lblThanhTienPhuThu.Size = new System.Drawing.Size(331, 59);
             this.lblThanhTienPhuThu.TabIndex = 7;
             this.lblThanhTienPhuThu.Text = "1.250.000 VNĐ";
             // 
@@ -412,7 +412,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(28, 310);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(219, 32);
+            this.label11.Size = new System.Drawing.Size(252, 38);
             this.label11.TabIndex = 6;
             this.label11.Text = "Thành tiền dịch vụ:";
             // 
@@ -430,14 +430,14 @@
             this.panel2.AllowUserToAddRows = false;
             this.panel2.BackgroundColor = System.Drawing.Color.White;
             this.panel2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.panel2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.panel2.DefaultCellStyle = dataGridViewCellStyle2;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
@@ -446,7 +446,7 @@
             this.panel2.RowHeadersWidth = 51;
             this.panel2.RowTemplate.Height = 24;
             this.panel2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.panel2.Size = new System.Drawing.Size(682, 623);
+            this.panel2.Size = new System.Drawing.Size(870, 692);
             this.panel2.TabIndex = 0;
             // 
             // panelRight
@@ -477,7 +477,7 @@
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(478, 60);
             this.btnThanhToan.TabIndex = 6;
-            this.btnThanhToan.Text = "THANH TOÁN && IN";
+            this.btnThanhToan.Text = "THANH TOÁN ";
             this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
             // 
@@ -521,7 +521,7 @@
             this.rdoChuyenKhoan.AutoSize = true;
             this.rdoChuyenKhoan.Location = new System.Drawing.Point(190, 40);
             this.rdoChuyenKhoan.Name = "rdoChuyenKhoan";
-            this.rdoChuyenKhoan.Size = new System.Drawing.Size(194, 36);
+            this.rdoChuyenKhoan.Size = new System.Drawing.Size(226, 42);
             this.rdoChuyenKhoan.TabIndex = 1;
             this.rdoChuyenKhoan.Text = "Chuyển khoản";
             this.rdoChuyenKhoan.UseVisualStyleBackColor = true;
@@ -532,7 +532,7 @@
             this.rdoTienMat.Checked = true;
             this.rdoTienMat.Location = new System.Drawing.Point(40, 40);
             this.rdoTienMat.Name = "rdoTienMat";
-            this.rdoTienMat.Size = new System.Drawing.Size(133, 36);
+            this.rdoTienMat.Size = new System.Drawing.Size(156, 42);
             this.rdoTienMat.TabIndex = 0;
             this.rdoTienMat.TabStop = true;
             this.rdoTienMat.Text = "Tiền mặt";
@@ -672,9 +672,9 @@
             // numGiamGia
             // 
             this.numGiamGia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numGiamGia.Location = new System.Drawing.Point(194, 265);
+            this.numGiamGia.Location = new System.Drawing.Point(194, 263);
             this.numGiamGia.Name = "numGiamGia";
-            this.numGiamGia.Size = new System.Drawing.Size(281, 39);
+            this.numGiamGia.Size = new System.Drawing.Size(281, 44);
             this.numGiamGia.TabIndex = 9;
             this.numGiamGia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numGiamGia.ValueChanged += new System.EventHandler(this.numGiamGia_ValueChanged);
@@ -701,7 +701,7 @@
             // 
             // CheckOut
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1402, 783);

@@ -45,5 +45,23 @@ namespace QuanLyKhachSan.DAL
 
             return DatabaseHelper.GetData(spName, param, CommandType.StoredProcedure);
         }
+
+        public int LayMaHDMoiNhat(int maNP)
+        {
+            // Tìm hóa đơn có ngày lập mới nhất của Mã Nhận Phòng này
+            string query = @"
+        SELECT TOP 1 MaHD 
+        FROM HOADON HD 
+        JOIN TRAPHONG TP ON HD.MaTraPhong = TP.MaTraPhong 
+        WHERE TP.MaNP = @MaNP 
+        ORDER BY HD.MaHD DESC"; // Lấy cái mới nhất
+
+            SqlParameter[] param = { new SqlParameter("@MaNP", maNP) };
+
+            DataTable dt = DatabaseHelper.GetData(query, param);
+            if (dt.Rows.Count > 0)
+                return Convert.ToInt32(dt.Rows[0]["MaHD"]);
+            return 0;
+        }
     }
 }
