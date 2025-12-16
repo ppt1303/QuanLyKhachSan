@@ -98,6 +98,7 @@
     <Compile Include="BLL\DichVuBLL.cs" />
     <Compile Include="BLL\PhongBLL.cs" />
     <Compile Include="BLL\PhongThietBiBLL.cs" />
+    <Compile Include="BLL\QLPhongBLL.cs" />
     <Compile Include="BLL\ThietBiBLL.cs" />
     <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DAL\DatPhongDAl.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="DAL\PhongDAL.cs" />
     <Compile Include="DAL\PhongThietBiDAL.cs" />
     <Compile Include="DAL\HoaDonDAL.cs" />
+    <Compile Include="DAL\QLPhongDAL.cs" />
     <Compile Include="DAL\ThietBiDAL.cs" />
     <Compile Include="dsHoaDon.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -149,6 +151,12 @@
     </Compile>
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmQuanLyPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQuanLyPhong.Designer.cs">
+      <DependentUpon>frmQuanLyPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ucDatPhong.cs">
       <SubType>UserControl</SubType>
@@ -209,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmQuanLyPhong.resx">
+      <DependentUpon>frmQuanLyPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDatPhong.resx">
       <DependentUpon>ucDatPhong.cs</DependentUpon>
