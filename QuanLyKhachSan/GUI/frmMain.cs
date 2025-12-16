@@ -81,5 +81,29 @@ namespace QuanLyKhachSan.GUI
         {
 
         }
+
+        private void fluentDesignFormContainer1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aceHoaDon_Click(object sender, EventArgs e)
+        {
+            // 1. Clear old screens
+            fluentDesignFormContainer1.Controls.Clear();
+
+            // 2. Initialize the Invoice UserControl
+            // Make sure you have created this UserControl first!
+            ucHoaDon uc = new ucHoaDon();
+
+            // 3. Set to fill the container
+            uc.Dock = DockStyle.Fill;
+
+            // 4. Add to container
+            fluentDesignFormContainer1.Controls.Add(uc);
+
+            // 5. Bring to front
+            uc.BringToFront();
+        }
     }
 }

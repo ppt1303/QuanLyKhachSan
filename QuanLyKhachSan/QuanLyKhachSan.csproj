@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\HoaDonBLL.cs" />
     <Compile Include="BLL\addPicture.cs" />
     <Compile Include="BLL\BookingBLL.cs" />
     <Compile Include="BLL\DichVuBLL.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="DAL\LoaiPhongDAL.cs" />
     <Compile Include="DAL\PhongDAL.cs" />
     <Compile Include="DAL\PhongThietBiDAL.cs" />
+    <Compile Include="DAL\HoaDonDAL.cs" />
     <Compile Include="DAL\ThietBiDAL.cs" />
     <Compile Include="DTO\RoomStatistics.cs" />
     <Compile Include="Form1.cs">
@@ -88,6 +90,12 @@
     </Compile>
     <Compile Include="GUI\CheckOut.Designer.cs">
       <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmChiTietHoaDon.Designer.cs">
+      <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmChiTietPhong.cs">
       <SubType>Form</SubType>
@@ -119,6 +127,12 @@
     <Compile Include="GUI\ucDichVu.Designer.cs">
       <DependentUpon>ucDichVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ucHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucHoaDon.Designer.cs">
+      <DependentUpon>ucHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ucThietBi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +156,9 @@
     <EmbeddedResource Include="GUI\CheckOut.resx">
       <DependentUpon>CheckOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmChiTietHoaDon.resx">
+      <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmChiTietPhong.resx">
       <DependentUpon>frmChiTietPhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDichVu.resx">
       <DependentUpon>ucDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucHoaDon.resx">
+      <DependentUpon>ucHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucThietBi.resx">
       <DependentUpon>ucThietBi.cs</DependentUpon>
