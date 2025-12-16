@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHoaDon" targetNamespace="http://tempuri.org/dsHoaDon.xsd" xmlns:mstns="http://tempuri.org/dsHoaDon.xsd" xmlns="http://tempuri.org/dsHoaDon.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHoaDon" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsHoaDon" msprop:Generator_DataSetName="dsHoaDon">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtInHoaDon" msprop:Generator_RowEvHandlerName="dtInHoaDonRowChangeEventHandler" msprop:Generator_RowDeletedName="dtInHoaDonRowDeleted" msprop:Generator_RowDeletingName="dtInHoaDonRowDeleting" msprop:Generator_RowEvArgName="dtInHoaDonRowChangeEvent" msprop:Generator_TablePropName="dtInHoaDon" msprop:Generator_RowChangedName="dtInHoaDonRowChanged" msprop:Generator_RowChangingName="dtInHoaDonRowChanging" msprop:Generator_TableClassName="dtInHoaDonDataTable" msprop:Generator_RowClassName="dtInHoaDonRow" msprop:Generator_TableVarName="tabledtInHoaDon" msprop:Generator_UserTableName="dtInHoaDon">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nội_x0020_dung" msprop:Generator_ColumnPropNameInRow="Nội_dung" msprop:Generator_ColumnPropNameInTable="Nội_dungColumn" msprop:Generator_ColumnVarNameInTable="columnNội_dung" msprop:Generator_UserColumnName="Nội dung" type="xs:string" minOccurs="0" />
+              <xs:element name="Thành_x0020_tiền" msprop:Generator_ColumnPropNameInRow="Thành_tiền" msprop:Generator_ColumnPropNameInTable="Thành_tiềnColumn" msprop:Generator_ColumnVarNameInTable="columnThành_tiền" msprop:Generator_UserColumnName="Thành tiền" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

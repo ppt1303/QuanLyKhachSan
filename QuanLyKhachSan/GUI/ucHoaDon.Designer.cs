@@ -87,12 +87,13 @@
             // btnInHoaDon
             // 
             this.btnInHoaDon.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInHoaDon.Location = new System.Drawing.Point(740, 830);
+            this.btnInHoaDon.Location = new System.Drawing.Point(796, 830);
             this.btnInHoaDon.Name = "btnInHoaDon";
             this.btnInHoaDon.Size = new System.Drawing.Size(171, 51);
             this.btnInHoaDon.TabIndex = 10;
-            this.btnInHoaDon.Text = "In hóa đơn";
+            this.btnInHoaDon.Text = "In hóa đơn ";
             this.btnInHoaDon.UseVisualStyleBackColor = true;
+            this.btnInHoaDon.Click += new System.EventHandler(this.btnInHoaDon_Click_1);
             // 
             // ucHoaDon
             // 

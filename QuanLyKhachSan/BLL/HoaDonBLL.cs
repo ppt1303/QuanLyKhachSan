@@ -8,14 +8,19 @@ namespace QuanLyKhachSan.BLL
     {
         private HoaDonDAL dal = new HoaDonDAL();
 
+        // Lấy danh sách tổng quát
         public DataTable GetInvoiceList(DateTime from, DateTime to)
         {
             return dal.LayDanhSachHoaDon(from, to);
         }
+
+        // Lấy chi tiết để in
+     
+        // Thêm hàm này vào class HoaDonBLL
         public DataTable GetInvoiceDetails(int maHD)
         {
-            // Gọi xuống DAL để lấy dữ liệu
-            return dal.LayChiTietHoaDon(maHD);
+            // Gọi lại hàm DAL đã có sẵn
+            return dal.LayChiTietInHoaDon(maHD);
         }
     }
 }
