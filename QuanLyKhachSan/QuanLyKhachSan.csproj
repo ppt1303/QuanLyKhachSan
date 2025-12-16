@@ -152,12 +152,6 @@
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmQuanLyPhong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\frmQuanLyPhong.Designer.cs">
-      <DependentUpon>frmQuanLyPhong.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ucDatPhong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +169,12 @@
     </Compile>
     <Compile Include="GUI\ucHoaDon.Designer.cs">
       <DependentUpon>ucHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ucQLPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucQLPhong.Designer.cs">
+      <DependentUpon>ucQLPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ucThietBi.cs">
       <SubType>UserControl</SubType>
@@ -218,9 +218,6 @@
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmQuanLyPhong.resx">
-      <DependentUpon>frmQuanLyPhong.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDatPhong.resx">
       <DependentUpon>ucDatPhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucHoaDon.resx">
       <DependentUpon>ucHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucQLPhong.resx">
+      <DependentUpon>ucQLPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucThietBi.resx">
       <DependentUpon>ucThietBi.cs</DependentUpon>

@@ -2,12 +2,12 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using QuanLyKhachSan.BLL; // Đảm bảo bạn đã có PhongBLL ở namespace này
+using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {
-    // Tên class phải là QuanLyPhong để khớp với Designer
-    public partial class frmQuanLyPhong : Form
+    // Kế thừa từ UserControl thay vì Form
+    public partial class ucQLPhong : UserControl
     {
         // Gọi lớp Nghiệp vụ (BLL)
         private QLPhongBLL bll = new QLPhongBLL();
@@ -16,39 +16,42 @@ namespace QuanLyKhachSan.GUI
         private bool isBindingData = false;
         private int selectedMaPhong = -1;
 
-        public frmQuanLyPhong()
+        public ucQLPhong()
         {
             InitializeComponent();
             SetupEvents();
         }
 
-        // Sự kiện Load Form
-        private void frmQLPhong_Load(object sender, EventArgs e)
+        // Sự kiện Load UserControl (Đổi tên hàm cho phù hợp)
+        private void ucQLPhong_Load(object sender, EventArgs e)
         {
             LoadCombobox();
             LoadGrid();
         }
 
-        // Thiết lập các sự kiện thủ công (để tránh lỗi Designer mất kết nối)
+        // Thiết lập các sự kiện thủ công
         private void SetupEvents()
         {
+            // Cấu hình GridView
             dgvPhong.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPhong.MultiSelect = false;
             dgvPhong.ReadOnly = true;
 
-            // Gán sự kiện
+            // Gán sự kiện GridView
             dgvPhong.SelectionChanged += dgvPhong_SelectionChanged;
+
+            // Gán sự kiện các nút bấm
             btnThem.Click += btnThem_Click;
             btnSua.Click += btnSua_Click;
             btnXoa.Click += btnXoa_Click;
             btnLamMoi.Click += btnLamMoi_Click;
 
-            // Gán sự kiện Load cho Form
-            this.Load += frmQLPhong_Load;
+            // Gán sự kiện Load cho UserControl
+            this.Load += ucQLPhong_Load;
         }
 
         // --- HÀM TẢI DỮ LIỆU ---
-        private void LoadCombobox()
+        public void LoadCombobox() // Có thể để public nếu muốn gọi từ Form cha
         {
             try
             {
@@ -60,11 +63,11 @@ namespace QuanLyKhachSan.GUI
             }
             catch (Exception ex)
             {
-                // Có thể bỏ qua hoặc log lỗi
+                // Log lỗi nếu cần
             }
         }
 
-        private void LoadGrid()
+        public void LoadGrid() // Để public để Form cha có thể refresh dữ liệu khi cần
         {
             try
             {
@@ -244,8 +247,5 @@ namespace QuanLyKhachSan.GUI
             }
             return true;
         }
-
-        // Hàm sự kiện thừa từ Designer (nếu có)
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
     }
 }

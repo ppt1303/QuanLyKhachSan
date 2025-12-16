@@ -40,10 +40,10 @@ namespace QuanLyKhachSan.GUI
             {
                 LoadUserControl(typeof(ucThietBi));
             }
-            //else if (e.Element.Name == "aceDatPhong")
-            //{
-            //    LoadUserControl(typeof(ucDatPhong));
-            //}
+            else if (e.Element.Name == "acePhong")
+            {
+                LoadUserControl(typeof(ucQLPhong));
+            }
         }
         private void LoadUserControl(Type controlType)
         {
