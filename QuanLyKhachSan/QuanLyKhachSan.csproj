@@ -96,6 +96,7 @@
     <Compile Include="BLL\addPicture.cs" />
     <Compile Include="BLL\BookingBLL.cs" />
     <Compile Include="BLL\DichVuBLL.cs" />
+    <Compile Include="BLL\KhachHangBLL.cs" />
     <Compile Include="BLL\PhongBLL.cs" />
     <Compile Include="BLL\PhongThietBiBLL.cs" />
     <Compile Include="BLL\QLPhongBLL.cs" />
@@ -170,6 +171,12 @@
     <Compile Include="GUI\ucHoaDon.Designer.cs">
       <DependentUpon>ucHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ucKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucKhachHang.Designer.cs">
+      <DependentUpon>ucKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ucQLPhong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucHoaDon.resx">
       <DependentUpon>ucHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucKhachHang.resx">
+      <DependentUpon>ucKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucQLPhong.resx">
       <DependentUpon>ucQLPhong.cs</DependentUpon>
