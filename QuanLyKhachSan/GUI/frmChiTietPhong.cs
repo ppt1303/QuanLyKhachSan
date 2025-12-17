@@ -267,5 +267,64 @@ namespace QuanLyKhachSan.GUI
         {
             this.Close();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnThemDV_Click_1(object sender, EventArgs e)
+        {
+            // Kiểm tra: Phòng phải có khách (MaNP > 0) mới thêm dịch vụ được
+            if (this.maNP <= 0)
+            {
+                MessageBox.Show("Phòng chưa có khách check-in, không thể thêm dịch vụ!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Lấy dữ liệu từ giao diện
+                // Lưu ý: Kiểm tra lại cboDichVu có dữ liệu chưa
+                if (cboDichVu.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn dịch vụ!", "Thông báo");
+                    return;
+                }
+
+                short maDV = Convert.ToInt16(cboDichVu.SelectedValue);
+                short soLuong = 0;
+
+                if (!short.TryParse(txtSoLuong.Text, out soLuong) || soLuong <= 0)
+                {
+                    MessageBox.Show("Vui lòng nhập số lượng hợp lệ (>0).", "Thông báo");
+                    return;
+                }
+
+                // Gọi SP: sp_ThemDichVuSuDung
+                string spName = "sp_ThemDichVuSuDung";
+                SqlParameter[] p = {
+                    new SqlParameter("@MaNP", this.maNP),
+                    new SqlParameter("@MaDV", maDV),
+                    new SqlParameter("@SoLuong", soLuong),
+                    new SqlParameter("@GhiChu", DBNull.Value)
+                };
+
+                if (DatabaseHelper.ExecuteNonQuery(spName, p, CommandType.StoredProcedure))
+                {
+                    MessageBox.Show("Thêm dịch vụ thành công!", "Thông báo");
+                    LoadLichSuDichVu(); // Refresh lại lưới
+                    txtSoLuong.Text = "1"; // Reset số lượng về 1
+                }
+                else
+                {
+                    MessageBox.Show("Thêm dịch vụ thất bại.", "Lỗi");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thêm dịch vụ: " + ex.Message);
+            }
+        }
     }
 }

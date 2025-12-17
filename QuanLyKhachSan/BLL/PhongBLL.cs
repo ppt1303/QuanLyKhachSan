@@ -15,11 +15,30 @@ namespace QuanLyKhachSan.BLL
             _dal = new PhongDAL();
         }
 
-        public DataTable LayTatCaPhong(DateTime thoiDiem)
+        // 1. Hàm chính: Lấy danh sách phòng theo thời điểm (Gọi DAL mới)
+        public DataTable GetDanhSachPhongTheoNgay(DateTime thoiDiem)
         {
-            return _dal.GetTatCaPhong(thoiDiem);
+            return _dal.GetDanhSachPhongTheoNgay(thoiDiem);
         }
 
+        // =================================================================
+        // 2. CÁC HÀM CŨ (GIỮ LẠI ĐỂ TRÁNH LỖI CODE CŨ)
+        // =================================================================
+
+        // Sửa lỗi: Thêm lại hàm này để code cũ gọi được
+        public DataTable LayTatCaPhong(DateTime thoiDiem)
+        {
+            return _dal.GetDanhSachPhongTheoNgay(thoiDiem);
+        }
+
+        // Sửa lỗi: Hàm này cũng được giữ lại và trỏ về hàm mới
+        public DataTable LayDanhSachPhongTrangChu()
+        {
+            return _dal.GetDanhSachPhongTheoNgay(DateTime.Now);
+        }
+        // =================================================================
+
+        // 3. Tính toán thống kê
         public RoomStatistics TinhThongKe(DataTable dt)
         {
             RoomStatistics stats = new RoomStatistics();
@@ -29,31 +48,33 @@ namespace QuanLyKhachSan.BLL
 
             foreach (DataRow row in dt.Rows)
             {
-                // DB Script quy định:
-                // TrangThaiPhong (tinyint): 0: Đang sửa (Bảo trì), 1: Sẵn sàng, 2: Dơ
-                int ttPhong = Convert.ToInt32(row["TrangThaiPhong"]);
+                // Lưu ý: Đảm bảo tên cột khớp với SQL (TrangThaiHienThi hoặc TrangThaiPhong)
+                // Ở query mới nhất chúng ta dùng 'TrangThaiHienThi'
+                int ttHienThi = 0;
 
-                // TrangThaiO (string): "Đang ở", "Trống", "Đặt trước" (Lấy từ SQL Query)
-                string ttO = row["TrangThaiO"].ToString();
+                if (row.Table.Columns.Contains("TrangThaiHienThi"))
+                {
+                    ttHienThi = Convert.ToInt32(row["TrangThaiHienThi"]);
+                }
+                else if (row.Table.Columns.Contains("TrangThaiPhong"))
+                {
+                    // Fallback nếu dùng query cũ
+                    ttHienThi = Convert.ToInt32(row["TrangThaiPhong"]);
+                }
 
-                if (ttPhong == 0) // Bảo trì
+                switch (ttHienThi)
                 {
-                    stats.BaoTri++;
-                }
-                else if (ttPhong == 2) // Dơ / Chưa dọn
-                {
-                    stats.Ban++;
-                }
-                else // ttPhong == 1 (Sẵn sàng) -> Xét tiếp có người ở không
-                {
-                    if (ttO == "Đang ở") stats.DangO++;
-                    else if (ttO == "Đặt trước") stats.DatTruoc++;
-                    else stats.Trong++;
+                    case 0: stats.BaoTri++; break;
+                    case 4: stats.Ban++; break;     // 4 là Dơ/Chưa dọn
+                    case 2: stats.DangO++; break;
+                    case 3: stats.DatTruoc++; break;
+                    default: stats.Trong++; break; // 1 là Trống
                 }
             }
             return stats;
         }
 
+        // 4. Lấy danh sách tầng
         public DataTable LayDanhSachTang(DataTable dt)
         {
             if (dt == null || dt.Rows.Count == 0) return null;
@@ -67,6 +88,7 @@ namespace QuanLyKhachSan.BLL
             catch { return null; }
         }
 
+        // 5. Lọc phòng theo tầng
         public DataRow[] LocPhongTheoTang(DataTable dt, int tang)
         {
             if (dt == null) return new DataRow[0];
@@ -74,9 +96,10 @@ namespace QuanLyKhachSan.BLL
             if (tang > 0) expr += $" AND Tang = {tang}";
             return dt.Select(expr, "TenPhong ASC");
         }
-        public DataTable LayDanhSachPhongTrangChu()
+        // Trong class PhongBLL
+        public bool CapNhatTrangThai(int maPhong, int trangThai)
         {
-            return _dal.LayDanhSachPhongTrangChu();
+            return _dal.UpdateTrangThaiPhong(maPhong, trangThai);
         }
     }
 }

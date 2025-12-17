@@ -7,41 +7,54 @@ namespace QuanLyKhachSan.BLL
 {
     public class BookingBLL
     {
+        public static event Action OnDataChanged;
+
+        // Hàm dùng để kích hoạt sự kiện: Gọi hàm này khi thay đổi dữ liệu (Đặt, Check-in, Trả)
+        public static void NotifyDataChanged()
+        {
+            OnDataChanged?.Invoke();
+        }
+
         // 1. Lấy sơ đồ phòng với 3 trạng thái ưu tiên: 2 (Đỏ - Đang ở) -> 1 (Vàng - Đã đặt) -> 0 (Xanh - Trống)
         // (Giữ lại logic này vì nó xử lý màu sắc hiển thị trên giao diện tốt hơn)
+        // Trong file QuanLyKhachSan.BLL.BookingBLL.cs
+
         public DataTable GetSoDoPhong(DateTime tuNgay, DateTime denNgay)
         {
             string query = @"
-                SELECT P.MaPhong, P.TenPhong, LP.TenLP, LP.GiaMacDinh,
-                       CASE 
-                           -- Ưu tiên 1: Đang có người ở (Trạng thái = Đang ở) -> MÀU ĐỎ (2)
-                           WHEN EXISTS (
-                               SELECT 1 FROM CHITIET_DATPHONG CD
-                               JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
-                               WHERE CD.MaPhong = P.MaPhong
-                               AND DP.TrangThai = N'Đang ở'
-                               AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
-                           ) THEN 2 
-                           
-                           -- Ưu tiên 2: Đã được đặt trước (Trạng thái = Đã đặt) -> MÀU VÀNG (1)
-                           WHEN EXISTS (
-                               SELECT 1 FROM CHITIET_DATPHONG CD
-                               JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
-                               WHERE CD.MaPhong = P.MaPhong
-                               AND DP.TrangThai = N'Đã đặt'
-                               AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
-                           ) THEN 1 
-                           
-                           -- Còn lại: Trống -> MÀU XANH (0)
-                           ELSE 0 
-                       END AS TrangThaiSo
-                FROM PHONG P
-                JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP";
+        SELECT P.MaPhong, P.TenPhong, LP.TenLP, LP.GiaMacDinh,
+               CASE 
+                   -- Ưu tiên 1: Đang ở -> MÀU ĐỎ (2)
+                   WHEN EXISTS (
+                       SELECT 1 FROM CHITIET_DATPHONG CD
+                       JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
+                       WHERE CD.MaPhong = P.MaPhong
+                       AND DP.TrangThai = N'Đang ở'
+                       AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
+                   ) THEN 2 
+                   
+                   -- Ưu tiên 2: Bảo trì -> MÀU TÍM (3) (Mới thêm)
+                   WHEN P.TrangThaiPhong = 0 THEN 3
+
+                   -- Ưu tiên 3: Đã đặt -> MÀU VÀNG (1)
+                   WHEN EXISTS (
+                       SELECT 1 FROM CHITIET_DATPHONG CD
+                       JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
+                       WHERE CD.MaPhong = P.MaPhong
+                       AND DP.TrangThai = N'Đã đặt'
+                       AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
+                   ) THEN 1 
+                   
+                   -- Còn lại: Trống -> MÀU XANH (0)
+                   ELSE 0 
+               END AS TrangThaiSo
+        FROM PHONG P
+        JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP";
 
             SqlParameter[] para = {
-                new SqlParameter("@TuNgay", tuNgay),
-                new SqlParameter("@DenNgay", denNgay)
-            };
+        new SqlParameter("@TuNgay", tuNgay),
+        new SqlParameter("@DenNgay", denNgay)
+    };
 
             return DatabaseHelper.GetData(query, para, CommandType.Text);
         }

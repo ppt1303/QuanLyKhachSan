@@ -61,7 +61,7 @@ namespace QuanLyKhachSan.GUI
                 cboLoaiPhong.ValueMember = "MaLP";
                 cboLoaiPhong.SelectedIndex = -1;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 // Log lỗi nếu cần
             }
