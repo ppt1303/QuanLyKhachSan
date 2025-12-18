@@ -8,106 +8,57 @@ namespace QuanLyKhachSan.BLL
     public class BookingBLL
     {
         public static event Action OnDataChanged;
+        private DatPhongDAL dal = new DatPhongDAL();
 
-        // Hàm dùng để kích hoạt sự kiện: Gọi hàm này khi thay đổi dữ liệu (Đặt, Check-in, Trả)
+        // Hàm dùng để kích hoạt sự kiện khi có thay đổi dữ liệu
         public static void NotifyDataChanged()
         {
             OnDataChanged?.Invoke();
         }
 
-        // 1. Lấy sơ đồ phòng với 3 trạng thái ưu tiên: 2 (Đỏ - Đang ở) -> 1 (Vàng - Đã đặt) -> 0 (Xanh - Trống)
-        // (Giữ lại logic này vì nó xử lý màu sắc hiển thị trên giao diện tốt hơn)
-        // Trong file QuanLyKhachSan.BLL.BookingBLL.cs
-
+        // --- 1. LẤY SƠ ĐỒ PHÒNG (Sử dụng sp_GetSoDoPhong) ---
         public DataTable GetSoDoPhong(DateTime tuNgay, DateTime denNgay)
         {
-            string query = @"
-        SELECT P.MaPhong, P.TenPhong, LP.TenLP, LP.GiaMacDinh,
-               CASE 
-                   -- Ưu tiên 1: Đang ở -> MÀU ĐỎ (2)
-                   WHEN EXISTS (
-                       SELECT 1 FROM CHITIET_DATPHONG CD
-                       JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
-                       WHERE CD.MaPhong = P.MaPhong
-                       AND DP.TrangThai = N'Đang ở'
-                       AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
-                   ) THEN 2 
-                   
-                   -- Ưu tiên 2: Bảo trì -> MÀU TÍM (3) (Mới thêm)
-                   WHEN P.TrangThaiPhong = 0 THEN 3
-
-                   -- Ưu tiên 3: Đã đặt -> MÀU VÀNG (1)
-                   WHEN EXISTS (
-                       SELECT 1 FROM CHITIET_DATPHONG CD
-                       JOIN DATPHONG DP ON CD.MaDP = DP.MaDP
-                       WHERE CD.MaPhong = P.MaPhong
-                       AND DP.TrangThai = N'Đã đặt'
-                       AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
-                   ) THEN 1 
-                   
-                   -- Còn lại: Trống -> MÀU XANH (0)
-                   ELSE 0 
-               END AS TrangThaiSo
-        FROM PHONG P
-        JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP";
-
             SqlParameter[] para = {
-        new SqlParameter("@TuNgay", tuNgay),
-        new SqlParameter("@DenNgay", denNgay)
-    };
+                new SqlParameter("@TuNgay", tuNgay),
+                new SqlParameter("@DenNgay", denNgay)
+            };
 
-            return DatabaseHelper.GetData(query, para, CommandType.Text);
+            // Chuyển sang dùng Stored Procedure
+            return DatabaseHelper.GetData("sp_GetSoDoPhong", para, CommandType.StoredProcedure);
         }
 
-        // 2. Tìm thông tin khách hàng cơ bản (để điền vào form khi tìm kiếm)
+        // --- 2. TÌM THÔNG TIN KHÁCH HÀNG (Sử dụng sp_GetKhachHangInfo) ---
         public DataRow GetKhachHangInfo(string keyword)
         {
-            string query = "SELECT * FROM KHACHHANG WHERE CCCD = @key OR SDT = @key";
-            SqlParameter[] para = { new SqlParameter("@key", keyword) };
+            // Lưu ý: Tên tham số @Key phải khớp chính xác với trong Stored Procedure
+            SqlParameter[] para = { new SqlParameter("@Key", keyword) };
 
-            DataTable dt = DatabaseHelper.GetData(query, para, CommandType.Text);
+            DataTable dt = DatabaseHelper.GetData("sp_GetKhachHangInfo", para, CommandType.StoredProcedure);
             if (dt.Rows.Count > 0) return dt.Rows[0];
             return null;
         }
 
-        // 3. Lấy thông tin khách đang giữ phòng (Dùng khi Click vào phòng Vàng hoặc Đỏ)
+        // --- 3. LẤY KHÁCH ĐANG GIỮ PHÒNG (Sử dụng sp_GetKhachHangByRoom) ---
         public DataRow GetKhachHangByRoom(int maPhong, DateTime tuNgay, DateTime denNgay)
         {
-            string query = @"
-                SELECT TOP 1 KH.* FROM KHACHHANG KH
-                JOIN DATPHONG DP ON KH.MaKH = DP.MaKH
-                JOIN CHITIET_DATPHONG CD ON DP.MaDP = CD.MaDP
-                WHERE CD.MaPhong = @MaPhong
-                AND DP.TrangThai IN (N'Đã đặt', N'Đang ở') -- Chỉ lấy trạng thái hoạt động
-                AND (CD.NgayNhanPhong < @DenNgay AND CD.NgayTraPhong > @TuNgay)
-                ORDER BY DP.NgayDat DESC"; // Lấy đơn mới nhất
-
             SqlParameter[] para = {
                 new SqlParameter("@MaPhong", maPhong),
                 new SqlParameter("@TuNgay", tuNgay),
                 new SqlParameter("@DenNgay", denNgay)
             };
 
-            DataTable dt = DatabaseHelper.GetData(query, para, CommandType.Text);
+            DataTable dt = DatabaseHelper.GetData("sp_GetKhachHangByRoom", para, CommandType.StoredProcedure);
             if (dt.Rows.Count > 0) return dt.Rows[0];
             return null;
         }
 
-        // 4. Lấy danh sách các phòng CHỜ CHECK-IN (Trạng thái 'Đã đặt') của khách
+        // --- 4. LẤY DANH SÁCH PHÒNG ĐÃ ĐẶT (Sử dụng sp_GetPhongDaDat) ---
         public DataTable GetPhongDaDat(int maKH)
         {
-            string query = @"
-                SELECT DP.MaDP, CD.MaPhong, P.TenPhong, LP.TenLP, 
-                       CD.NgayNhanPhong, CD.NgayTraPhong
-                FROM DATPHONG DP
-                JOIN CHITIET_DATPHONG CD ON DP.MaDP = CD.MaDP
-                JOIN PHONG P ON CD.MaPhong = P.MaPhong
-                JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
-                WHERE DP.MaKH = @MaKH 
-                AND DP.TrangThai = N'Đã đặt'"; // Chỉ lấy phòng CHƯA nhận (Màu Vàng)
-
             SqlParameter[] para = { new SqlParameter("@MaKH", maKH) };
-            return DatabaseHelper.GetData(query, para, CommandType.Text);
+
+            return DatabaseHelper.GetData("sp_GetPhongDaDat", para, CommandType.StoredProcedure);
         }
 
         // 5. Thêm khách hàng mới
@@ -130,7 +81,7 @@ namespace QuanLyKhachSan.BLL
             return success ? "Thêm khách thành công!" : "Lỗi: Có thể trùng CCCD.";
         }
 
-        // 6. Đặt phòng (Tạo đơn 'Đã đặt' -> Màu Vàng)
+        // 6. Đặt phòng (Tạo đơn 'Đã đặt')
         public string BookRoom(int maKH, int maPhong, DateTime den, DateTime di, decimal coc)
         {
             string proc = "sp_DatPhong";
@@ -146,7 +97,7 @@ namespace QuanLyKhachSan.BLL
             return success ? "Đặt phòng thành công!" : "Đặt thất bại.";
         }
 
-        // 7. Check-in (Chuyển từ 'Đã đặt' sang 'Đang ở' -> Màu Đỏ)
+        // 7. Check-in
         public string CheckIn(int maDP)
         {
             SqlParameter[] para = { new SqlParameter("@MaDP", maDP) };
@@ -166,17 +117,11 @@ namespace QuanLyKhachSan.BLL
             return result ? "Đổi phòng thành công!" : "Lỗi: Phòng mới không khả dụng.";
         }
 
-        // File: BLL/BookingBLL.cs
-
         public int GetCurrentStayID(int maPhong)
         {
-            DatPhongDAL dal = new DatPhongDAL();
             return dal.LayMaNPDangO(maPhong);
         }
 
-        private DatPhongDAL dal = new DatPhongDAL();
-
-        // --- CÁC HÀM GET DỮ LIỆU ---
         public DataTable GetCheckOutInfo(int maNP)
         {
             return dal.LayThongTinCheckOut(maNP);
@@ -192,116 +137,85 @@ namespace QuanLyKhachSan.BLL
             return dal.LayPhuThuDaDung(maNP);
         }
 
-        // --- LOGIC THANH TOÁN TRỌN GÓI ---
-        // Hàm này sẽ gọi liên tiếp 3 hành động dưới Database
         public bool ThanhToanFull(int maNP, string tinhTrang, int kieuTT)
         {
             try
             {
-                // Bước 1: Gọi DAL trả phòng (Cập nhật giờ ra, tình trạng phòng)
                 bool ketQuaTra = dal.ThucHienTraPhong(maNP, tinhTrang, "Thanh toán tại quầy");
-
                 if (ketQuaTra)
                 {
-                    // Bước 2: Lấy ID phiếu trả phòng vừa sinh ra
                     int maTraPhong = dal.LayMaTraPhongMoiNhat(maNP);
-
                     if (maTraPhong > 0)
                     {
-                        // Bước 3: Tạo hóa đơn chốt sổ
                         dal.TaoHoaDon(maTraPhong, kieuTT);
-                        return true; // Thành công mỹ mãn
+                        return true;
                     }
                 }
-                return false; // Lỗi ở bước trả phòng hoặc không lấy được ID
-            }
-            catch
-            {
                 return false;
             }
+            catch { return false; }
         }
 
-
-        /// <summary>
-        /////////////////////////TƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯTƯ
-        /// </summary>
-        /// <param name="maNP"></param>
-        /// <returns></returns>
-        // 9. Lấy thông tin khách và phòng đang ở
         public DataTable GetRoomAndGuestDetails(int maNP)
         {
             string query = @"
-        SELECT KH.HoTen, P.TenPhong, LP.TenLP, NP.ThoiGianNhan 
-        FROM NHANPHONG NP
-        JOIN PHONG P ON NP.MaPhong = P.MaPhong
-        JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
-        JOIN DATPHONG DP ON NP.MaDP = DP.MaDP
-        JOIN KHACHHANG KH ON DP.MaKH = KH.MaKH
-        WHERE NP.MaNP = @MaNP";
+                SELECT KH.HoTen, P.TenPhong, LP.TenLP, NP.ThoiGianNhan 
+                FROM NHANPHONG NP
+                JOIN PHONG P ON NP.MaPhong = P.MaPhong
+                JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
+                JOIN DATPHONG DP ON NP.MaDP = DP.MaDP
+                JOIN KHACHHANG KH ON DP.MaKH = KH.MaKH
+                WHERE NP.MaNP = @MaNP";
             SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
             return DatabaseHelper.GetData(query, para, CommandType.Text);
         }
 
-        // 10. Tải danh sách tất cả dịch vụ (Dùng cho ComboBox)
         public DataTable LoadAllDichVu()
         {
-            // Sử dụng sp_loadDV có sẵn trong nhat.sql
             return DatabaseHelper.GetData("sp_loadDV", null, CommandType.StoredProcedure);
         }
 
-        // 11. Ghi nhận thêm dịch vụ cho khách đang ở
         public bool ThemDichVuSuDung(int maNP, short maDV, short soLuong)
         {
-            // Sử dụng sp_ThemDichVuSuDung có sẵn trong nhat.sql
             SqlParameter[] para = {
-        new SqlParameter("@MaNP", maNP),
-        new SqlParameter("@MaDV", maDV),
-        new SqlParameter("@SoLuong", soLuong)
-    };
+                new SqlParameter("@MaNP", maNP),
+                new SqlParameter("@MaDV", maDV),
+                new SqlParameter("@SoLuong", soLuong)
+            };
             return DatabaseHelper.ExecuteNonQuery("sp_ThemDichVuSuDung", para, CommandType.StoredProcedure);
         }
 
-        // 12. Tải lịch sử chi tiêu (Dịch vụ và Phụ thu)
         public DataTable LoadLichSuChiTieu(int maNP)
         {
-            // Lấy chi tiết dịch vụ và phụ thu, hiển thị dạng thống nhất cho DataGridView
             string query = @"
-        -- Dịch vụ
-        SELECT  DV.TenDV AS DichVu, SD.SoLuong, DV.Gia, (SD.SoLuong * DV.Gia) AS ThanhTien, SD.NgaySuDung
-        FROM SUDUNG_DICHVU SD
-        JOIN DICHVU DV ON SD.MaDV = DV.MaDV
-        WHERE SD.MaNP = @MaNP
-        
-        UNION ALL
-        
-        -- Phụ thu
-        SELECT  PT.Ten AS DichVu, SP.SoLuong, SP.GiaHienTai AS Gia, (SP.SoLuong * SP.GiaHienTai) AS ThanhTien, CAST(SP.ThoiGianGhiNhan AS DATE)
-        FROM SUDUNG_PHUTHU SP
-        JOIN PHUTHU PT ON SP.MaPhuThu = PT.MaPhuThu
-        WHERE SP.MaNP = @MaNP
-        ORDER BY NgaySuDung DESC";
+                SELECT DV.TenDV AS DichVu, SD.SoLuong, DV.Gia, (SD.SoLuong * DV.Gia) AS ThanhTien, SD.NgaySuDung
+                FROM SUDUNG_DICHVU SD
+                JOIN DICHVU DV ON SD.MaDV = DV.MaDV
+                WHERE SD.MaNP = @MaNP
+                UNION ALL
+                SELECT PT.Ten AS DichVu, SP.SoLuong, SP.GiaHienTai AS Gia, (SP.SoLuong * SP.GiaHienTai) AS ThanhTien, CAST(SP.ThoiGianGhiNhan AS DATE)
+                FROM SUDUNG_PHUTHU SP
+                JOIN PHUTHU PT ON SP.MaPhuThu = PT.MaPhuThu
+                WHERE SP.MaNP = @MaNP
+                ORDER BY NgaySuDung DESC";
             SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
             return DatabaseHelper.GetData(query, para, CommandType.Text);
         }
 
-        // 13. Tính tổng tiền tạm thời
         public decimal TinhTienTam(int maNP)
         {
-            // Sử dụng sp_TinhTienTam có sẵn trong nhat.sql
             SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
             DataTable dt = DatabaseHelper.GetData("sp_TinhTienTam", para, CommandType.StoredProcedure);
 
-            if (dt != null && dt.Rows.Count > 0 && dt.Rows[0]["TongTienTamTinh"] != DBNull.Value)
+            if (dt != null && dt.Rows.Count > 0 && dt.Rows[0][0] != DBNull.Value)
             {
-                return Convert.ToDecimal(dt.Rows[0]["TongTienTamTinh"]);
+                return Convert.ToDecimal(dt.Rows[0][0]);
             }
             return 0;
         }
 
-        // Trong class BookingBLL
         public DataTable GetDanhSachDonDat()
         {
-            // Gọi Stored Procedure đã có sẵn trong database: sp_LayDanhSachDonDat_ChiTiet
             return DatabaseHelper.GetData("sp_LayDanhSachDonDat_ChiTiet", null, CommandType.StoredProcedure);
         }
     }
