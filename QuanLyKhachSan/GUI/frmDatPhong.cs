@@ -37,9 +37,11 @@ namespace QuanLyKhachSan.GUI
         }
 
         // 2. Hàm vẽ sơ đồ phòng
+        // Trong file QuanLyKhachSan.GUI.frmDatPhong.cs
+
         private void LoadSoDoPhong()
         {
-            flowLayoutPanel1.Controls.Clear(); // Xóa cũ
+            flowLayoutPanel1.Controls.Clear();
             DataTable dt = bll.GetSoDoPhong(dtpNgayDen.Value, dtpNgayDi.Value);
 
             if (dt == null || dt.Rows.Count == 0) return;
@@ -47,9 +49,8 @@ namespace QuanLyKhachSan.GUI
             foreach (DataRow row in dt.Rows)
             {
                 Guna2TileButton btn = new Guna2TileButton();
-                btn.Width = 100;
-                btn.Height = 100;
-                btn.BorderRadius = 10;
+                // ... (Code setup style cũ giữ nguyên) ...
+                btn.Width = 100; btn.Height = 100; btn.BorderRadius = 10;
                 btn.Font = new Font("Segoe UI", 9, FontStyle.Bold);
                 btn.ForeColor = Color.White;
 
@@ -57,27 +58,33 @@ namespace QuanLyKhachSan.GUI
                 string loaiPhong = row["TenLP"].ToString();
                 decimal gia = Convert.ToDecimal(row["GiaMacDinh"]);
                 int trangThai = Convert.ToInt32(row["TrangThaiSo"]);
-                // 0: Xanh (Trống), 1: Vàng (Đã đặt), 2: Đỏ (Đang ở)
 
-                if (trangThai == 2) // --- MÀU ĐỎ: ĐANG Ở ---
+                // Xử lý màu sắc thống nhất
+                if (trangThai == 2) // MÀU ĐỎ: ĐANG Ở
                 {
                     btn.FillColor = Color.Red;
                     btn.Text = $"{tenPhong}\n{loaiPhong}\n(Đang ở)";
                 }
-                else if (trangThai == 1) // --- MÀU VÀNG: ĐÃ ĐẶT ---
+                else if (trangThai == 3) // MÀU TÍM: BẢO TRÌ (Mới thêm)
+                {
+                    btn.FillColor = Color.Purple;
+                    btn.Text = $"{tenPhong}\n{loaiPhong}\n(Bảo trì)";
+                    btn.Enabled = false; // Không cho đặt phòng bảo trì
+                }
+                else if (trangThai == 1) // MÀU VÀNG: ĐÃ ĐẶT
                 {
                     btn.FillColor = Color.Gold;
                     btn.ForeColor = Color.Black;
                     btn.Text = $"{tenPhong}\n{loaiPhong}\n(Đã đặt)";
                 }
-                else // --- MÀU XANH: TRỐNG ---
+                else // MÀU XANH: TRỐNG
                 {
                     btn.FillColor = Color.FromArgb(46, 204, 113);
                     btn.Text = $"{tenPhong}\n{loaiPhong}\n{gia:N0}";
                 }
 
-                btn.Tag = row; // Lưu dữ liệu vào nút
-                btn.Click += BtnPhong_Click; // Gắn sự kiện
+                btn.Tag = row;
+                btn.Click += BtnPhong_Click;
                 flowLayoutPanel1.Controls.Add(btn);
             }
         }
@@ -96,10 +103,8 @@ namespace QuanLyKhachSan.GUI
                 // Reset biến chọn phòng (để ko bị đặt nhầm)
                 _maPhongDangChon = 0;
 
-                // --- SỬA Ở ĐÂY: HIỆN TÊN PHÒNG THAY VÌ TRẠNG THÁI ---
+                // Hiện tên phòng thay vì trạng thái
                 lblPhongDangChon.Text = $"PHÒNG: {data["TenPhong"]}";
-                // ----------------------------------------------------
-
                 lblPhongDangChon.ForeColor = (trangThai == 1) ? Color.Gold : Color.Red;
                 txtTienCoc.Clear();
 
@@ -119,16 +124,12 @@ namespace QuanLyKhachSan.GUI
 
                     if (kh["NgaySinh"] != DBNull.Value)
                         dtpNgaySinh.Value = Convert.ToDateTime(kh["NgaySinh"]);
-
-                    // MessageBox có thể giữ nguyên hoặc bỏ tùy bạn
-                    // MessageBox.Show($"Thông tin phòng {data["TenPhong"]}:\n- Khách: {kh["HoTen"]}\n- SĐT: {kh["SDT"]}", "Thông tin phòng");
                 }
                 return; // Kết thúc, không làm gì thêm
             }
             else if (trangThai == 2) // TRƯỜNG HỢP C: Phòng đang ở (Màu ĐỎ) -> Muốn thanh toán
             {
                 // Bước 1: Gọi BLL để tìm xem "Mã Nhận Phòng" nào đang ở trong "Mã Phòng" này
-                // (Lưu ý: biến 'bll' phải được khai báo ở đầu Form, ví dụ: BookingBLL bll = new BookingBLL();)
                 int maNP = bll.GetCurrentStayID(maPhongClick);
 
                 if (maNP > 0)
@@ -139,25 +140,29 @@ namespace QuanLyKhachSan.GUI
                     // Bước 3: Hiện Form lên
                     frm.ShowDialog();
 
-                    // Bước 4: Sau khi Form CheckOut đóng lại (đã thanh toán xong), 
-                    // bạn cần load lại danh sách phòng để cái nút màu Đỏ chuyển thành màu Xanh/Trắng
-                    LoadSoDoPhong(); // <--- Bỏ comment dòng này nếu bạn có hàm load lại phòng
+                    // Bước 4: Sau khi Form CheckOut đóng lại (đã thanh toán xong)
+                    // ===> CẬP NHẬT TRANG CHỦ <===
+                    BookingBLL.NotifyDataChanged(); // <--- THÊM MỚI
+
+                    // Load lại danh sách phòng tại form này
+                    LoadSoDoPhong();
                 }
                 else
                 {
                     MessageBox.Show("Lỗi dữ liệu: Phòng báo đang ở nhưng không tìm thấy thông tin Nhận phòng (MaNP)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else // --- TRƯỜNG HỢP B: Click vào phòng XANH (Chọn để đặt mới) ---
+            {
+                _maPhongDangChon = maPhongClick;
+                _giaPhongHienTai = Convert.ToDecimal(data["GiaMacDinh"]);
 
-            // --- TRƯỜNG HỢP B: Click vào phòng XANH (Chọn để đặt mới) ---
-            _maPhongDangChon = maPhongClick;
-            _giaPhongHienTai = Convert.ToDecimal(data["GiaMacDinh"]);
+                lblPhongDangChon.Text = $"PHÒNG: {data["TenPhong"]}";
+                lblPhongDangChon.ForeColor = Color.Green;
 
-            lblPhongDangChon.Text = $"PHÒNG: {data["TenPhong"]}";
-            lblPhongDangChon.ForeColor = Color.Green;
-
-            // Gợi ý tiền cọc
-            txtTienCoc.Text = (_giaPhongHienTai * 0.3m).ToString("N0");
+                // Gợi ý tiền cọc
+                txtTienCoc.Text = (_giaPhongHienTai * 0.3m).ToString("N0");
+            }
         }
 
         // 4. Nút Tìm Kiếm 
@@ -238,6 +243,9 @@ namespace QuanLyKhachSan.GUI
 
             if (kq.Contains("thành công"))
             {
+                // ===> CẬP NHẬT TRANG CHỦ <===
+                BookingBLL.NotifyDataChanged(); // <--- THÊM MỚI
+
                 LoadSoDoPhong();
                 _maPhongDangChon = 0;
                 lblPhongDangChon.Text = "PHÒNG: CHƯA CHỌN";
@@ -261,8 +269,12 @@ namespace QuanLyKhachSan.GUI
             {
                 string kq = bll.CheckIn(maDP);
                 MessageBox.Show(kq);
+
+                // ===> CẬP NHẬT TRANG CHỦ <===
+                BookingBLL.NotifyDataChanged(); // <--- THÊM MỚI
+
                 LoadSoDoPhong();
-                btnTim_Click(null, null);
+                btnTim_Click(null, null); // Refresh lại danh sách đặt
             }
         }
 
@@ -314,6 +326,9 @@ namespace QuanLyKhachSan.GUI
 
             if (kq.Contains("thành công"))
             {
+                // ===> CẬP NHẬT TRANG CHỦ <===
+                BookingBLL.NotifyDataChanged(); // <--- THÊM MỚI
+
                 LoadSoDoPhong();
                 btnTim_Click(null, null);
                 _maPhongDangChon = 0;

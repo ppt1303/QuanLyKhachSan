@@ -57,9 +57,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.DataGridView();
             this.tabPhuThu = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnXoaPhuThu = new System.Windows.Forms.Button();
+            this.btnThemPhuThu = new System.Windows.Forms.Button();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.numSoLuong = new System.Windows.Forms.NumericUpDown();
+            this.cboLoaiPhuThu = new System.Windows.Forms.ComboBox();
             this.lblThanhTienPhuThu = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dgvPhuThu = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.DataGridView();
             this.panelRight = new System.Windows.Forms.Panel();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -81,6 +86,8 @@
             this.numGiamGia = new System.Windows.Forms.NumericUpDown();
             this.panelLine = new System.Windows.Forms.Panel();
             this.labelHeaderRight = new System.Windows.Forms.Label();
+            this.dgvPhuThu = new System.Windows.Forms.DataGridView();
+            this.colMaSDPT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanelMain.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.tabControlChiTiet.SuspendLayout();
@@ -91,12 +98,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichVu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panel)).BeginInit();
             this.tabPhuThu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhuThu)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panel2)).BeginInit();
             this.panelRight.SuspendLayout();
             this.grpHinhThuc.SuspendLayout();
             this.tableBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGiamGia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhuThu)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -384,9 +393,10 @@
             // 
             // tabPhuThu
             // 
+            this.tabPhuThu.Controls.Add(this.dgvPhuThu);
+            this.tabPhuThu.Controls.Add(this.groupBox1);
             this.tabPhuThu.Controls.Add(this.lblThanhTienPhuThu);
             this.tabPhuThu.Controls.Add(this.label11);
-            this.tabPhuThu.Controls.Add(this.dgvPhuThu);
             this.tabPhuThu.Controls.Add(this.panel2);
             this.tabPhuThu.Location = new System.Drawing.Point(8, 51);
             this.tabPhuThu.Name = "tabPhuThu";
@@ -395,6 +405,68 @@
             this.tabPhuThu.TabIndex = 2;
             this.tabPhuThu.Text = "Phụ thu";
             this.tabPhuThu.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnXoaPhuThu);
+            this.groupBox1.Controls.Add(this.btnThemPhuThu);
+            this.groupBox1.Controls.Add(this.txtGhiChu);
+            this.groupBox1.Controls.Add(this.numSoLuong);
+            this.groupBox1.Controls.Add(this.cboLoaiPhuThu);
+            this.groupBox1.Location = new System.Drawing.Point(528, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(324, 519);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Phụ thu";
+            // 
+            // btnXoaPhuThu
+            // 
+            this.btnXoaPhuThu.Location = new System.Drawing.Point(82, 430);
+            this.btnXoaPhuThu.Name = "btnXoaPhuThu";
+            this.btnXoaPhuThu.Size = new System.Drawing.Size(172, 50);
+            this.btnXoaPhuThu.TabIndex = 4;
+            this.btnXoaPhuThu.Text = "Xóa";
+            this.btnXoaPhuThu.UseVisualStyleBackColor = true;
+            this.btnXoaPhuThu.Click += new System.EventHandler(this.btnXoaPhuThu_Click);
+            // 
+            // btnThemPhuThu
+            // 
+            this.btnThemPhuThu.Location = new System.Drawing.Point(82, 319);
+            this.btnThemPhuThu.Name = "btnThemPhuThu";
+            this.btnThemPhuThu.Size = new System.Drawing.Size(172, 50);
+            this.btnThemPhuThu.TabIndex = 3;
+            this.btnThemPhuThu.Text = "Lưu";
+            this.btnThemPhuThu.UseVisualStyleBackColor = true;
+            this.btnThemPhuThu.Click += new System.EventHandler(this.btnThemPhuThu_Click);
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.Location = new System.Drawing.Point(34, 254);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(284, 44);
+            this.txtGhiChu.TabIndex = 2;
+            // 
+            // numSoLuong
+            // 
+            this.numSoLuong.Location = new System.Drawing.Point(34, 150);
+            this.numSoLuong.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numSoLuong.Name = "numSoLuong";
+            this.numSoLuong.Size = new System.Drawing.Size(284, 44);
+            this.numSoLuong.TabIndex = 1;
+            // 
+            // cboLoaiPhuThu
+            // 
+            this.cboLoaiPhuThu.FormattingEnabled = true;
+            this.cboLoaiPhuThu.Location = new System.Drawing.Point(34, 52);
+            this.cboLoaiPhuThu.Name = "cboLoaiPhuThu";
+            this.cboLoaiPhuThu.Size = new System.Drawing.Size(284, 45);
+            this.cboLoaiPhuThu.TabIndex = 0;
+            this.cboLoaiPhuThu.SelectedIndexChanged += new System.EventHandler(this.cboLoaiPhuThu_SelectedIndexChanged);
             // 
             // lblThanhTienPhuThu
             // 
@@ -406,6 +478,7 @@
             this.lblThanhTienPhuThu.Size = new System.Drawing.Size(331, 59);
             this.lblThanhTienPhuThu.TabIndex = 7;
             this.lblThanhTienPhuThu.Text = "1.250.000 VNĐ";
+            this.lblThanhTienPhuThu.Click += new System.EventHandler(this.lblThanhTienPhuThu_Click);
             // 
             // label11
             // 
@@ -415,15 +488,6 @@
             this.label11.Size = new System.Drawing.Size(252, 38);
             this.label11.TabIndex = 6;
             this.label11.Text = "Thành tiền dịch vụ:";
-            // 
-            // dgvPhuThu
-            // 
-            this.dgvPhuThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhuThu.Location = new System.Drawing.Point(3, 22);
-            this.dgvPhuThu.Name = "dgvPhuThu";
-            this.dgvPhuThu.RowHeadersWidth = 72;
-            this.dgvPhuThu.Size = new System.Drawing.Size(676, 222);
-            this.dgvPhuThu.TabIndex = 2;
             // 
             // panel2
             // 
@@ -448,6 +512,7 @@
             this.panel2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.panel2.Size = new System.Drawing.Size(870, 692);
             this.panel2.TabIndex = 0;
+            this.panel2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.panel2_CellContentClick);
             // 
             // panelRight
             // 
@@ -699,6 +764,26 @@
             this.labelHeaderRight.Text = "TỔNG HỢP THANH TOÁN";
             this.labelHeaderRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dgvPhuThu
+            // 
+            this.dgvPhuThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhuThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaSDPT});
+            this.dgvPhuThu.Location = new System.Drawing.Point(35, 22);
+            this.dgvPhuThu.Name = "dgvPhuThu";
+            this.dgvPhuThu.RowHeadersWidth = 82;
+            this.dgvPhuThu.RowTemplate.Height = 33;
+            this.dgvPhuThu.Size = new System.Drawing.Size(473, 236);
+            this.dgvPhuThu.TabIndex = 9;
+            // 
+            // colMaSDPT
+            // 
+            this.colMaSDPT.DataPropertyName = "MaSDPT";
+            this.colMaSDPT.HeaderText = "ID";
+            this.colMaSDPT.MinimumWidth = 10;
+            this.colMaSDPT.Name = "colMaSDPT";
+            this.colMaSDPT.Width = 200;
+            // 
             // CheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -727,7 +812,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panel)).EndInit();
             this.tabPhuThu.ResumeLayout(false);
             this.tabPhuThu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhuThu)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panel2)).EndInit();
             this.panelRight.ResumeLayout(false);
             this.grpHinhThuc.ResumeLayout(false);
@@ -735,6 +822,7 @@
             this.tableBill.ResumeLayout(false);
             this.tableBill.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGiamGia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhuThu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -789,7 +877,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblThanhTienPhuThu;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dgvPhuThu;
         private System.Windows.Forms.DataGridView dgvDichVu;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnThemPhuThu;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.NumericUpDown numSoLuong;
+        private System.Windows.Forms.ComboBox cboLoaiPhuThu;
+        private System.Windows.Forms.Button btnXoaPhuThu;
+        private System.Windows.Forms.DataGridView dgvPhuThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaSDPT;
     }
 }

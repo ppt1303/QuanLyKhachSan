@@ -34,9 +34,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucTrangChu";
             this.Size = new System.Drawing.Size(963, 556);
+            this.Load += new System.EventHandler(this.ucTrangChu_Load_1);
             this.ResumeLayout(false);
 
         }
