@@ -829,3 +829,5 @@ D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucKhachHang
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQLPhong.resources
 D:\qlkstt\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.rptHoaDon.resources
 D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucKhachHang.resources
+D:\QLKS\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucKhachHang.resources
+D:\QLKS\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQLPhong.resources

@@ -5,73 +5,33 @@ namespace QuanLyKhachSan.DAL
 {
     public class PhongThietBiDAL
     {
+        // 1. Tìm kiếm (Đã chuyển sang Proc)
         public DataTable TimKiemThietBiPhong(int maPhong, int maTB)
         {
-            string query = @"
-                SELECT 
-                    PT.MaPhong,
-                    P.TenPhong AS [Tên Phòng],
-                    PT.MaTB,
-                    TB.TenTB AS [Tên Thiết Bị],
-                    PT.SoLuong AS [Số Lượng],
-                    TB.MoTa AS [Mô Tả]
-                FROM PHONG_THIETBI PT
-                JOIN THIETBI TB ON PT.MaTB = TB.MaTB
-                JOIN PHONG P ON PT.MaPhong = P.MaPhong
-                WHERE (@MaPhong = -1 OR PT.MaPhong = @MaPhong)
-                  AND (@MaTB = -1 OR PT.MaTB = @MaTB)
-                ORDER BY P.TenPhong, TB.TenTB";
-
             SqlParameter[] parameters = {
                 new SqlParameter("@MaPhong", maPhong),
                 new SqlParameter("@MaTB", maTB)
             };
-
-            return DatabaseHelper.GetData(query, parameters, CommandType.Text);
+            return DatabaseHelper.GetData("sp_TimKiemThietBiPhong", parameters, CommandType.StoredProcedure);
         }
-        // 1. Lấy danh sách thiết bị theo Mã phòng (Dùng khi lọc)
+
+        // 2. Lấy danh sách theo phòng (Đã chuyển sang Proc)
         public DataTable LayDSThietBiTheoPhong(int maPhong)
         {
-            string query = @"
-                SELECT 
-                    PT.MaPhong,
-                    P.TenPhong AS [Tên Phòng],
-                    PT.MaTB,
-                    TB.TenTB AS [Tên Thiết Bị],
-                    PT.SoLuong AS [Số Lượng],
-                    TB.MoTa AS [Mô Tả]
-                FROM PHONG_THIETBI PT
-                JOIN THIETBI TB ON PT.MaTB = TB.MaTB
-                JOIN PHONG P ON PT.MaPhong = P.MaPhong
-                WHERE PT.MaPhong = @MaPhong";
-
             SqlParameter[] param = { new SqlParameter("@MaPhong", maPhong) };
-            return DatabaseHelper.GetData(query, param, CommandType.Text);
+            return DatabaseHelper.GetData("sp_LayDSThietBiTheoPhong", param, CommandType.StoredProcedure);
         }
 
-        // 2. Lấy TẤT CẢ danh sách thiết bị của TẤT CẢ phòng (Dùng khi mới vào Tab)
+        // 3. Lấy tất cả (Đã chuyển sang Proc)
         public DataTable LayTatCaThietBiPhong()
         {
-            string query = @"
-                SELECT 
-                    PT.MaPhong,
-                    P.TenPhong AS [Tên Phòng],
-                    PT.MaTB,
-                    TB.TenTB AS [Tên Thiết Bị],
-                    PT.SoLuong AS [Số Lượng],
-                    TB.MoTa AS [Mô Tả]
-                FROM PHONG_THIETBI PT
-                JOIN THIETBI TB ON PT.MaTB = TB.MaTB
-                JOIN PHONG P ON PT.MaPhong = P.MaPhong
-                ORDER BY P.TenPhong, TB.TenTB";
-
-            return DatabaseHelper.GetData(query, null, CommandType.Text);
+            return DatabaseHelper.GetData("sp_LayTatCaThietBiPhong", null, CommandType.StoredProcedure);
         }
 
-        // 3. Thêm hoặc Cập nhật (Giữ nguyên)
+        // 4. Thêm hoặc Cập nhật (Giữ nguyên vì đã dùng Proc)
         public bool ThemHoacCapNhatThietBi(int maPhong, int maTB, int soLuong)
         {
-            string spName = "sp_ThemHoacCapNhatThietBiPhong";
+            string spName = "sp_ThemHoacCapNhatThietBiPhong"; // Đảm bảo Proc này đã có trong DB
             SqlParameter[] parameters = {
                 new SqlParameter("@MaPhong", maPhong),
                 new SqlParameter("@MaTB", maTB),
@@ -80,15 +40,14 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.ExecuteNonQuery(spName, parameters, CommandType.StoredProcedure);
         }
 
-        // 4. Xóa (Giữ nguyên)
+        // 5. Xóa (Đã chuyển sang Proc)
         public bool XoaThietBiKhoiPhong(int maPhong, int maTB)
         {
-            string query = "DELETE FROM PHONG_THIETBI WHERE MaPhong = @MaPhong AND MaTB = @MaTB";
             SqlParameter[] parameters = {
                 new SqlParameter("@MaPhong", maPhong),
                 new SqlParameter("@MaTB", maTB)
             };
-            return DatabaseHelper.ExecuteNonQuery(query, parameters, CommandType.Text);
+            return DatabaseHelper.ExecuteNonQuery("sp_XoaThietBiKhoiPhong", parameters, CommandType.StoredProcedure);
         }
     }
 }
