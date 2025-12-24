@@ -158,16 +158,13 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable GetRoomAndGuestDetails(int maNP)
         {
-            string query = @"
-                SELECT KH.HoTen, P.TenPhong, LP.TenLP, NP.ThoiGianNhan 
-                FROM NHANPHONG NP
-                JOIN PHONG P ON NP.MaPhong = P.MaPhong
-                JOIN LOAIPHONG LP ON P.MaLP = LP.MaLP
-                JOIN DATPHONG DP ON NP.MaDP = DP.MaDP
-                JOIN KHACHHANG KH ON DP.MaKH = KH.MaKH
-                WHERE NP.MaNP = @MaNP";
-            SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
-            return DatabaseHelper.GetData(query, para, CommandType.Text);
+            string query = "EXEC sp_LayThongTinPhongVaKhach @MaNP";
+
+            SqlParameter[] para = {
+                new SqlParameter("@MaNP", maNP)
+            };
+
+            return DatabaseHelper.GetData(query, para);
         }
 
         public DataTable LoadAllDichVu()
@@ -187,19 +184,13 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable LoadLichSuChiTieu(int maNP)
         {
-            string query = @"
-                SELECT DV.TenDV AS DichVu, SD.SoLuong, DV.Gia, (SD.SoLuong * DV.Gia) AS ThanhTien, SD.NgaySuDung
-                FROM SUDUNG_DICHVU SD
-                JOIN DICHVU DV ON SD.MaDV = DV.MaDV
-                WHERE SD.MaNP = @MaNP
-                UNION ALL
-                SELECT PT.Ten AS DichVu, SP.SoLuong, SP.GiaHienTai AS Gia, (SP.SoLuong * SP.GiaHienTai) AS ThanhTien, CAST(SP.ThoiGianGhiNhan AS DATE)
-                FROM SUDUNG_PHUTHU SP
-                JOIN PHUTHU PT ON SP.MaPhuThu = PT.MaPhuThu
-                WHERE SP.MaNP = @MaNP
-                ORDER BY NgaySuDung DESC";
-            SqlParameter[] para = { new SqlParameter("@MaNP", maNP) };
-            return DatabaseHelper.GetData(query, para, CommandType.Text);
+            string query = "EXEC sp_LoadLichSuChiTieu @MaNP";
+
+            SqlParameter[] para = {
+                new SqlParameter("@MaNP", maNP)
+            };
+
+            return DatabaseHelper.GetData(query, para);
         }
 
         public decimal TinhTienTam(int maNP)

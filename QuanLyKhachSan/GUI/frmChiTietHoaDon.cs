@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using QuanLyKhachSan.BLL; // Nhớ using BLL
+using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {

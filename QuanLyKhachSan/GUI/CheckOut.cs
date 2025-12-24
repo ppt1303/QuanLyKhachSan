@@ -29,7 +29,6 @@ namespace QuanLyKhachSan.GUI
         private decimal _tienCoc = 0;
         private decimal _giaPhongNgay = 0; // Giá gốc 1 ngày của phòng đó
 
-        // 2. CONSTRUCTOR (Quan trọng: Phải nhận tham số maNP)
         public CheckOut(int maNP)
         {
             InitializeComponent();
@@ -39,7 +38,6 @@ namespace QuanLyKhachSan.GUI
             HienThiDanhSachPhuThu();
         }
 
-        // 3. KHI FORM VỪA MỞ LÊN
         private void CheckOut_Load(object sender, EventArgs e)
         {
             try
@@ -62,7 +60,6 @@ namespace QuanLyKhachSan.GUI
                 numGiamGia.Minimum = 0;
                 numGiamGia.Maximum = 100;
 
-                // Nếu muốn hiển thị đẹp hơn thì thêm hậu tố % (tùy chỉnh)
                 numGiamGia.DecimalPlaces = 0; // Chỉ nhập số nguyên
             }
             catch (Exception ex)
@@ -70,8 +67,6 @@ namespace QuanLyKhachSan.GUI
                 MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message);
             }
         }
-
-        // --- PHẦN 4: HÀM LOAD DỮ LIỆU TỪ BLL ---
 
         private void LoadThongTinPhong()
         {
@@ -121,7 +116,6 @@ namespace QuanLyKhachSan.GUI
             dgvDichVu.DataSource = dt;
             FormatGrid(dgvDichVu);
 
-            // Cộng tổng tiền cột "Thành Tiền"
             _tienDichVu = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -140,7 +134,6 @@ namespace QuanLyKhachSan.GUI
             dgvPhuThu.DataSource = dt;
             FormatGrid(dgvPhuThu);
 
-            // Cộng tổng tiền
             _tienPhuThu = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -153,7 +146,6 @@ namespace QuanLyKhachSan.GUI
             HienThiDanhSachPhuThu();
         }
 
-        // --- PHẦN 5: LOGIC TÍNH TIỀN (Update liên tục) ---
 
         private void TinhTienPhongDisplay()
         {
@@ -206,13 +198,9 @@ namespace QuanLyKhachSan.GUI
 
             // 6. Hiển thị kết quả
             lblTongCongFinal.Text = tongThanhToan.ToString("N0") + " VNĐ";
-
-            // (Mẹo) Bạn có thể đổi cái Label tiêu đề "Giảm giá" thành hiển thị số tiền cho dễ nhìn
-            // Ví dụ label bên trái dòng giảm giá tên là label20
-            // label20.Text = $"Giảm giá ({phanTramGiam}%): -{tienGiamGia.ToString("N0")}";
         }
 
-        // --- PHẦN 6: CÁC SỰ KIỆN (Events) ---
+ 
 
         // Khi chỉnh giờ ra -> Tính lại tiền phòng -> Tính lại tổng
         private void dtpNgayRa_ValueChanged(object sender, EventArgs e)
@@ -252,13 +240,13 @@ namespace QuanLyKhachSan.GUI
             // Lấy kiểu thanh toán (1: Tiền mặt, 2: CK)
             int kieuTT = rdoTienMat.Checked ? 1 : 2;
 
-            // Gọi BLL để lưu xuống DB (Hàm này bạn đã viết ở bước trước)
+            // Gọi BLL để lưu xuống DB
             bool ketQua = _bll.ThanhToanFull(_maNP, "Bình thường", kieuTT);
 
             if (ketQua)
             {
                 MessageBox.Show("Thanh toán thành công! Phòng đã được trả.", "Thông báo");
-                this.Close(); // Đóng form quay về sơ đồ
+                this.Close(); 
             }
             else
             {
@@ -274,18 +262,17 @@ namespace QuanLyKhachSan.GUI
             if (ten.Contains("check") || ten.Contains("sớm") || ten.Contains("muộn"))
             {
                 numSoLuong.Value = 1;
-                numSoLuong.Enabled = false; // Khóa lại
+                numSoLuong.Enabled = false;
             }
             else
             {
-                numSoLuong.Enabled = true; // Mở ra cho nhập (Vỡ ly, thêm người...)
+                numSoLuong.Enabled = true;
             }
         }
 
-        // Gọi hàm này khi Form vừa mở lên
         private void LoadComboPhuThu()
         {
-            // Lấy danh sách từ BLL (SELECT * FROM PHUTHU)
+            // Lấy danh sách từ BLL
             cboLoaiPhuThu.DataSource = _bllPhuThu.LayDanhSachPhuThu();
             cboLoaiPhuThu.DisplayMember = "Ten";
             cboLoaiPhuThu.ValueMember = "MaPhuThu";
@@ -299,12 +286,11 @@ namespace QuanLyKhachSan.GUI
                 int sl = (int)numSoLuong.Value;
                 string ghiChu = txtGhiChu.Text;
 
-                // Gọi xuống SQL lưu lại
                 if (_bllPhuThu.ThemPhuThu(_maNP, maPT, sl, ghiChu))
                 {
                     MessageBox.Show("Thêm thành công!");
 
-                    // QUAN TRỌNG: Load lại thông tin để Tổng tiền tự nhảy lên
+                    //  Load lại thông tin
                     LoadPhuThu();
                     HienThiDanhSachPhuThu();
                 }
@@ -321,18 +307,16 @@ namespace QuanLyKhachSan.GUI
             // 2. Thiết lập giờ Checkout chuẩn là 12:00 trưa của ngày đó
             DateTime gioCheckOutChuan = new DateTime(ngayDuKien.Year, ngayDuKien.Month, ngayDuKien.Day, 12, 0, 0);
 
-            // 3. So sánh với giờ hiện tại
             DateTime bayGio = DateTime.Now;
 
             if (bayGio > gioCheckOutChuan)
             {
-                // Tính độ lệch (TimeSpan)
+                // Tính độ lệch
                 TimeSpan tre = bayGio - gioCheckOutChuan;
 
-                // Làm tròn số giờ (Ví dụ: 1 tiếng 15 phút -> tính là 2 tiếng cho máu, hoặc 1 tùy cậu)
+                // Làm tròn số giờ 
                 int soGioTre = (int)Math.Ceiling(tre.TotalHours);
 
-                // Nếu trễ > 0 thì hiện thông báo gợi ý
                 if (soGioTre > 0)
                 {
                     string thongBao = string.Format("Khách trả muộn {0} giờ so với quy định (12:00 - {1:dd/MM}).\nBạn có muốn tính phí trả muộn không?",
@@ -344,14 +328,8 @@ namespace QuanLyKhachSan.GUI
 
                         // 1. Chọn loại phụ thu là "Check-out muộn" (Tìm theo tên)
                         cboLoaiPhuThu.SelectedIndex = cboLoaiPhuThu.FindString("Check-out muộn");
-
-                        // 2. Mở khóa ô số lượng (để điền số giờ) - Quan trọng!
                         numSoLuong.Enabled = true;
-
-                        // 3. Điền số giờ trễ vào
                         numSoLuong.Value = soGioTre;
-
-                        // 4. Ghi chú tự động
                         txtGhiChu.Text = "Tự động tính: Trễ " + soGioTre + " tiếng";
                     }
                 }
@@ -371,23 +349,21 @@ namespace QuanLyKhachSan.GUI
         // 1. Hàm hiển thị (Đơn giản hóa tối đa)
         private void HienThiDanhSachPhuThu()
         {
-            // 1. Lấy dữ liệu mới nhất từ SQL (Lúc này SQL đã có MaSDPT rồi)
+            // 1. Lấy dữ liệu mới nhất từ SQL
             DataTable dt = _bllPhuThu.LayPhuThuTheoPhong(_maNP);
 
-            // 2. ĐẬP ĐI XÂY LẠI GIAO DIỆN (Code cục súc trị lỗi lì lợm)
             dgvPhuThu.DataSource = null;
-            dgvPhuThu.Columns.Clear(); // Xóa sạch cột cũ
-            dgvPhuThu.AutoGenerateColumns = true; // <--- BẮT BUỘC: Tự động hiện tất cả cột
+            dgvPhuThu.Columns.Clear();
+            dgvPhuThu.AutoGenerateColumns = true; 
 
             // 3. Đổ dữ liệu vào
             dgvPhuThu.DataSource = dt;
 
-            // (Tùy chọn) Đổi tên cột đầu tiên cho dễ nhìn
+            //Đổi tên cột đầu tiên cho dễ nhìn
             if (dgvPhuThu.Columns.Count > 0)
                 dgvPhuThu.Columns[0].HeaderText = "Mã ID (Cấm xóa)";
         }
 
-        // 2. Nút Xóa (Lấy theo chỉ số cột - Index)
         private void btnXoaPhuThu_Click(object sender, EventArgs e)
         {
             // 1. Kiểm tra xem có chọn dòng nào chưa
@@ -397,34 +373,26 @@ namespace QuanLyKhachSan.GUI
             {
                 try
                 {
-                    // --- ĐOẠN QUAN TRỌNG NHẤT ---
                     // Ép kiểu dòng đang chọn về DataRowView (Dữ liệu gốc từ SQL)
                     System.Data.DataRowView row = (System.Data.DataRowView)dgvPhuThu.SelectedRows[0].DataBoundItem;
 
-                    // Lấy cột "MaSDPT" từ trong DỮ LIỆU GỐC (SQL)
-                    // Lúc này đéo cần quan tâm trên giao diện tên cột là gì nữa
+                            
                     int maSDPT = Convert.ToInt32(row["MaSDPT"]);
-                    // -----------------------------
-
-                    // Gọi hàm xóa
+                                  
                     if (_bllPhuThu.XoaPhuThu(maSDPT))
                     {
                         MessageBox.Show("Đã xóa thành công!");
-                        HienThiDanhSachPhuThu(); // Load lại bảng
-                                                 // Gọi hàm cập nhật lại tổng tiền ở đây...
+                        HienThiDanhSachPhuThu();
+                                                 
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Nếu nó báo lỗi ở đây nghĩa là SQL chưa trả về cột MaSDPT -> Quay lại chửi SQL
+                    // Nếu nó báo lỗi ở đây nghĩa là SQL chưa trả về cột MaSDPT
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
         }
     }
 }
-    //QuanLyKhachSan.GUI.CheckOut frm = new QuanLyKhachSan.GUI.CheckOut(maNP);
-
-    //// ShowDialog: Mở form và CHẶN không cho thao tác form cũ cho đến khi tắt form này
-    //frm.ShowDialog();
-
+    
