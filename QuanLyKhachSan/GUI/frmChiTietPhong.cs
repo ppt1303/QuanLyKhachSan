@@ -63,6 +63,7 @@ namespace QuanLyKhachSan.GUI
                 // B. Lấy thông tin Khách hàng (Nếu đang có người ở - maNP > 0)
                 if (this.maNP > 0)
                 {
+                    btnTraphong.Visible = true;
                     // JOIN 3 Bảng: NHANPHONG -> DATPHONG -> KHACHHANG
                     string queryKhach = @"
                         SELECT KH.HoTen, NP.ThoiGianNhan
@@ -334,6 +335,7 @@ namespace QuanLyKhachSan.GUI
             QuanLyKhachSan.GUI.CheckOut frm = new QuanLyKhachSan.GUI.CheckOut(maNP);
             frm.ShowDialog();
             BookingBLL.NotifyDataChanged(); 
+            this.Close();
 
         }
     }
