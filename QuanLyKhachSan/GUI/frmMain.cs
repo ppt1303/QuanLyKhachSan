@@ -75,5 +75,10 @@ namespace QuanLyKhachSan.GUI
             fluentDesignFormContainer1.Controls.Add(control);
             control.BringToFront();
         }
+
+        private void fluentDesignFormContainer1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

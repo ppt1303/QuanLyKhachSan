@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System;
-using QuanLyKhachSan.DAL; // Phải có dòng này để nó nhìn thấy tầng DAL
+using QuanLyKhachSan.DAL; 
 
 namespace QuanLyKhachSan.BLL
 {

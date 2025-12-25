@@ -14,8 +14,8 @@ namespace QuanLyKhachSan.GUI
         public ucKhachHang()
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill; // Đảm bảo UserControl hiển thị toàn bộ
-            ClearInputs(); // Thiết lập trạng thái ban đầu
+            this.Dock = DockStyle.Fill; 
+            ClearInputs();
             LoadDanhSachKhachHang();
         }
 
@@ -46,7 +46,7 @@ namespace QuanLyKhachSan.GUI
                 guna2DataGridView1.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
                 guna2DataGridView1.Columns["QuocTich"].HeaderText = "Quốc Tịch";
 
-                // Định dạng cột Ngày Sinh
+         
                 if (guna2DataGridView1.Columns.Contains("NgaySinh"))
                 {
                     guna2DataGridView1.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -85,7 +85,7 @@ namespace QuanLyKhachSan.GUI
             guna2TextBox_CCCD.Clear();
             guna2TextBox_QuocTich.Text = "Việt Nam";
             guna2ComboBox_GioiTinh.SelectedIndex = 0; // Chọn Nam mặc định
-            guna2DateTimePicker_NgaySinh.Value = DateTime.Now.AddYears(-20); // Đặt ngày sinh hợp lý
+            guna2DateTimePicker_NgaySinh.Value = DateTime.Now.AddYears(-20); 
             guna2TextBox_TimKiem.Clear();
 
             guna2Button_CapNhat.Enabled = false;
@@ -112,7 +112,7 @@ namespace QuanLyKhachSan.GUI
                 string hoTen = guna2TextBox_HoTen.Text;
                 string cccd = guna2TextBox_CCCD.Text;
                 string sdt = guna2TextBox_SDT.Text;
-                // Lấy giá trị thực tế của giới tính (Nam/Nữ/Khác)
+               
                 string gioiTinh = guna2ComboBox_GioiTinh.SelectedItem.ToString();
                 DateTime ngaySinh = guna2DateTimePicker_NgaySinh.Value;
                 string quocTich = guna2TextBox_QuocTich.Text;
@@ -162,26 +162,23 @@ namespace QuanLyKhachSan.GUI
                 }
                 else
                 {
-                    // Trường hợp hiện tại: BLL trả về FALSE dù đã lưu (Lỗi logic trả về 0 hàng bị ảnh hưởng)
-                    // Vì bạn đã xác nhận dữ liệu đã được lưu, chúng ta sẽ xem đây là thành công nhưng có cảnh báo
+                    
                     MessageBox.Show("Cập nhật hoàn tất.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // 3. ********* BƯỚC SỬA LỖI CHÍNH *********
-                // CHẠY LỆNH LÀM MỚI BẢNG VÀ XÓA Ô INPUT SAU KHI CẬP NHẬT (DÙ KẾT QUẢ success LÀ GÌ)
-                LoadDanhSachKhachHang(); // Làm mới DataGridView
-                ClearInputs();          // Làm mới các ô nhập liệu
+                LoadDanhSachKhachHang(); 
+                ClearInputs();          
 
             }
             catch (Exception ex)
             {
-                // Giữ lại phần bắt lỗi hệ thống để đề phòng lỗi nghiêm trọng
+               
                 MessageBox.Show("LỖI HỆ THỐNG TRONG QUÁ TRÌNH CẬP NHẬT: " + ex.Message, "Lỗi Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
-        // File: QuanLyKhachSan/GUI/ucKhachHang.cs
+      
 
         private void guna2Button_Xoa_Click(object sender, EventArgs e)
         {
@@ -197,24 +194,23 @@ namespace QuanLyKhachSan.GUI
             {
                 try
                 {
-                    // 1. Thực hiện lệnh xóa. Không cần kiểm tra giá trị trả về ngay tại đây.
-                    // Nếu có lỗi SQL Foreign Key, nó sẽ nhảy thẳng đến khối catch.
+                   
                     khachHangBLL.XoaKhachHang(MaKH_Chon);
 
-                    // 2. Nếu không có Exception: Báo cáo thành công và làm mới giao diện
+               
                     MessageBox.Show("Xóa khách hàng và tất cả giao dịch liên quan thành công.", "Thành Công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // 3. ********* BƯỚC BẮT BUỘC LÀM MỚI GIAO DIỆN *********
+                
                     LoadDanhSachKhachHang();
                     ClearInputs();
 
                 }
                 catch (Exception ex)
                 {
-                    // 4. Nếu có lỗi hệ thống: Chỉ hiển thị lỗi chính xác từ DB
+                 
                     string errorMessage = "LỖI HỆ THỐNG KHI XÓA: " + ex.Message;
 
-                    // Nếu lỗi là do ràng buộc, thông báo người dùng bảng nào đang giữ ID
+                
                     if (ex.Message.Contains("FK_"))
                     {
                         errorMessage = "Không thể xóa Khách hàng. Lỗi ràng buộc khóa ngoại (Foreign Key) với một bảng giao dịch khác chưa được xóa. (Lỗi DB: " + ex.Message + ")";
@@ -238,7 +234,7 @@ namespace QuanLyKhachSan.GUI
             {
                 DataTable dt = khachHangBLL.TimKiemKhachHang(keyword);
 
-                // Cần xử lý lại cột hiển thị GioiTinh cho kết quả tìm kiếm
+         
                 if (!dt.Columns.Contains("GioiTinhHienThi"))
                     dt.Columns.Add("GioiTinhHienThi", typeof(string));
 
@@ -248,7 +244,7 @@ namespace QuanLyKhachSan.GUI
                 }
                 guna2DataGridView1.DataSource = dt;
 
-                // Đảm bảo các cột hiển thị đúng sau khi tìm kiếm
+              
                 if (guna2DataGridView1.Columns.Contains("GioiTinh"))
                 {
                     guna2DataGridView1.Columns["GioiTinh"].Visible = false;

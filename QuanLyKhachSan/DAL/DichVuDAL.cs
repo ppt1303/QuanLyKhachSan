@@ -12,7 +12,7 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.GetData("SELECT MaDV, TenDV, Gia FROM dbo.DICHVU ORDER BY MaDV", null);
         }
 
-        // Hàm thêm dịch vụ (KHÔNG CẦN TRUYỀN MaDV)
+        // Hàm thêm dịch vụ
         public bool ThemDichVu(string tenDV, decimal gia)
         {
             string spName = "sp_ThemDichVu";
@@ -35,7 +35,7 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.ExecuteNonQuery(spName, parameters, CommandType.StoredProcedure);
         }
 
-        // Hàm xóa dịch vụ (Xóa hàng loạt)
+        // Hàm xóa dịch vụ
         public bool XoaDichVu(string maDVList)
         {
             string spName = "sp_XoaNhieuDichVu";

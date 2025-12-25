@@ -6,13 +6,13 @@ using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {
-    // Kế thừa từ UserControl thay vì Form
+   
     public partial class ucQLPhong : UserControl
     {
-        // Gọi lớp Nghiệp vụ (BLL)
+     
         private QLPhongBLL bll = new QLPhongBLL();
 
-        // Biến cờ để chặn sự kiện khi đang tải dữ liệu
+  
         private bool isBindingData = false;
         private int selectedMaPhong = -1;
 
@@ -22,14 +22,14 @@ namespace QuanLyKhachSan.GUI
             SetupEvents();
         }
 
-        // Sự kiện Load UserControl (Đổi tên hàm cho phù hợp)
+  
         private void ucQLPhong_Load(object sender, EventArgs e)
         {
             LoadCombobox();
             LoadGrid();
         }
 
-        // Thiết lập các sự kiện thủ công
+    
         private void SetupEvents()
         {
             // Cấu hình GridView
@@ -50,8 +50,8 @@ namespace QuanLyKhachSan.GUI
             this.Load += ucQLPhong_Load;
         }
 
-        // --- HÀM TẢI DỮ LIỆU ---
-        public void LoadCombobox() // Có thể để public nếu muốn gọi từ Form cha
+      
+        public void LoadCombobox() 
         {
             try
             {
@@ -63,23 +63,23 @@ namespace QuanLyKhachSan.GUI
             }
             catch (Exception )
             {
-                // Log lỗi nếu cần
+         
             }
         }
 
-        public void LoadGrid() // Để public để Form cha có thể refresh dữ liệu khi cần
+        public void LoadGrid() 
         {
             try
             {
-                isBindingData = true; // Chặn sự kiện SelectionChanged
+                isBindingData = true; 
 
                 dgvPhong.DataSource = bll.LayTatCaPhong();
 
-                // Ẩn các cột ID
+
                 if (dgvPhong.Columns.Contains("MaPhong")) dgvPhong.Columns["MaPhong"].Visible = false;
                 if (dgvPhong.Columns.Contains("MaLP")) dgvPhong.Columns["MaLP"].Visible = false;
 
-                // Định dạng tiền tệ
+        
                 if (dgvPhong.Columns.Contains("Giá Giờ")) dgvPhong.Columns["Giá Giờ"].DefaultCellStyle.Format = "N0";
                 if (dgvPhong.Columns.Contains("Giá Ngày")) dgvPhong.Columns["Giá Ngày"].DefaultCellStyle.Format = "N0";
                 if (dgvPhong.Columns.Contains("Giá Đêm")) dgvPhong.Columns["Giá Đêm"].DefaultCellStyle.Format = "N0";
@@ -97,7 +97,6 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // --- SỰ KIỆN CHỌN DÒNG TRÊN GRID ---
         private void dgvPhong_SelectionChanged(object sender, EventArgs e)
         {
             if (isBindingData) return;
@@ -119,7 +118,7 @@ namespace QuanLyKhachSan.GUI
                     if (row.Cells["MaLP"].Value != null)
                         cboLoaiPhong.SelectedValue = Convert.ToInt32(row.Cells["MaLP"].Value);
 
-                    // Hiển thị Giá (Chỉ xem)
+                    // Hiển thị Giá 
                     if (row.Cells["Giá Giờ"].Value != DBNull.Value)
                         txtGiaGio.Text = string.Format("{0:N0}", row.Cells["Giá Giờ"].Value);
                     else txtGiaGio.Text = "0";
@@ -246,6 +245,11 @@ namespace QuanLyKhachSan.GUI
                 return false;
             }
             return true;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

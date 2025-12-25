@@ -19,13 +19,13 @@ namespace QuanLyKhachSan.BLL
 
         public bool ThemDichVu(string tenDV, decimal gia)
         {
-            // Có thể thêm các logic kiểm tra (VD: giá > 0) trước khi gọi DAL
+          
             return _dal.ThemDichVu(tenDV, gia);
         }
 
         public bool SuaDichVu(int maDV, string tenDV, decimal gia)
         {
-            // Có thể thêm các logic kiểm tra trước khi gọi DAL
+           
             return _dal.SuaDichVu(maDV, tenDV, gia);
         }
 

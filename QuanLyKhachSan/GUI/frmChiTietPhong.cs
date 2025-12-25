@@ -338,5 +338,10 @@ namespace QuanLyKhachSan.GUI
             this.Close();
 
         }
+
+        private void dgvLichSuDV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

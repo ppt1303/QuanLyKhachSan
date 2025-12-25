@@ -6,12 +6,11 @@ namespace QuanLyKhachSan.DAL
 {
     public class DatPhongDAL
     {
-        // --- BỔ SUNG HÀM NÀY ĐỂ FIX LỖI FORM DANH SÁCH ---
         public DataTable GetDanhSachDonDat()
         {
             return DatabaseHelper.GetData("sp_LayDanhSachDonDat_ChiTiet", null);
         }
-        // -------------------------------------------------
+     
 
         public bool TaoDatPhong(int maKH, int maPhong, DateTime ngayDen, DateTime ngayDi, decimal tienCoc)
         {

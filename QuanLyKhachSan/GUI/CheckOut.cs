@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyKhachSan.BLL; // Nhớ đảm bảo namespace này đúng với project của cậu
+using QuanLyKhachSan.BLL; 
 
 namespace QuanLyKhachSan.GUI
 
@@ -392,6 +392,11 @@ namespace QuanLyKhachSan.GUI
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+        }
+
+        private void grpThongTin_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

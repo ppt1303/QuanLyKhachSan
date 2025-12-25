@@ -10,9 +10,6 @@ namespace QuanLyKhachSan.GUI
 {
     public partial class ucThietBi : UserControl
     {
-        // ==========================================
-        // KHAI BÁO BIẾN
-        // ==========================================
         private ThietBiBLL thietBiBLL = new ThietBiBLL();
         private PhongBLL phongBLL = new PhongBLL();
         private PhongThietBiBLL ptbBLL = new PhongThietBiBLL();
@@ -21,9 +18,6 @@ namespace QuanLyKhachSan.GUI
         private int selectedMaTB_Tab1 = -1;
         private int selectedMaTB_Tab2 = -1;
 
-        // ==========================================
-        // CONSTRUCTOR
-        // ==========================================
         public ucThietBi()
         {
             InitializeComponent();
@@ -62,10 +56,7 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // =========================================================================
-        // PHẦN 1: LOGIC TAB 1 (KHO THIẾT BỊ)
-        // =========================================================================
-
+    
         private void SetupTab1Events()
         {
             dgvThietBi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -158,7 +149,7 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // --- CÁC HÀM SỰ KIỆN NÚT BẤM TAB 1 ---
+    
         private void btnThemTB_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenTB.Text)) return;
@@ -203,10 +194,6 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // =========================================================================
-        // PHẦN 2: LOGIC TAB 2 (THIẾT BỊ TRONG PHÒNG)
-        // =========================================================================
-
         private void SetupTab2Events()
         {
             dgvThietBiPhong.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -223,7 +210,7 @@ namespace QuanLyKhachSan.GUI
             dgvThietBiPhong.SelectionChanged -= dgvThietBiPhong_SelectionChanged;
             dgvThietBiPhong.SelectionChanged += dgvThietBiPhong_SelectionChanged;
 
-            // Gán sự kiện Nút (TÊN HÀM ĐÃ ĐƯỢC CHUẨN HÓA)
+            // Gán sự kiện Nút 
             btnThemTBP.Click -= btnCapNhatTBP_Click;
             btnThemTBP.Click += btnCapNhatTBP_Click;
 
@@ -337,7 +324,7 @@ namespace QuanLyKhachSan.GUI
             }
         }
 
-        // Hàm ResetTab2 được gọi ở trên, giờ định nghĩa nó ở đây
+    
         private void ResetTab2(bool clearGrid)
         {
             bool oldState = isBindingData;
@@ -369,9 +356,7 @@ namespace QuanLyKhachSan.GUI
             ResetTab2(true);
         }
 
-        // --- CÁC HÀM SỰ KIỆN NÚT BẤM TAB 2 ---
-
-        // Tên hàm này phải khớp với dòng 'btnThemTBP.Click += btnCapNhatTBP_Click;' ở trên
+       
         private void btnCapNhatTBP_Click(object sender, EventArgs e)
         {
             if (cboTenPhong.SelectedIndex == -1) { MessageBox.Show("Chưa chọn phòng!"); return; }
@@ -398,7 +383,7 @@ namespace QuanLyKhachSan.GUI
             else MessageBox.Show("Lỗi cập nhật CSDL.");
         }
 
-        // Tên hàm này phải khớp với dòng 'btnXoaTBP.Click += btnXoaTBP_Click;' ở trên
+       
         private void btnXoaTBP_Click(object sender, EventArgs e)
         {
             if (dgvThietBiPhong.SelectedRows.Count == 0) return;
@@ -416,5 +401,10 @@ namespace QuanLyKhachSan.GUI
                 ResetTab2(true);
             }
         }
-    } // Kết thúc Class ucThietBi
-} // Kết thúc Namespace
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+    } 
+} 

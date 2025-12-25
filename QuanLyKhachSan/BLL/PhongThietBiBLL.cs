@@ -20,7 +20,7 @@ namespace QuanLyKhachSan.BLL
             return ptbDAL.ThemHoacCapNhatThietBi(maPhong, maTB, soLuong);
         }
 
-        // --- HÀM KIỂM TRA TỒN KHO ---
+ 
         public string KiemTraKhaDung(int maPhong, int maTB, int soLuongMuonSet)
         {
             // 1. Lấy Tổng kho của thiết bị này
@@ -48,7 +48,7 @@ namespace QuanLyKhachSan.BLL
                 return $"Không đủ hàng! Tổng kho: {tongKho}. Đang dùng nơi khác: {daDungChoPhongKhac}. Bạn chỉ có thể thêm tối đa: {conLaiChoPhongNay}.";
             }
 
-            return "OK"; // Đủ hàng
+            return "OK"; 
         }
     }
 }

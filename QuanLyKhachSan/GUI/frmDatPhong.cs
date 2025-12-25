@@ -141,8 +141,8 @@ namespace QuanLyKhachSan.GUI
                     frm.ShowDialog();
 
                     // Bước 4: Sau khi Form CheckOut đóng lại (đã thanh toán xong)
-                    // ===> CẬP NHẬT TRANG CHỦ <===
-                    BookingBLL.NotifyDataChanged(); // <--- THÊM MỚI
+               
+                    BookingBLL.NotifyDataChanged(); 
 
                     // Load lại danh sách phòng tại form này
                     LoadSoDoPhong();
@@ -152,7 +152,7 @@ namespace QuanLyKhachSan.GUI
                     MessageBox.Show("Lỗi dữ liệu: Phòng báo đang ở nhưng không tìm thấy thông tin Nhận phòng (MaNP)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else // --- TRƯỜNG HỢP B: Click vào phòng XANH (Chọn để đặt mới) ---
+            else 
             {
                 _maPhongDangChon = maPhongClick;
                 _giaPhongHienTai = Convert.ToDecimal(data["GiaMacDinh"]);
@@ -243,8 +243,7 @@ namespace QuanLyKhachSan.GUI
 
             if (kq.Contains("thành công"))
             {
-                // ===> CẬP NHẬT TRANG CHỦ <===
-                BookingBLL.NotifyDataChanged(); // <--- THÊM MỚI
+                BookingBLL.NotifyDataChanged(); 
 
                 LoadSoDoPhong();
                 _maPhongDangChon = 0;
@@ -344,6 +343,11 @@ namespace QuanLyKhachSan.GUI
         }
 
         private void txtHoTen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvPhongDaDat_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

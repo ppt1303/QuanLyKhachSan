@@ -12,7 +12,7 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.GetData(query, null);
         }
 
-        // SỬA LỖI TIM KIẾM
+    
         public DataTable TimKiemKhachHang(string keyword)
         {
             string query = @"
@@ -29,7 +29,6 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.GetData(query, parameters);
         }
 
-        // SỬA LỖI: THEM KHÁCH HÀNG (THÊM tham số quocTich)
         public bool ThemKhachHang(string hoTen, string cccd, string sdt, string gioiTinh, DateTime ngaySinh, string quocTich)
         {
             string query = "sp_ThemKhachHang";
@@ -39,12 +38,12 @@ namespace QuanLyKhachSan.DAL
                 new SqlParameter("@SDT", sdt),
                 new SqlParameter("@GioiTinh", gioiTinh),
                 new SqlParameter("@NgaySinh", ngaySinh),
-                new SqlParameter("@QuocTich", quocTich) // ĐÃ THÊM
+                new SqlParameter("@QuocTich", quocTich) 
             };
             return DatabaseHelper.ExecuteNonQuery(query, parameters, CommandType.StoredProcedure);
         }
 
-        // CẬP NHẬT: Đảm bảo truyền đủ 7 tham số (ID + 6 trường)
+     
         public bool CapNhatKhachHang(int maKH, string hoTen, string sdt, string cccd, string gioiTinh, DateTime ngaySinh, string quocTich)
         {
             string query = "sp_CapNhatKhachHang";
@@ -60,15 +59,15 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.ExecuteNonQuery(query, parameters, CommandType.StoredProcedure);
         }
 
-        // File: KhachHangDAL.cs
+    
 
         public bool XoaKhachHang(int maKH)
         {
-            string query = "sp_XoaKhachHangHoanToan"; // Gọi SP XÓA CỨNG
+            string query = "sp_XoaKhachHangHoanToan"; 
             SqlParameter[] parameters = {
          new SqlParameter("@MaKH", maKH)
      };
-            // Rất quan trọng: Sử dụng CommandType.StoredProcedure
+         
             return DatabaseHelper.ExecuteNonQuery(query, parameters, CommandType.StoredProcedure);
         }
     }

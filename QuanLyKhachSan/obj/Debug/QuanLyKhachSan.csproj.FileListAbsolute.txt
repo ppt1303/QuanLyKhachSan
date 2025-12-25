@@ -834,3 +834,4 @@ D:\QLKS\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucQLPhong.res
 D:\Học kỳ 1 - Năm 3\Thực tập cơ sở dữ liệu\QLKS\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Form1.resources
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Form1.resources
 C:\project\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.GUI.ucKhachHang.resources
+D:\QLKS\QuanLyKhachSan\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Form1.resources

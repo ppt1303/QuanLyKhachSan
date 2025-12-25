@@ -16,7 +16,7 @@ namespace QuanLyKhachSan.BLL
 
         // Lấy chi tiết để in
      
-        // Thêm hàm này vào class HoaDonBLL
+       
         public DataTable GetInvoiceDetails(int maHD)
         {
             // Gọi lại hàm DAL đã có sẵn

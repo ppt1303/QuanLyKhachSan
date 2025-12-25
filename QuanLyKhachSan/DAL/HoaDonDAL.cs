@@ -6,7 +6,7 @@ namespace QuanLyKhachSan.DAL
 {
     public class HoaDonDAL
     {
-        // 1. Lấy danh sách hóa đơn (Để hiện lên lưới tìm kiếm)
+        // 1. Lấy danh sách hóa đơn 
         public DataTable LayDanhSachHoaDon(DateTime tuNgay, DateTime denNgay)
         {
             string query = "EXEC sp_LayDanhSachHoaDon @TuNgay, @DenNgay";
@@ -19,7 +19,7 @@ namespace QuanLyKhachSan.DAL
             return DatabaseHelper.GetData(query, param);
         }
 
-        // 2. Lấy chi tiết hóa đơn (Để IN ra giấy)
+        // 2. Lấy chi tiết hóa đơn
         public DataTable LayChiTietInHoaDon(int maHD)
         {
             string spName = "sp_LayChiTietHoaDon";

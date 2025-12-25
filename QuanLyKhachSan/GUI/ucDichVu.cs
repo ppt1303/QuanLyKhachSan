@@ -9,24 +9,19 @@ using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {
-    // THAY ĐỔI 1: Kế thừa từ UserControl thay vì Form
+
     public partial class ucDichVu : UserControl
     {
-        // =================================================================
-        // KHAI BÁO BIẾN VÀ BLL
-        // =================================================================
+        
         private DichVuBLL dichVuBLL = new DichVuBLL();
         private int selectedMaDV_ForEdit = -1;
         private int lastClickedRowIndex = -1;
 
-        // THAY ĐỔI 2: Constructor mang tên ucDichVu
         public ucDichVu()
         {
             InitializeComponent();
 
-            // Cấu hình DataGridView
-            // Lưu ý: Bạn cần copy các control (dgvDIchVu, txtTenDV, txtGia, btn...) 
-            // từ Form cũ sang giao diện UserControl này.
+          
             dgvDIchVu.MultiSelect = true;
             dgvDIchVu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDIchVu.ReadOnly = true;
@@ -45,11 +40,7 @@ namespace QuanLyKhachSan.GUI
             ResetForm();
         }
 
-        // =================================================================
-        // 1. TẢI DỮ LIỆU & RESET
-        // =================================================================
-
-        // THAY ĐỔI 3: Đổi tên hàm xử lý sự kiện Load
+       
         private void ucDichVu_Load(object sender, EventArgs e)
         {
             LoadDichVu();
@@ -62,7 +53,7 @@ namespace QuanLyKhachSan.GUI
                 dgvDIchVu.DataSource = dichVuBLL.LayDSDichVu();
                 dgvDIchVu.ClearSelection();
 
-                // Cấu hình hiển thị cột
+              
                 if (dgvDIchVu.Columns.Contains("MaDV"))
                 {
                     dgvDIchVu.Columns["MaDV"].HeaderText = "Mã DV";
@@ -70,11 +61,10 @@ namespace QuanLyKhachSan.GUI
                     dgvDIchVu.Columns["Gia"].HeaderText = "Giá";
                     dgvDIchVu.Columns["Gia"].DefaultCellStyle.Format = "N0";
 
-                    // Ẩn cột MaDV nếu không muốn hiển thị
-                    // dgvDIchVu.Columns["MaDV"].Visible = false; 
+                   
                 }
 
-                // Tự động giãn cột cho đẹp
+               
                 dgvDIchVu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
@@ -97,9 +87,7 @@ namespace QuanLyKhachSan.GUI
             txtTenDV.Focus();
         }
 
-        // =================================================================
-        // 2. LOGIC CHỌN HÀNG (SelectionChanged & Toggle)
-        // =================================================================
+   
 
         private void dgvDIchVu_SelectionChanged(object sender, EventArgs e)
         {
@@ -111,7 +99,7 @@ namespace QuanLyKhachSan.GUI
                 return;
             }
 
-            // Chọn 1 hàng: Bật Sửa
+            
             if (count == 1)
             {
                 DataGridViewRow row = dgvDIchVu.SelectedRows[0];
@@ -145,7 +133,7 @@ namespace QuanLyKhachSan.GUI
             if (e.RowIndex < 0) return;
 
             DataGridView dgv = sender as DataGridView;
-            // Kiểm tra xem có phải đang click lại vào hàng đã chọn để bỏ chọn không
+           
             bool isToggleOffCandidate = dgv.Rows[e.RowIndex].Selected && (e.RowIndex == lastClickedRowIndex);
 
             if (isToggleOffCandidate && (Control.ModifierKeys & Keys.Control) != Keys.Control)
@@ -153,24 +141,18 @@ namespace QuanLyKhachSan.GUI
                 dgv.Rows[e.RowIndex].Selected = false;
                 dgv.ClearSelection();
                 lastClickedRowIndex = -1;
-                ResetForm(); // Reset lại form khi bỏ chọn
+                ResetForm(); 
             }
             else
             {
                 if ((Control.ModifierKeys & Keys.Control) != Keys.Control)
                 {
-                    // Nếu không giữ Ctrl thì clear các lựa chọn cũ
-                    // Lưu ý: Dòng này có thể gây xung đột với MultiSelect nếu không cẩn thận, 
-                    // nhưng với logic toggle đơn giản thì ổn.
                 }
                 lastClickedRowIndex = e.RowIndex;
             }
         }
 
-        // =================================================================
-        // 3. LOGIC NÚT THAO TÁC
-        // =================================================================
-
+       
         private bool KiemTraDuLieuDichVu()
         {
             if (string.IsNullOrWhiteSpace(txtTenDV.Text) || string.IsNullOrWhiteSpace(txtGia.Text))
@@ -267,6 +249,11 @@ namespace QuanLyKhachSan.GUI
                     MessageBox.Show("Xóa dịch vụ thất bại (Có thể do ràng buộc dữ liệu hóa đơn).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

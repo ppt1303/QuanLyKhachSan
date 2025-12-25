@@ -5,12 +5,12 @@ using QuanLyKhachSan.BLL;
 
 namespace QuanLyKhachSan.GUI
 {
-    // TÊN CHUẨN: 1 chữ 'n'
+   
     public partial class ucQuanLyDatPhong : UserControl
     {
         BookingBLL _bll = new BookingBLL();
 
-        // Constructor: Phải khớp tên class (1 chữ 'n')
+ 
         public ucQuanLyDatPhong()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace QuanLyKhachSan.GUI
         private void LoadDanhSach()
         {
             DataTable dt = _bll.GetDanhSachDonDat();
-            // Nếu vẫn báo lỗi dòng dưới, hãy xem mục "Lưu ý quan trọng" bên dưới
+      
             dgvDanhSachDon.DataSource = dt;
         }
 
@@ -37,7 +37,7 @@ namespace QuanLyKhachSan.GUI
         {
             if (dgvDanhSachDon.Columns.Count == 0) return;
 
-            // Đặt tên tiếng Việt cho cột
+      
             dgvDanhSachDon.Columns["MaDP"].HeaderText = "Mã Đơn";
             dgvDanhSachDon.Columns["TenKhachHang"].HeaderText = "Khách Hàng";
             dgvDanhSachDon.Columns["NgayDat"].HeaderText = "Ngày Đặt";
@@ -58,7 +58,7 @@ namespace QuanLyKhachSan.GUI
             LoadDanhSach();
         }
 
-        // Hàm này để tránh lỗi nếu bên giao diện lỡ đăng ký sự kiện click
+    
         private void dgvDanhSachDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

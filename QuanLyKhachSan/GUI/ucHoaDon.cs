@@ -92,13 +92,11 @@ namespace QuanLyKhachSan.GUI
                 return;
             }
 
-            // 2. Lấy MaHD từ dòng đang chọn
-            // (Lưu ý: Bạn phải chắc chắn cột Mã HĐ tên là "MaHD" hoặc index số 0)
-            int maHD = Convert.ToInt32(dgvHoaDon.SelectedRows[0].Cells["Mã HĐ"].Value); // Hoặc Cells[0]
+            int maHD = Convert.ToInt32(dgvHoaDon.SelectedRows[0].Cells["Mã HĐ"].Value); 
 
             // 3. Mở Form chi tiết lên
             frmChiTietHoaDon frm = new frmChiTietHoaDon(maHD);
-            frm.ShowDialog(); // ShowDialog để hiện cửa sổ con đè lên
+            frm.ShowDialog(); 
         
         }
 
@@ -116,24 +114,24 @@ namespace QuanLyKhachSan.GUI
             {
                 int maHD = Convert.ToInt32(dgvHoaDon.SelectedRows[0].Cells["Mã HĐ"].Value);
 
-                // Lấy dữ liệu từ SQL lên
+        
                 DataTable dt = _bll.GetInvoiceDetails(maHD);
 
-                // --- ĐOẠN CODE "SOI KÈO" ---
+         
                 string tenCot = "";
                 foreach (DataColumn col in dt.Columns)
                 {
                     tenCot += col.ColumnName + " | ";
                 }
                 
-                // ---------------------------
+         
 
                 if (dt.Rows.Count > 0)
                 {
                     QuanLyKhachSan.rptHoaDon rpt = new QuanLyKhachSan.rptHoaDon();
                     rpt.DataSource = dt;
 
-                    // QUAN TRỌNG: Dòng này phải là rỗng ""
+              
                     rpt.DataMember = "";
 
                     rpt.ShowPreviewDialog();
@@ -143,6 +141,11 @@ namespace QuanLyKhachSan.GUI
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
+
+        }
+
+        private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
