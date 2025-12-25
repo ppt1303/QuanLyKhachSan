@@ -10,13 +10,10 @@ namespace QuanLyKhachSan.BLL
         public static event Action OnDataChanged;
         private DatPhongDAL dal = new DatPhongDAL();
 
-        // Hàm dùng để kích hoạt sự kiện khi có thay đổi dữ liệu
         public static void NotifyDataChanged()
         {
             OnDataChanged?.Invoke();
         }
-
-        // --- 1. LẤY SƠ ĐỒ PHÒNG (Sử dụng sp_GetSoDoPhong) ---
         public DataTable GetSoDoPhong(DateTime tuNgay, DateTime denNgay)
         {
             SqlParameter[] para = {
@@ -24,14 +21,12 @@ namespace QuanLyKhachSan.BLL
                 new SqlParameter("@DenNgay", denNgay)
             };
 
-            // Chuyển sang dùng Stored Procedure
             return DatabaseHelper.GetData("sp_GetSoDoPhong", para, CommandType.StoredProcedure);
         }
 
-        // --- 2. TÌM THÔNG TIN KHÁCH HÀNG (Sử dụng sp_GetKhachHangInfo) ---
         public DataRow GetKhachHangInfo(string keyword)
         {
-            // Lưu ý: Tên tham số @Key phải khớp chính xác với trong Stored Procedure
+      
             SqlParameter[] para = { new SqlParameter("@Key", keyword) };
 
             DataTable dt = DatabaseHelper.GetData("sp_GetKhachHangInfo", para, CommandType.StoredProcedure);
@@ -39,7 +34,7 @@ namespace QuanLyKhachSan.BLL
             return null;
         }
 
-        // --- 3. LẤY KHÁCH ĐANG GIỮ PHÒNG (Sử dụng sp_GetKhachHangByRoom) ---
+        
         public DataRow GetKhachHangByRoom(int maPhong, DateTime tuNgay, DateTime denNgay)
         {
             SqlParameter[] para = {
@@ -53,7 +48,7 @@ namespace QuanLyKhachSan.BLL
             return null;
         }
 
-        // --- 4. LẤY DANH SÁCH PHÒNG ĐÃ ĐẶT (Sử dụng sp_GetPhongDaDat) ---
+    
         public DataTable GetPhongDaDat(int maKH)
         {
             SqlParameter[] para = { new SqlParameter("@MaKH", maKH) };
@@ -61,7 +56,7 @@ namespace QuanLyKhachSan.BLL
             return DatabaseHelper.GetData("sp_GetPhongDaDat", para, CommandType.StoredProcedure);
         }
 
-        // 5. Thêm khách hàng mới
+   
         public string AddKhachHang(string ten, string cccd, string sdt, string gioitinh, DateTime ngaysinh, string quoctich)
         {
             if (string.IsNullOrEmpty(ten) || string.IsNullOrEmpty(cccd)) return "Thiếu tên hoặc CCCD!";
@@ -81,7 +76,7 @@ namespace QuanLyKhachSan.BLL
             return success ? "Thêm khách thành công!" : "Lỗi: Có thể trùng CCCD.";
         }
 
-        // 6. Đặt phòng (Tạo đơn 'Đã đặt')
+     
         public string BookRoom(int maKH, int maPhong, DateTime den, DateTime di, decimal coc)
         {
             string proc = "sp_DatPhong";
@@ -97,7 +92,7 @@ namespace QuanLyKhachSan.BLL
             return success ? "Đặt phòng thành công!" : "Đặt thất bại.";
         }
 
-        // 7. Check-in
+        
         public string CheckIn(int maDP)
         {
             SqlParameter[] para = { new SqlParameter("@MaDP", maDP) };
@@ -105,7 +100,7 @@ namespace QuanLyKhachSan.BLL
             return result ? "Check-in thành công!" : "Lỗi Check-in.";
         }
 
-        // 8. Đổi phòng khi Check-in
+    
         public string DoiPhongCheckIn(int maDP, int maPhongCu, int maPhongMoi)
         {
             SqlParameter[] para = {

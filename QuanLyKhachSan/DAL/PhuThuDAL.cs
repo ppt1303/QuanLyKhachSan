@@ -6,7 +6,7 @@ namespace QuanLyKhachSan.DAL
 {
     public class PhuThuDAL
     {
-        // Lưu ý: Nếu lớp kết nối của cậu tên là DataProvider thì sửa DatabaseHelper thành DataProvider nhé
+        
 
         public DataTable GetListPhuThu()
         {

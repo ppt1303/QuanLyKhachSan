@@ -57,7 +57,7 @@
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
             this.fluentDesignFormContainer1.Size = new System.Drawing.Size(930, 664);
             this.fluentDesignFormContainer1.TabIndex = 0;
-            this.fluentDesignFormContainer1.Click += new System.EventHandler(this.fluentDesignFormContainer1_Click);
+           
             // 
             // accordionControl1
             // 
@@ -84,7 +84,7 @@
             this.aceTrangChu.Name = "aceTrangChu";
             this.aceTrangChu.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceTrangChu.Text = "Trang chủ";
-            this.aceTrangChu.Click += new System.EventHandler(this.aceTrangChu_Click);
+        
             // 
             // aceDatPhong
             // 
@@ -92,7 +92,7 @@
             this.aceDatPhong.Name = "aceDatPhong";
             this.aceDatPhong.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceDatPhong.Text = "Quản lý Đặt phòng";
-            this.aceDatPhong.Click += new System.EventHandler(this.aceDatPhong_Click);
+          
             // 
             // aceKhachHang
             // 
@@ -100,7 +100,7 @@
             this.aceKhachHang.Name = "aceKhachHang";
             this.aceKhachHang.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceKhachHang.Text = "Quản lý Khách hàng";
-            this.aceKhachHang.Click += new System.EventHandler(this.aceKhachHang_Click);
+         
             // 
             // aceHoaDon
             // 
@@ -108,7 +108,7 @@
             this.aceHoaDon.Name = "aceHoaDon";
             this.aceHoaDon.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.aceHoaDon.Text = "Hóa đơn";
-            this.aceHoaDon.Click += new System.EventHandler(this.aceHoaDon_Click);
+           
             // 
             // aceDichVu
             // 
@@ -184,7 +184,7 @@
             this.Name = "frmMain";
             this.NavigationControl = this.accordionControl1;
             this.Text = "Quản lý Khách sạn";
-            this.Load += new System.EventHandler(this.frmMain_Load_1);
+       
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).EndInit();

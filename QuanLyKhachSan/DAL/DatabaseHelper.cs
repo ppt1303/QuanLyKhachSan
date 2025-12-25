@@ -8,7 +8,7 @@ namespace QuanLyKhachSan.DAL
     public class DatabaseHelper
     {
         // Chuỗi kết nối (Lấy từ ảnh bạn gửi)
-        private static string connectionString = @"Data Source=LAPTOPMEMUA\SQLEXPRESS;Initial Catalog=QuanLyKhachSan;Integrated Security=True";
+        private static string connectionString = @"Data Source=PHAMPUTINL;Initial Catalog=QuanLyKhachSan;Integrated Security=True";
 
         // 1. Hàm lấy dữ liệu (SELECT)
         public static DataTable GetData(string query, SqlParameter[] parameters = null, CommandType cmdType = CommandType.Text)

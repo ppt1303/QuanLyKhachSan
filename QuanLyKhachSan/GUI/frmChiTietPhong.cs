@@ -23,7 +23,7 @@ namespace QuanLyKhachSan.GUI
 
         private void frmChiTietPhong_Load(object sender, EventArgs e)
         {
-            
+            btnTraphong.Visible = false;
             LoadDanhSachTrangThaiPhong(); 
             LoadDanhSachDichVu();       
 
@@ -50,6 +50,7 @@ namespace QuanLyKhachSan.GUI
                     string tenPhong = dtPhong.Rows[0]["TenPhong"].ToString();
                     string tenLP = dtPhong.Rows[0]["TenLP"].ToString();
                     int trangThaiHienTai = Convert.ToInt32(dtPhong.Rows[0]["TrangThaiPhong"]);
+                    //if (trangThaiHienTai == 2) btnTraphong.Visible = true;
 
                     lblTenPhong.Text = $"{tenPhong} - {tenLP}";
                     lblTieuDeTrangThai.Text = GetTrangThaiString(trangThaiHienTai);
@@ -86,6 +87,7 @@ namespace QuanLyKhachSan.GUI
                     lblTenKhach.Text = "---";
                     lblGioNhan.Text = "---";
                 }
+                
             }
             catch (Exception ex)
             {
@@ -325,6 +327,14 @@ namespace QuanLyKhachSan.GUI
             {
                 MessageBox.Show("Lỗi thêm dịch vụ: " + ex.Message);
             }
+        }
+
+        private void btnTraphong_Click(object sender, EventArgs e)
+        {
+            QuanLyKhachSan.GUI.CheckOut frm = new QuanLyKhachSan.GUI.CheckOut(maNP);
+            frm.ShowDialog();
+            BookingBLL.NotifyDataChanged(); 
+
         }
     }
 }
