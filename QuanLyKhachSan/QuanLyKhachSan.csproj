@@ -155,12 +155,6 @@
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ucDatPhong.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\ucDatPhong.Designer.cs">
-      <DependentUpon>ucDatPhong.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ucDichVu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -206,10 +200,10 @@
       <DependentUpon>rptHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="ucQuanLyDatPhong.cs">
+    <Compile Include="GUI\ucQuanLyDatPhong.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucQuanLyDatPhong.Designer.cs">
+    <Compile Include="GUI\ucQuanLyDatPhong.Designer.cs">
       <DependentUpon>ucQuanLyDatPhong.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
@@ -229,9 +223,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ucDatPhong.resx">
-      <DependentUpon>ucDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ucDichVu.resx">
       <DependentUpon>ucDichVu.cs</DependentUpon>
@@ -265,7 +256,7 @@
     <EmbeddedResource Include="rptHoaDon.resx">
       <DependentUpon>rptHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucQuanLyDatPhong.resx">
+    <EmbeddedResource Include="GUI\ucQuanLyDatPhong.resx">
       <DependentUpon>ucQuanLyDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="dsHoaDon.xsc">

@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\project\\QuanLyKhachSan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|C:\\project\\QuanLyKhachSan\\quanlykhachsan\\gui\\uctrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|c:\\project\\quanlykhachsan\\quanlykhachsan\\gui\\uctrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\uctrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -25,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|C:\\project\\QuanLyKhachSan\\quanlykhachsan\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|c:\\project\\quanlykhachsan\\quanlykhachsan\\gui\\ucdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\ucdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|C:\\project\\QuanLyKhachSan\\quanlykhachsan\\gui\\ucdichvu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -200,21 +196,10 @@
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucTrangChu.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAiwJoBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAE0BAAAAAAAAAAAqwJoBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-24T14:43:52.566Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ucDichVu.cs [Design]",
-              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDichVu.cs",
-              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucDichVu.cs",
-              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDichVu.cs [Design]",
-              "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucDichVu.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:34:44.232Z"
             },
             {
               "$type": "Document",
@@ -225,8 +210,7 @@
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs [Design]",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T23:59:55.37Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-24T23:59:55.37Z"
             },
             {
               "$type": "Document",
@@ -238,8 +222,7 @@
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAUwDQAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:00:29.936Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T00:00:29.936Z"
             },
             {
               "$type": "Document",
@@ -250,8 +233,18 @@
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.cs [Design]",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:57:48.639Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-24T14:57:48.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ucDichVu.cs [Design]",
+              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDichVu.cs",
+              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucDichVu.cs",
+              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDichVu.cs [Design]",
+              "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucDichVu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T00:34:44.232Z"
             },
             {
               "$type": "Document",
@@ -262,20 +255,7 @@
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucTrangChu.cs [Design]",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucTrangChu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:01:12.12Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ucDatPhong.cs [Design]",
-              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDatPhong.cs",
-              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucDatPhong.cs",
-              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDatPhong.cs [Design]",
-              "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucDatPhong.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:33:37.245Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-25T00:01:12.12Z"
             },
             {
               "$type": "Document",
@@ -287,24 +267,22 @@
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:56:44.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-24T14:56:44.022Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "frmChiTietPhong.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs [Design]",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T23:56:23.038Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-24T23:56:23.038Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "addPicture.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\addPicture.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\addPicture.cs",
@@ -316,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\DatabaseHelper.cs",
@@ -328,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "PhongBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\PhongBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\PhongBLL.cs",
@@ -340,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "ucHoaDon.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucHoaDon.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucHoaDon.cs",
@@ -351,7 +329,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "ucKhachHang.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucKhachHang.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucKhachHang.cs",
@@ -362,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "ucQLPhong.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucQLPhong.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucQLPhong.cs",
@@ -373,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "ucThietBi.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucThietBi.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucThietBi.cs",
@@ -384,7 +362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "CheckOut.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\CheckOut.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\CheckOut.cs",
@@ -395,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "frmDatPhong.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmDatPhong.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmDatPhong.cs",
@@ -406,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "CheckOut.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\CheckOut.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\CheckOut.cs",
@@ -418,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "BookingBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\BookingBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\BookingBLL.cs",
@@ -430,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "frmDatPhong.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmDatPhong.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmDatPhong.cs",
@@ -442,7 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "DatPhongDAl.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\DatPhongDAl.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\DatPhongDAl.cs",
@@ -454,7 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "PhongThietBiDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\PhongThietBiDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\PhongThietBiDAL.cs",
@@ -466,7 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "KhachHangDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\KhachHangDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\KhachHangDAL.cs",
@@ -478,7 +456,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "LoaiPhongDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\LoaiPhongDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\LoaiPhongDAL.cs",
@@ -490,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "PhuThuDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\PhuThuDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\PhuThuDAL.cs",
@@ -502,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "QLPhongDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\QLPhongDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\QLPhongDAL.cs",
@@ -514,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "ThietBiDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\ThietBiDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\ThietBiDAL.cs",
@@ -526,7 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 27,
               "Title": "HoaDonDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\HoaDonDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\HoaDonDAL.cs",
@@ -538,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 28,
               "Title": "DichVuDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\DichVuDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\DichVuDAL.cs",
@@ -550,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 32,
               "Title": "PhongThietBiBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\PhongThietBiBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\PhongThietBiBLL.cs",
@@ -562,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 35,
               "Title": "DichVuBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\DichVuBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\DichVuBLL.cs",
@@ -574,7 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 34,
               "Title": "HoaDonBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\HoaDonBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\HoaDonBLL.cs",
@@ -586,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 31,
               "Title": "PhuThuBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\PhuThuBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\PhuThuBLL.cs",
@@ -598,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 30,
               "Title": "QLPhongBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\QLPhongBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\QLPhongBLL.cs",
@@ -610,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 29,
               "Title": "ThietBiBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\ThietBiBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\ThietBiBLL.cs",
@@ -622,7 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 36,
               "Title": "PhongDAL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DAL\\PhongDAL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DAL\\PhongDAL.cs",
@@ -634,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 33,
               "Title": "KhachHangBLL.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\BLL\\KhachHangBLL.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\BLL\\KhachHangBLL.cs",
@@ -646,7 +624,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 37,
               "Title": "RoomStatistics.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\DTO\\RoomStatistics.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\DTO\\RoomStatistics.cs",
@@ -658,7 +636,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 38,
               "Title": "frmMain.Designer.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.Designer.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmMain.Designer.cs",
@@ -666,8 +644,7 @@
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.Designer.cs",
               "ViewState": "AgIAAKkAAAAAAAAAAAAewLoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:57:50.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-24T14:57:50.119Z"
             }
           ]
         },

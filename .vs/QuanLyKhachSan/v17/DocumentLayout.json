@@ -3,7 +3,11 @@
   "WorkspaceRootPath": "C:\\project\\QuanLyKhachSan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|C:\\project\\QuanLyKhachSan\\quanlykhachsan\\gui\\uctrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|c:\\project\\quanlykhachsan\\quanlykhachsan\\dshoadon.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}",
+      "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\dshoadon.xsd||{07AC752B-D2B0-4DCD-AD9C-237BF561A30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|c:\\project\\quanlykhachsan\\quanlykhachsan\\gui\\uctrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\uctrangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|C:\\project\\QuanLyKhachSan\\quanlykhachsan\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|c:\\project\\quanlykhachsan\\quanlykhachsan\\gui\\ucdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|solutionrelative:quanlykhachsan\\gui\\ucdatphong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20182C9D-1916-43EA-B4B9-5E440D454B1C}|QuanLyKhachSan\\QuanLyKhachSan.csproj|C:\\project\\QuanLyKhachSan\\quanlykhachsan\\gui\\ucdichvu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -195,15 +195,61 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "dsHoaDon.xsd",
+              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\dsHoaDon.xsd",
+              "RelativeDocumentMoniker": "QuanLyKhachSan\\dsHoaDon.xsd",
+              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\dsHoaDon.xsd",
+              "RelativeToolTip": "QuanLyKhachSan\\dsHoaDon.xsd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
+              "WhenOpened": "2025-12-25T01:24:54.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ucTrangChu.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucTrangChu.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAJoBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAE0BAAAAAAAAAAAqwJoBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-24T14:43:52.566Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmChiTietHoaDon.cs [Design]",
+              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs",
+              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs",
+              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs [Design]",
+              "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T23:59:55.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmChiTietPhong.cs",
+              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
+              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
+              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
+              "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAUwDQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T00:00:29.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmMain.cs [Design]",
+              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.cs",
+              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmMain.cs",
+              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.cs [Design]",
+              "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T14:57:48.639Z"
             },
             {
               "$type": "Document",
@@ -218,68 +264,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmChiTietHoaDon.cs [Design]",
-              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs",
-              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs",
-              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs [Design]",
-              "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietHoaDon.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T23:59:55.37Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmChiTietPhong.cs",
-              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
-              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
-              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
-              "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAUwDQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:00:29.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmMain.cs [Design]",
-              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.cs",
-              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmMain.cs",
-              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.cs [Design]",
-              "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:57:48.639Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ucTrangChu.cs [Design]",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucTrangChu.cs",
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucTrangChu.cs [Design]",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucTrangChu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:01:12.12Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-25T00:01:12.12Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ucDatPhong.cs [Design]",
-              "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDatPhong.cs",
-              "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\ucDatPhong.cs",
-              "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\ucDatPhong.cs [Design]",
-              "RelativeToolTip": "QuanLyKhachSan\\GUI\\ucDatPhong.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T00:33:37.245Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "frmMain.cs",
               "DocumentMoniker": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmMain.cs",
               "RelativeDocumentMoniker": "QuanLyKhachSan\\GUI\\frmMain.cs",
@@ -287,8 +283,7 @@
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:56:44.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-24T14:56:44.022Z"
             },
             {
               "$type": "Document",
@@ -299,8 +294,7 @@
               "ToolTip": "C:\\project\\QuanLyKhachSan\\QuanLyKhachSan\\GUI\\frmChiTietPhong.cs [Design]",
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmChiTietPhong.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T23:56:23.038Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-24T23:56:23.038Z"
             },
             {
               "$type": "Document",
@@ -666,8 +660,7 @@
               "RelativeToolTip": "QuanLyKhachSan\\GUI\\frmMain.Designer.cs",
               "ViewState": "AgIAAKkAAAAAAAAAAAAewLoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T14:57:50.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-24T14:57:50.119Z"
             }
           ]
         },
